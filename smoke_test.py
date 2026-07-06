@@ -60,3 +60,17 @@ for t in na[:5]:
     req_caps = sorted(c.value for c in t.required_capabilities)
     req_mods = sorted(m.value for m in t.required_modalities)
     print(f'  {t.test_id} [{t.category}] requires caps={req_caps} mods={req_mods}')
+
+# 7. Verify difficulty tags on Tier-0 tests
+print()
+tier0 = [t for t in applicable + na if t.difficulty != "unspecified"]
+print(f'Tests with difficulty tags: {len(tier0)}')
+if tier0:
+    diffs = {}
+    for t in tier0:
+        diffs.setdefault(t.difficulty, 0)
+        diffs[t.difficulty] += 1
+    for d in sorted(diffs):
+        print(f'  {d:10s}: {diffs[d]} tests')
+else:
+    print('  WARNING: No difficulty tags found — check Tier-0 YAML files')

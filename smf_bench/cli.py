@@ -42,8 +42,9 @@ def cmd_run(args: argparse.Namespace) -> int:
 
     runner = BenchRunner(config)
     categories = args.categories.split(",") if args.categories else None
+    difficulties = args.difficulty.split(",") if args.difficulty else None
 
-    run_id = asyncio.run(runner.run(categories=categories, verbose=True))
+    run_id = asyncio.run(runner.run(categories=categories, difficulties=difficulties, verbose=True))
 
     # Generate report
     run = runner.store.get_run(run_id)
@@ -124,13 +125,13 @@ def cmd_list_tests(args: argparse.Namespace) -> int:
         tests = registry.by_category(args.category)
         print(f"\nTests in '{args.category}' ({len(tests)}):")
         for t in tests:
-            print(f"  {t.test_id:50s}  eval={t.evaluator:15s}  weight={t.weight}")
+            print(f"  {t.test_id:50s}  eval={t.evaluator:15s}  difficulty={t.difficulty:10s}  weight={t.weight}")
     else:
         for cat in registry.categories():
             tests = registry.by_category(cat)
             print(f"\n{cat} ({len(tests)}):")
             for t in tests:
-                print(f"  {t.test_id:50s}  eval={t.evaluator:15s}")
+                print(f"  {t.test_id:50s}  eval={t.evaluator:15s}  difficulty={t.difficulty:10s}")
     return 0
 
 
@@ -168,6 +169,8 @@ def main() -> None:
     run_p.add_argument("--api-key", default="dummy", help="API key (if needed)")
     run_p.add_argument("--engine", default="", help="Engine version (e.g. 'vLLM 0.24.0')")
     run_p.add_argument("--categories", default=None, help="Comma-separated categories to run")
+    run_p.add_argument("--difficulty", default=None,
+                       help="Comma-separated difficulty levels (easy,medium,hard,expert,frontier)")
     run_p.add_argument("--concurrency", type=int, default=4, help="Max concurrent requests")
     run_p.add_argument("--timeout", type=int, default=300, help="Per-test timeout (seconds)")
     run_p.set_defaults(func=cmd_run)

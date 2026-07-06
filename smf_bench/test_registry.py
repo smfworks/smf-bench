@@ -29,6 +29,7 @@ class TestCase:
     name: str
     category: str          # e.g. "vision", "reasoning", "latency_throughput"
     dimension: str         # e.g. "vision", "performance", "quality"
+    difficulty: str = "unspecified"  # easy, medium, hard, expert, frontier
     required_modalities: set[Modality] = field(default_factory=set)
     required_capabilities: set[Capability] = field(default_factory=set)
     evaluator: str = "text_contains"  # evaluator type key
@@ -46,7 +47,8 @@ class TestCase:
         req_mods = {Modality(m) for m in data.get("requires_modalities", [])}
         req_caps = {Capability(c) for c in data.get("requires_capabilities", [])}
         # Collect extra fields (expected_keywords, min_matches, tools, etc.) into metadata
-        known_keys = {"id", "name", "category", "dimension", "requires_modalities",
+        known_keys = {"id", "name", "category", "dimension", "difficulty",
+                      "requires_modalities",
                       "requires_capabilities", "evaluator", "prompt", "messages",
                       "expected", "max_tokens", "temperature", "timeout", "weight",
                       "metadata"}
@@ -57,6 +59,7 @@ class TestCase:
             name=data.get("name", data["id"]),
             category=data.get("category", "general"),
             dimension=data.get("dimension", "quality"),
+            difficulty=data.get("difficulty", "unspecified"),
             required_modalities=req_mods,
             required_capabilities=req_caps,
             evaluator=data.get("evaluator", "text_contains"),

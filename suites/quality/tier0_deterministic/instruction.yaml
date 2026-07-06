@@ -7,6 +7,7 @@ id: v3.instruction.easy.01
 name: v3.instruction.easy.01
 category: instruction
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -21,6 +22,7 @@ id: v3.instruction.easy.02
 name: v3.instruction.easy.02
 category: instruction
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -40,6 +42,7 @@ id: v3.instruction.medium.01
 name: v3.instruction.medium.01
 category: instruction
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -64,6 +67,7 @@ id: v3.instruction.medium.02
 name: v3.instruction.medium.02
 category: instruction
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -84,6 +88,7 @@ id: v3.instruction.medium.03
 name: v3.instruction.medium.03
 category: instruction
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -100,6 +105,7 @@ id: v3.instruction.hard.01
 name: v3.instruction.hard.01
 category: instruction
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -122,6 +128,7 @@ id: v3.instruction.hard.02
 name: v3.instruction.hard.02
 category: instruction
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -143,6 +150,7 @@ id: v3.instruction.hard.03
 name: v3.instruction.hard.03
 category: instruction
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -165,6 +173,7 @@ id: v3.instruction.hard.04
 name: v3.instruction.hard.04
 category: instruction
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -183,6 +192,7 @@ id: v3.instruction.hard.05
 name: v3.instruction.hard.05
 category: instruction
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -206,6 +216,7 @@ id: v3.instruction.expert.01
 name: v3.instruction.expert.01
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -228,6 +239,7 @@ id: v3.instruction.expert.02
 name: v3.instruction.expert.02
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -252,6 +264,7 @@ id: v3.instruction.expert.03
 name: v3.instruction.expert.03
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -274,6 +287,7 @@ id: v3.instruction.expert.04
 name: v3.instruction.expert.04
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -293,6 +307,7 @@ id: v3.instruction.expert.05
 name: v3.instruction.expert.05
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -317,6 +332,7 @@ id: v3.instruction.expert.06
 name: v3.instruction.expert.06
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -340,6 +356,7 @@ id: v3.instruction.expert.07
 name: v3.instruction.expert.07
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -365,6 +382,7 @@ id: v3.instruction.expert.08
 name: v3.instruction.expert.08
 category: instruction
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -389,6 +407,7 @@ id: v3.instruction.frontier.01
 name: v3.instruction.frontier.01
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -426,6 +445,7 @@ id: v3.instruction.frontier.02
 name: v3.instruction.frontier.02
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -460,6 +480,7 @@ id: v3.instruction.frontier.03
 name: v3.instruction.frontier.03
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -493,6 +514,7 @@ id: v3.instruction.frontier.04
 name: v3.instruction.frontier.04
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -529,6 +551,7 @@ id: v3.instruction.frontier.05
 name: v3.instruction.frontier.05
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -562,6 +585,7 @@ id: v3.instruction.frontier.06
 name: v3.instruction.frontier.06
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -594,6 +618,7 @@ id: v3.instruction.frontier.07
 name: v3.instruction.frontier.07
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -628,6 +653,7 @@ id: v3.instruction.frontier.08
 name: v3.instruction.frontier.08
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -660,6 +686,7 @@ id: v3.instruction.frontier.09
 name: v3.instruction.frontier.09
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -691,6 +718,7 @@ id: v3.instruction.frontier.10
 name: v3.instruction.frontier.10
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -721,6 +749,7 @@ id: v3.instruction.frontier.11
 name: v3.instruction.frontier.11
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -752,6 +781,7 @@ id: v3.instruction.frontier.12
 name: v3.instruction.frontier.12
 category: instruction
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:

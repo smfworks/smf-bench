@@ -65,13 +65,17 @@ class BenchRunner:
         mc = self.models.load_dir(self.config.models_dir)
         tc = self.tests.load_dir(self.config.suites_dir)
         return mc, tc
-
-    async def run(self, categories: list[str] | None = None, verbose: bool = False) -> str:
+    async def run(self, categories: list[str] | None = None,
+                  difficulties: list[str] | None = None,
+                  verbose: bool = False) -> str:
         """Execute the benchmark suite.
 
         Args:
             categories: If provided, only run tests in these categories.
                         If None, run all tests.
+            difficulties: If provided, only run tests at these difficulty levels
+                         (easy, medium, hard, expert, frontier).
+                         If None, run all difficulties.
             verbose: Print per-test results to console.
 
         Returns:
@@ -92,6 +96,10 @@ class BenchRunner:
         all_tests = self.tests.all_tests()
         if categories:
             all_tests = [t for t in all_tests if t.category in categories]
+
+        # Filter by difficulty if requested
+        if difficulties:
+            all_tests = [t for t in all_tests if t.difficulty in difficulties]
 
         # Partition into applicable / N/A
         applicable, not_applicable = self._partition(model, all_tests)

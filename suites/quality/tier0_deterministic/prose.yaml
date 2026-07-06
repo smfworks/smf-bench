@@ -8,6 +8,7 @@ id: v3.prose.easy.01
 name: v3.prose.easy.01
 category: prose
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -32,6 +33,7 @@ id: v3.prose.easy.02
 name: v3.prose.easy.02
 category: prose
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -56,6 +58,7 @@ id: v3.prose.medium.01
 name: v3.prose.medium.01
 category: prose
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -80,6 +83,7 @@ id: v3.prose.medium.02
 name: v3.prose.medium.02
 category: prose
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -104,6 +108,7 @@ id: v3.prose.medium.03
 name: v3.prose.medium.03
 category: prose
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -132,6 +137,7 @@ id: v3.prose.hard.01
 name: v3.prose.hard.01
 category: prose
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -157,6 +163,7 @@ id: v3.prose.hard.02
 name: v3.prose.hard.02
 category: prose
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -185,6 +192,7 @@ id: v3.prose.hard.03
 name: v3.prose.hard.03
 category: prose
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -212,6 +220,7 @@ id: v3.prose.hard.04
 name: v3.prose.hard.04
 category: prose
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -233,6 +242,7 @@ id: v3.prose.hard.05
 name: v3.prose.hard.05
 category: prose
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -260,6 +270,7 @@ id: v3.prose.expert.01
 name: v3.prose.expert.01
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -292,6 +303,7 @@ id: v3.prose.expert.02
 name: v3.prose.expert.02
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -318,6 +330,7 @@ id: v3.prose.expert.03
 name: v3.prose.expert.03
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -339,6 +352,7 @@ id: v3.prose.expert.04
 name: v3.prose.expert.04
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -363,6 +377,7 @@ id: v3.prose.expert.05
 name: v3.prose.expert.05
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -389,6 +404,7 @@ id: v3.prose.expert.06
 name: v3.prose.expert.06
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -422,6 +438,7 @@ id: v3.prose.expert.07
 name: v3.prose.expert.07
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -449,6 +466,7 @@ id: v3.prose.expert.08
 name: v3.prose.expert.08
 category: prose
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -476,6 +494,7 @@ id: v3.prose.frontier.01
 name: v3.prose.frontier.01
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -509,6 +528,7 @@ id: v3.prose.frontier.02
 name: v3.prose.frontier.02
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -541,6 +561,7 @@ id: v3.prose.frontier.03
 name: v3.prose.frontier.03
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -577,6 +598,7 @@ id: v3.prose.frontier.04
 name: v3.prose.frontier.04
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -612,6 +634,7 @@ id: v3.prose.frontier.05
 name: v3.prose.frontier.05
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -640,6 +663,7 @@ id: v3.prose.frontier.06
 name: v3.prose.frontier.06
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -678,6 +702,7 @@ id: v3.prose.frontier.07
 name: v3.prose.frontier.07
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -710,6 +735,7 @@ id: v3.prose.frontier.08
 name: v3.prose.frontier.08
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -747,6 +773,7 @@ id: v3.prose.frontier.09
 name: v3.prose.frontier.09
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -782,6 +809,7 @@ id: v3.prose.frontier.10
 name: v3.prose.frontier.10
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -816,6 +844,7 @@ id: v3.prose.frontier.11
 name: v3.prose.frontier.11
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -847,6 +876,7 @@ id: v3.prose.frontier.12
 name: v3.prose.frontier.12
 category: prose
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:

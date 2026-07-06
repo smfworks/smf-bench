@@ -7,6 +7,7 @@ id: v3.coding.easy.01
 name: v3.coding.easy.01
 category: coding
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -54,6 +55,7 @@ id: v3.coding.easy.02
 name: v3.coding.easy.02
 category: coding
 dimension: quality
+difficulty: easy
 requires_modalities:
 - text
 requires_capabilities:
@@ -93,6 +95,7 @@ id: v3.coding.medium.01
 name: v3.coding.medium.01
 category: coding
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -130,6 +133,7 @@ id: v3.coding.medium.02
 name: v3.coding.medium.02
 category: coding
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -165,6 +169,7 @@ id: v3.coding.medium.03
 name: v3.coding.medium.03
 category: coding
 dimension: quality
+difficulty: medium
 requires_modalities:
 - text
 requires_capabilities:
@@ -198,6 +203,7 @@ id: v3.coding.hard.01
 name: v3.coding.hard.01
 category: coding
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -242,6 +248,7 @@ id: v3.coding.hard.02
 name: v3.coding.hard.02
 category: coding
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -281,6 +288,7 @@ id: v3.coding.hard.03
 name: v3.coding.hard.03
 category: coding
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -326,6 +334,7 @@ id: v3.coding.hard.04
 name: v3.coding.hard.04
 category: coding
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -386,6 +395,7 @@ id: v3.coding.hard.05
 name: v3.coding.hard.05
 category: coding
 dimension: quality
+difficulty: hard
 requires_modalities:
 - text
 requires_capabilities:
@@ -433,6 +443,7 @@ id: v3.coding.expert.01
 name: v3.coding.expert.01
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -476,6 +487,7 @@ id: v3.coding.expert.02
 name: v3.coding.expert.02
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -512,6 +524,7 @@ id: v3.coding.expert.03
 name: v3.coding.expert.03
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -560,6 +573,7 @@ id: v3.coding.expert.04
 name: v3.coding.expert.04
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -599,6 +613,7 @@ id: v3.coding.expert.05
 name: v3.coding.expert.05
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -634,6 +649,7 @@ id: v3.coding.expert.06
 name: v3.coding.expert.06
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -674,6 +690,7 @@ id: v3.coding.expert.07
 name: v3.coding.expert.07
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -719,6 +736,7 @@ id: v3.coding.expert.08
 name: v3.coding.expert.08
 category: coding
 dimension: quality
+difficulty: expert
 requires_modalities:
 - text
 requires_capabilities:
@@ -767,6 +785,7 @@ id: v3.coding.frontier.01
 name: v3.coding.frontier.01
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -817,6 +836,7 @@ id: v3.coding.frontier.02
 name: v3.coding.frontier.02
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -862,6 +882,7 @@ id: v3.coding.frontier.03
 name: v3.coding.frontier.03
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -930,6 +951,7 @@ id: v3.coding.frontier.04
 name: v3.coding.frontier.04
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -979,6 +1001,7 @@ id: v3.coding.frontier.05
 name: v3.coding.frontier.05
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1025,6 +1048,7 @@ id: v3.coding.frontier.06
 name: v3.coding.frontier.06
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1070,6 +1094,7 @@ id: v3.coding.frontier.07
 name: v3.coding.frontier.07
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1114,6 +1139,7 @@ id: v3.coding.frontier.08
 name: v3.coding.frontier.08
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1164,6 +1190,7 @@ id: v3.coding.frontier.09
 name: v3.coding.frontier.09
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1209,6 +1236,7 @@ id: v3.coding.frontier.10
 name: v3.coding.frontier.10
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1256,6 +1284,7 @@ id: v3.coding.frontier.11
 name: v3.coding.frontier.11
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
@@ -1300,6 +1329,7 @@ id: v3.coding.frontier.12
 name: v3.coding.frontier.12
 category: coding
 dimension: quality
+difficulty: frontier
 requires_modalities:
 - text
 requires_capabilities:
