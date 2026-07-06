@@ -1,0 +1,781 @@
+# Aeon-Bench-Pod Tier-0 Deterministic Tests — Instruction (30 cases)
+# Extracted from Aeon-Bench-Pod (MIT License, Copyright 2026 AEON-7)
+# Categories: instruction — exponential difficulty ladder (easy → frontier)
+# All cases require text modality only
+
+id: v3.instruction.easy.01
+name: v3.instruction.easy.01
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: text_match
+expected: Quorvat relay nine is ready
+prompt: 'Reply with exactly this phrase and nothing else: Quorvat relay nine is ready'
+---
+id: v3.instruction.easy.02
+name: v3.instruction.easy.02
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: line
+  op: ==
+prompt: Write exactly 3 lines about a harbor at dusk, with no blank lines between
+  them. Every one of the 3 lines must contain the word "lantern". Do not use the word
+  "boat" anywhere. Output only the 3 lines, nothing else.
+---
+id: v3.instruction.medium.01
+name: v3.instruction.medium.01
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: sentence
+  op: ==
+prompt: 'Write a short description of a signal-tower keeper named Orvin. Requirements:
+  (1) it must be exactly 3 sentences long, written as one paragraph with each sentence
+  ending in a period, question mark, or exclamation mark (do not use abbreviations
+  with periods like ''Mr.'' or ''e.g.''); (2) it must contain the word ''lantern''
+  at least once; (3) it must not contain the word ''sea'' anywhere, in any capitalization
+  — this includes hyphenated forms like ''sea-spray'' (words that merely contain those
+  letters with no word break, such as ''seas'' or ''seaside'', are fine). Output only
+  the paragraph, nothing else.'
+---
+id: v3.instruction.medium.02
+name: v3.instruction.medium.02
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+prompt: Write a list of exactly 5 lines, with no blank lines between them, describing
+  an imaginary robot called Zimrell. Every line must begin with the exact three characters
+  'Zim' (capital Z, lowercase i and m) as its first characters — for example a line
+  could start with 'Zimrell' or 'Zim's'. Output only the 5 lines, nothing else.
+---
+id: v3.instruction.medium.03
+name: v3.instruction.medium.03
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: text_match
+expected: vex nine falcon copper
+prompt: Take the phrase 'copper falcon nine vex' and reply with its words in REVERSE
+  order, all lowercase, separated by single spaces, with no punctuation and no other
+  text of any kind. Your entire reply must be exactly that reversed phrase.
+---
+id: v3.instruction.hard.01
+name: v3.instruction.hard.01
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem about a lighthouse keeper named Orvath. Hard constraints: (1)
+  exactly 5 lines, no blank lines; (2) every line contains exactly 7 words, separated
+  by single spaces, with no leading or trailing spaces (punctuation attached to a
+  word counts as part of that word); (3) every line ends with a period; (4) the word
+  ''lantern'' appears at least once; (5) the word ''sea'' does not appear anywhere,
+  in any casing. Output ONLY the poem - no title, no commentary.'
+---
+id: v3.instruction.hard.02
+name: v3.instruction.hard.02
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: sentence
+  op: ==
+prompt: 'Describe a midnight robbery of a bank vault in exactly 3 sentences. Hard
+  constraints: (1) exactly 3 sentences, each ending with a period; (2) the letter
+  ''e'' (uppercase or lowercase) must not appear anywhere in your reply - a full lipogram;
+  (3) the word ''vault'' must appear; (4) the word ''moon'' must appear. Output ONLY
+  the 3-sentence description - no preamble, no commentary.'
+---
+id: v3.instruction.hard.03
+name: v3.instruction.hard.03
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 4
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write exactly 4 lines of verse about walking through a city at night. Hard
+  constraints: (1) exactly 4 lines, no blank lines; (2) every line begins with the
+  word ''Under'' - capital U, the rest lowercase, followed by a single space; (3)
+  the third word of every line is exactly ''silver'' (all lowercase, no punctuation
+  attached); (4) every line contains at least 6 space-separated words; (5) no commas
+  anywhere. Output ONLY the 4 lines - no title, no commentary.'
+---
+id: v3.instruction.hard.04
+name: v3.instruction.hard.04
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: text_match
+expected: OBSIDIAN-CARAVEL-PLINTH-FERN-MIST
+prompt: 'Consider these five words: plinth, caravel, mist, obsidian, fern. Step 1:
+  sort them by word length in DESCENDING order; break any length ties alphabetically
+  (ascending A-Z). Step 2: convert every word to uppercase. Step 3: join the words
+  with single hyphens, no spaces. Reply with ONLY the resulting string - no quotes,
+  no explanation, no punctuation other than the hyphens.'
+---
+id: v3.instruction.hard.05
+name: v3.instruction.hard.05
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: stanza
+  op: ==
+prompt: 'Write a poem about a harbor at dusk, structured as exactly 3 stanzas separated
+  by single blank lines, where each stanza has exactly 2 lines (6 lines total). Hard
+  constraints: (1) the final word of every line ends with the letters ''ight'' (examples:
+  night, light, flight, sight) and has NO punctuation or spaces after it - each line
+  ends with the bare word; (2) the word ''moon'' appears exactly once in the whole
+  poem (any casing); (3) no blank lines inside a stanza. Output ONLY the poem - no
+  title, no commentary.'
+---
+id: v3.instruction.expert.01
+name: v3.instruction.expert.01
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 6
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem about an old lighthouse. ALL of the following constraints must
+  hold simultaneously: (1) exactly 6 lines, no blank lines; (2) every line contains
+  exactly 5 words separated by single spaces; (3) every line ends with a period; (4)
+  the letter ''e'' (uppercase or lowercase) must not appear anywhere in your output;
+  (5) the word ''salt'' must appear at least once. Output ONLY the 6 poem lines —
+  no title, no preamble, no commentary.'
+---
+id: v3.instruction.expert.02
+name: v3.instruction.expert.02
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 7
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a 7-line nature poem satisfying ALL of these constraints simultaneously:
+  (1) exactly 7 lines, no blank lines; (2) the first letter of line 1 is an uppercase
+  ''G'', of line 2 an uppercase ''H'', of line 3 an uppercase ''I'', of line 4 an
+  uppercase ''J'', of line 5 an uppercase ''K'', of line 6 an uppercase ''L'', and
+  of line 7 an uppercase ''M''; (3) every line contains exactly 4 words separated
+  by single spaces; (4) line 4 ends with a colon '':'' and every other line ends with
+  a period; (5) the comma character must not appear anywhere. Output ONLY the 7 lines
+  — nothing else.'
+---
+id: v3.instruction.expert.03
+name: v3.instruction.expert.03
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write exactly 5 lines about desert night skies. ALL constraints must hold
+  simultaneously: (1) exactly 5 lines, no blank lines; (2) each line contains exactly
+  6 words separated by single spaces; (3) the third word of every line is exactly
+  ''amber'' (all lowercase); (4) every line begins with a capital letter and ends
+  with an exclamation mark ''!''; (5) the word ''the'' must not appear anywhere, in
+  any casing. Output ONLY the 5 lines — nothing else.'
+---
+id: v3.instruction.expert.04
+name: v3.instruction.expert.04
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: text_match
+expected: sguor5
+prompt: 'Apply the following operations, in this exact order, to the word QUANTIFIER:
+  (1) delete every vowel (A, E, I, O, U); (2) reverse the order of the remaining letters;
+  (3) replace each letter with the letter that comes immediately after it in the English
+  alphabet (Z wraps around to A); (4) convert everything to lowercase; (5) append,
+  as a decimal digit, the number of vowels you deleted in step 1. Reply with ONLY
+  the resulting string — no quotes, no spaces, no explanation, no punctuation.'
+---
+id: v3.instruction.expert.05
+name: v3.instruction.expert.05
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 4
+metadata:
+  unit: sentence
+  op: ==
+prompt: 'Write a single paragraph of exactly 4 sentences about a fictional deep-sea
+  probe named Veylark exploring an ocean trench. ALL constraints must hold simultaneously:
+  (1) exactly 4 sentences, each ending with a period — exclamation marks and question
+  marks are forbidden anywhere; (2) the name ''Veylark'' appears at least once; (3)
+  the word ''brine'' appears at least 4 times; (4) no digit characters anywhere; (5)
+  the word ''water'' must not appear; (6) periods are used ONLY to end the 4 sentences
+  — no abbreviations, no decimal points, no ellipses. Output ONLY the paragraph —
+  nothing else.'
+---
+id: v3.instruction.expert.06
+name: v3.instruction.expert.06
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: stanza
+  op: ==
+prompt: 'Write a poem satisfying ALL of these constraints simultaneously: (1) exactly
+  3 stanzas separated by single blank lines, each stanza exactly 3 lines (9 lines
+  of text in total); (2) every line begins with the word ''Under'' (capital U, the
+  rest lowercase) followed by a single space; (3) every line ends with a semicolon
+  '';'' EXCEPT the very last line of the poem, which ends with a period; (4) the letter
+  ''a'' (uppercase or lowercase) must not appear anywhere in the poem. Output ONLY
+  the poem — no title, no commentary.'
+---
+id: v3.instruction.expert.07
+name: v3.instruction.expert.07
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write exactly 3 lines describing a market morning. ALL constraints must hold
+  simultaneously: (1) exactly 3 lines, no blank lines; (2) each line contains exactly
+  8 words separated by single spaces; (3) within each line the words strictly alternate
+  between FULLY UPPERCASE and fully lowercase, starting with an uppercase word (so
+  word positions 1, 3, 5, 7 are entirely uppercase letters and positions 2, 4, 6,
+  8 are entirely lowercase letters); (4) the 8th (last) word of every line is exactly
+  ''dawn''; (5) your output contains only letters and spaces — no digits and no punctuation
+  of any kind; (6) the uppercase word ''ORCHARD'' must appear somewhere. Output ONLY
+  the 3 lines — nothing else.'
+---
+id: v3.instruction.expert.08
+name: v3.instruction.expert.08
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a 5-line storm poem. ALL constraints must hold simultaneously: (1)
+  exactly 5 lines, no blank lines; (2) line 1 has exactly 8 words, line 2 exactly
+  7 words, line 3 exactly 6 words, line 4 exactly 5 words, line 5 exactly 4 words
+  — words separated by single spaces; (3) the first letters of the 5 lines, in order,
+  spell STORM (uppercase ''S'', ''T'', ''O'', ''R'', ''M''); (4) the last word of
+  every line is exactly ''gray'' (all lowercase); (5) the letter ''e'' (uppercase
+  or lowercase) must not appear anywhere; (6) your output contains only letters and
+  spaces — no punctuation and no digits. Output ONLY the 5 lines — nothing else.'
+---
+id: v3.instruction.frontier.01
+name: v3.instruction.frontier.01
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 7
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem that satisfies ALL of these constraints simultaneously. Output
+  ONLY the poem: no title, no preamble, no commentary, no code fences, no blank lines,
+  no leading or trailing spaces on any line, single spaces between words.
+
+  1. Exactly 7 lines.
+
+  2. Every line contains exactly 6 words.
+
+  3. The letter ''e'' (uppercase or lowercase) must not appear anywhere in the poem.
+
+  4. Line 1 begins with capital ''G'', line 2 with capital ''H'', line 3 with capital
+  ''I'', line 4 with capital ''J'', line 5 with capital ''K'', line 6 with capital
+  ''L'', line 7 with capital ''M'' (seven consecutive letters of the alphabet).
+
+  5. Line 4 ends with a colon '':''.
+
+  6. Each of the other six lines ends with a period ''.''.
+
+  7. Periods and the colon appear ONLY at line ends, and no other punctuation of any
+  kind is used (no commas, hyphens, apostrophes, quotes, semicolons, question marks,
+  exclamation marks).'
+---
+id: v3.instruction.frontier.02
+name: v3.instruction.frontier.02
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: sentence
+  op: ==
+prompt: 'Write a single paragraph (one block of text, no blank lines) that satisfies
+  ALL of these constraints. Output ONLY the paragraph: no title, no preamble, no commentary.
+
+  1. Exactly 5 sentences, each ending with a period. No exclamation marks or question
+  marks anywhere.
+
+  2. Sentence 1 begins with the word ''Amber'', sentence 2 with ''Basalt'', sentence
+  3 with ''Cobalt'', sentence 4 with ''Damson'', sentence 5 with ''Emerald'' (each
+  capitalized exactly like that).
+
+  3. The exact lowercase word ''quartz'' appears exactly TWICE in the paragraph (whole
+  word, exactly two occurrences in total).
+
+  4. No commas, colons or semicolons anywhere.
+
+  5. The letter ''w'' (uppercase or lowercase) must not appear anywhere.
+
+  6. Periods appear ONLY at the ends of the five sentences.'
+---
+id: v3.instruction.frontier.03
+name: v3.instruction.frontier.03
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 6
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem that satisfies ALL of these constraints. Output ONLY the poem:
+  no title, no preamble, no commentary, no blank lines, no leading or trailing spaces
+  on any line, single spaces between words.
+
+  1. Exactly 6 lines.
+
+  2. Every line contains exactly 8 words.
+
+  3. Every line ends with a period, and the last word of each line (the word immediately
+  before the period) is the SAME word as the first word of that line (letter-for-letter;
+  capitalization may differ).
+
+  4. The word ''lantern'' appears somewhere in the poem.
+
+  5. The letter ''g'' (uppercase or lowercase) never appears anywhere.
+
+  6. No punctuation at all except the six line-ending periods.'
+---
+id: v3.instruction.frontier.04
+name: v3.instruction.frontier.04
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: text_match
+expected: a9GRe9DNi9CKK13
+prompt: 'Apply the following operations, IN ORDER, to the starting string cinderglass
+  (11 lowercase letters).
+
+  1. Reverse the entire string.
+
+  2. Replace every occurrence of the letter s with the letter k.
+
+  3. Delete the 4th character of the current string (1-indexed).
+
+  4. Convert every vowel (a, e, i, o, u) to uppercase.
+
+  5. Move the first two characters of the string to the end, preserving their order.
+
+  6. Insert the digit 9 immediately after every uppercase letter.
+
+  7. Swap the case of every letter (uppercase becomes lowercase, lowercase becomes
+  uppercase); digits are unchanged.
+
+  8. Append to the end of the string, in decimal, the number of characters the string
+  contains at this point (counted before appending).
+
+  Reply with ONLY the final string on a single line: no quotes, no spaces, no explanation,
+  nothing else.'
+---
+id: v3.instruction.frontier.05
+name: v3.instruction.frontier.05
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 3
+metadata:
+  unit: stanza
+  op: ==
+prompt: 'Write a poem of exactly 3 stanzas separated by single blank lines, satisfying
+  ALL of these constraints. Output ONLY the poem: no title, no preamble, no commentary,
+  no leading spaces on any line.
+
+  1. Each stanza has exactly 4 lines (12 lines of text in total).
+
+  2. The first line of stanza 1 begins with the word ''Under''; the first line of
+  stanza 2 begins with ''Between''; the first line of stanza 3 begins with ''Beyond''
+  (capitalized exactly like that).
+
+  3. Every line of stanza 1 ends with the word ''night''; every line of stanza 2 ends
+  with the word ''flame''; every line of stanza 3 ends with the word ''tide''.
+
+  4. There is NO punctuation anywhere in the poem (no periods, commas, apostrophes,
+  anything).
+
+  5. The letter ''s'' (uppercase or lowercase) never appears anywhere in the poem.'
+---
+id: v3.instruction.frontier.06
+name: v3.instruction.frontier.06
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 7
+metadata:
+  unit: sentence
+  op: ==
+prompt: 'Write a single paragraph about a clock satisfying ALL of these constraints.
+  Output ONLY the paragraph: no title, no preamble, no commentary, no blank lines.
+
+  1. Exactly 7 sentences.
+
+  2. The paragraph''s very first word is ''Tick'' (capitalized exactly like that).
+
+  3. Sentences 1, 3, 5 and 7 end with a period; sentences 2, 4 and 6 end with a question
+  mark. Periods and question marks appear ONLY as those sentence endings, and there
+  are no exclamation marks.
+
+  4. Every one of the 7 sentences contains the exact lowercase word ''clock''.
+
+  5. No commas anywhere.
+
+  6. The letter ''m'' (uppercase or lowercase) never appears anywhere.'
+---
+id: v3.instruction.frontier.07
+name: v3.instruction.frontier.07
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+prompt: 'Produce a numbered list satisfying ALL of these constraints. Output ONLY
+  the list: no title, no preamble, no commentary, no blank lines, single spaces between
+  tokens, no trailing spaces.
+
+  1. Exactly 5 lines. Line k begins with the marker ''k)'' — that is, line 1 starts
+  ''1)'', line 2 starts ''2)'', line 3 starts ''3)'', line 4 starts ''4)'', line 5
+  starts ''5)'' — followed by a single space.
+
+  2. Counting the marker as the first token, every line has exactly 6 space-separated
+  tokens (marker + 5 words).
+
+  3. The third token of every line (the second word after the marker) is exactly ''onyx''.
+
+  4. Every letter in the output is lowercase.
+
+  5. The letter ''t'' never appears anywhere.
+
+  6. No punctuation of any kind except the '')'' in the five markers.'
+---
+id: v3.instruction.frontier.08
+name: v3.instruction.frontier.08
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 2
+metadata:
+  unit: stanza
+  op: ==
+prompt: 'Write a poem of exactly 2 stanzas separated by a single blank line, satisfying
+  ALL of these constraints. Output ONLY the poem: no title, no preamble, no commentary.
+
+  1. Each stanza has exactly 3 lines (6 lines of text in total).
+
+  2. The exact word ''echo'' appears exactly 4 times in the poem, counted as a whole
+  word (''echoes'' would NOT count).
+
+  3. The exact word ''stone'' appears exactly 2 times (whole word; ''stones'' would
+  not count).
+
+  4. The exact word ''glass'' appears exactly 1 time (whole word).
+
+  5. Every letter in the poem is lowercase.
+
+  6. There is no punctuation anywhere (letters and spaces only on each line).'
+---
+id: v3.instruction.frontier.09
+name: v3.instruction.frontier.09
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 4
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write exactly 4 lines of text satisfying ALL of these constraints. Output
+  ONLY the 4 lines: no title, no preamble, no commentary, no blank lines, no trailing
+  spaces.
+
+  1. Line 1 begins with the word ''Zinc'', line 2 with ''Zeal'', line 3 with ''Zero'',
+  line 4 with ''Zone'' (capitalized exactly like that).
+
+  2. Every line is EXACTLY 25 characters long, counting every letter and every space
+  (newlines are not counted).
+
+  3. The output contains only letters and spaces — no digits, no punctuation — and
+  words are separated by single spaces.
+
+  4. The ONLY uppercase letters in the output are the four ''Z''s that start the lines;
+  every other letter is lowercase.'
+---
+id: v3.instruction.frontier.10
+name: v3.instruction.frontier.10
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 8
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem of exactly 8 lines satisfying ALL of these constraints. Output
+  ONLY the poem: no title, no preamble, no commentary, no blank lines, no leading
+  or trailing spaces, single spaces between words.
+
+  1. Lines 1, 3, 5 and 7 are written ENTIRELY IN UPPERCASE letters; lines 2, 4, 6
+  and 8 are written entirely in lowercase letters.
+
+  2. Every line contains exactly 5 words.
+
+  3. The poem contains only letters and spaces (no digits, no punctuation).
+
+  4. Line 1 contains the word ''STORM''.
+
+  5. Line 8 is exactly: so it ends here quietly'
+---
+id: v3.instruction.frontier.11
+name: v3.instruction.frontier.11
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 9
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem of exactly 9 lines satisfying ALL of these constraints. Output
+  ONLY the poem: no title, no preamble, no commentary, no blank lines, no leading
+  spaces, single spaces between words.
+
+  1. Every line contains exactly 4 words.
+
+  2. The first word of every line is exactly 4 letters long.
+
+  3. Every line ends with the letters ''ing'' (its final word ends in -ing).
+
+  4. The word ''the'' never appears anywhere.
+
+  5. The letter ''u'' (uppercase or lowercase) never appears anywhere.
+
+  6. There is no punctuation anywhere (letters and spaces only).'
+---
+id: v3.instruction.frontier.12
+name: v3.instruction.frontier.12
+category: instruction
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: structural_count
+expected: 8
+metadata:
+  unit: line
+  op: ==
+prompt: 'Write a poem of exactly 8 lines satisfying ALL of these constraints. Output
+  ONLY the poem: no title, no preamble, no commentary, no blank lines, no leading
+  spaces, single spaces between words.
+
+  1. The first letters of the 8 lines, in order, spell OBSIDIAN: line 1 starts with
+  capital ''O'', line 2 with ''B'', line 3 with ''S'', line 4 with ''I'', line 5 with
+  ''D'', line 6 with ''I'', line 7 with ''A'', line 8 with ''N''.
+
+  2. Every line contains exactly 5 words.
+
+  3. In every line, the LAST word begins with the same letter as the line''s first
+  word (case-insensitive).
+
+  4. The word ''obsidian'' itself must NOT appear anywhere, in any casing.
+
+  5. There is no punctuation anywhere (letters and spaces only).'

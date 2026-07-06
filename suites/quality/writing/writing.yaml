@@ -1,0 +1,68 @@
+# Writing Quality Tests (5 tests)
+# Ported from nemotron-omni-local-benchmark.py
+# Evaluator: text_contains (keyword-based scoring)
+
+- id: writing_article
+  name: "Article writing"
+  category: writing
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [writing]
+  evaluator: text_contains
+  prompt: "Write a 3-paragraph article about the future of AI in healthcare. Include a title."
+  expected_keywords: [AI, healthcare, title, paragraph, medical, future]
+  min_matches: 4
+  max_tokens: 1024
+  temperature: 0.7
+
+- id: writing_summary
+  name: "Summarization"
+  category: writing
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [writing]
+  evaluator: text_contains
+  prompt: "Summarize the following in 2 sentences: 'Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals. Leading AI textbooks define the field as the study of intelligent agents that perceive their environment and take actions that maximize their chances of successfully achieving their goals. Colloquially, the term artificial intelligence is often used to describe machines that mimic cognitive functions that humans associate with the human mind, such as learning and problem solving.'"
+  expected_keywords: [intelligence, machines, agents, goals]
+  min_matches: 2
+  max_tokens: 256
+  temperature: 0.5
+
+- id: writing_creative
+  name: "Creative fiction"
+  category: writing
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [writing]
+  evaluator: text_contains
+  prompt: "Write a short story (200 words) about a robot discovering art for the first time. Include dialogue."
+  expected_keywords: [robot, art, dialogue, discover, create]
+  min_matches: 3
+  max_tokens: 512
+  temperature: 0.9
+
+- id: writing_technical
+  name: "Technical writing"
+  category: writing
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [writing]
+  evaluator: text_contains
+  prompt: "Explain how HTTPS works in 3 paragraphs. Use clear technical language but keep it accessible."
+  expected_keywords: [HTTPS, TLS, SSL, encrypt, certificate, handshake, secure]
+  min_matches: 3
+  max_tokens: 512
+  temperature: 0.5
+
+- id: writing_format
+  name: "Format compliance"
+  category: writing
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [writing]
+  evaluator: text_contains
+  prompt: "Write a JSON object with exactly 3 keys: name, age, and city. Fill with sample data."
+  expected_keywords: [name, age, city, JSON]
+  min_matches: 4
+  max_tokens: 128
+  temperature: 0.3

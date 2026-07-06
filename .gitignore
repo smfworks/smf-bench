@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test results & databases
+results/*.db
+results/*.db-journal
+results/*.db-wal
+results/*.db-shm
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Benchmark artifacts (large files, not for git)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.flac
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff

@@ -1,0 +1,38 @@
+# Model manifest: Gemma-4-26B-A4B-NVFP4
+# Running on DGX Spark (spark-56bc) via vLLM nightly
+# Container: gemma-4-26b-nvfp4-vllm, port 8888, image+video+text (no audio)
+
+model_id: "gemma-4-26b-a4b-nvfp4"
+name: "Gemma-4-26B-A4B-NVFP4"
+provider: "google"
+served_name: "nvidia/Gemma-4-26B-A4B-NVFP4"
+
+# Input modalities supported
+input_modalities:
+  - text
+  - image_in
+  - video_in
+
+# Output modalities supported
+output_modalities:
+  - text
+
+# Capabilities
+capabilities:
+  - reasoning
+  - vision
+  - video
+  - writing
+  - coding
+
+context_length: 131072
+max_output_tokens: 4096
+
+# Engine metadata
+metadata:
+  endpoint: "http://spark-56bc:8889/v1"   # separate port when both models run
+  api_key: "dummy"
+  engine: "vLLM"
+  engine_version: "nightly v0.23.1rc1.dev786"
+  quantization: "NVFP4"
+  speculative_decoding: "none"

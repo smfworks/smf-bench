@@ -1,0 +1,47 @@
+# Time To First Token Tests (3 sub-tests)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 4
+# Evaluator: performance (records TTFT; no pass/fail)
+# Requires: streaming support
+# Measures: TTFT (ms), total time, content chars, reasoning chars, finish reason
+
+- id: perf_ttft_short
+  name: "TTFT (short prompt)"
+  category: ttft
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, streaming]
+  evaluator: performance
+  prompt: "What is 2+2?"
+  max_tokens: 2048
+  temperature: 0.3
+  stream: true
+  metadata:
+    measures: [ttft_ms, total_time, content_chars, reasoning_chars, finish_reason]
+
+- id: perf_ttft_medium
+  name: "TTFT (medium prompt)"
+  category: ttft
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, streaming]
+  evaluator: performance
+  prompt: "Explain CPU in 3 paragraphs"
+  max_tokens: 2048
+  temperature: 0.3
+  stream: true
+  metadata:
+    measures: [ttft_ms, total_time, content_chars, reasoning_chars, finish_reason]
+
+- id: perf_ttft_long_reasoning
+  name: "TTFT (long reasoning prompt)"
+  category: ttft
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, streaming]
+  evaluator: performance
+  prompt: "Prove that √2 is irrational."
+  max_tokens: 2048
+  temperature: 0.3
+  stream: true
+  metadata:
+    measures: [ttft_ms, total_time, content_chars, reasoning_chars, finish_reason]

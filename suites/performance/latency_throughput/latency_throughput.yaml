@@ -1,0 +1,69 @@
+# Latency & Throughput Tests (5 sub-tests)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 3
+# Evaluator: performance (records throughput; no pass/fail)
+# Measures: tokens generated, wall time, throughput (tok/s)
+
+- id: perf_latency_64tok
+  name: "Latency @ 64 tokens"
+  category: latency_throughput
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a detailed essay about the history of computing, from Babbage to modern AI."
+  max_tokens: 64
+  temperature: 0.7
+  metadata:
+    measures: [wall_time, tokens_generated, throughput]
+
+- id: perf_latency_128tok
+  name: "Latency @ 128 tokens"
+  category: latency_throughput
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a detailed essay about the history of computing, from Babbage to modern AI."
+  max_tokens: 128
+  temperature: 0.7
+  metadata:
+    measures: [wall_time, tokens_generated, throughput]
+
+- id: perf_latency_256tok
+  name: "Latency @ 256 tokens"
+  category: latency_throughput
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a detailed essay about the history of computing, from Babbage to modern AI."
+  max_tokens: 256
+  temperature: 0.7
+  metadata:
+    measures: [wall_time, tokens_generated, throughput]
+
+- id: perf_latency_512tok
+  name: "Latency @ 512 tokens"
+  category: latency_throughput
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a detailed essay about the history of computing, from Babbage to modern AI."
+  max_tokens: 512
+  temperature: 0.7
+  metadata:
+    measures: [wall_time, tokens_generated, throughput]
+
+- id: perf_latency_1024tok
+  name: "Latency @ 1024 tokens"
+  category: latency_throughput
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a detailed essay about the history of computing, from Babbage to modern AI."
+  max_tokens: 1024
+  temperature: 0.7
+  metadata:
+    measures: [wall_time, tokens_generated, throughput]

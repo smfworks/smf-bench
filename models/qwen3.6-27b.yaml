@@ -1,0 +1,36 @@
+# Model manifest: Qwen3.6-27B
+# Text-only companion model for comparison testing
+# Served via vLLM on DGX Spark (endpoint TBD)
+
+model_id: "qwen3.6-27b"
+name: "Qwen3.6-27B"
+provider: "qwen"
+served_name: "nvidia/Qwen3.6-27B"
+
+# Input modalities supported
+input_modalities:
+  - text
+
+# Output modalities supported
+output_modalities:
+  - text
+
+# Capabilities
+capabilities:
+  - reasoning
+  - coding
+  - writing
+  - tool_calling
+
+context_length: 131072
+max_output_tokens: 8192
+
+# Engine metadata
+metadata:
+  endpoint: "http://spark-56bc:8890/v1"   # placeholder — confirm actual port
+  api_key: "dummy"
+  engine: "vLLM"
+  engine_version: "latest"
+  quantization: "none"           # or NVFP4 — confirm
+  speculative_decoding: "none"
+  tool_call_parser: "qwen3_coder"

@@ -1,0 +1,1023 @@
+# Aeon-Bench-Pod Tier-0 Deterministic Tests — Reasoning (30 cases)
+# Extracted from Aeon-Bench-Pod (MIT License, Copyright 2026 AEON-7)
+# Categories: reasoning — exponential difficulty ladder (easy → frontier)
+# All cases require text modality only
+
+id: v3.reasoning.easy.01
+name: v3.reasoning.easy.01
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Dario\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{\s*Marisol\s*\}
+prompt: 'On the island of Velmara, every inhabitant is either a knight (who always
+  tells the truth) or a knave (who always lies). You meet two inhabitants, Marisol
+  and Dario. Marisol says: "Marisol and Dario are both knaves." Exactly one of the
+  two is a knight. Which one is the knight? Answer with exactly one name (Marisol
+  or Dario) inside \boxed{}.'
+---
+id: v3.reasoning.easy.02
+name: v3.reasoning.easy.02
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b14\b
+prompt: How many integers from 1 to 84 inclusive are divisible by 6? Put the final
+  answer (a single integer) inside \boxed{}.
+---
+id: v3.reasoning.medium.01
+name: v3.reasoning.medium.01
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text\{\s*Tobin\s*\}|Tobin)\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(?:Marisol|Vek)
+prompt: 'On an island, every inhabitant is either a knight (always tells the truth)
+  or a knave (always lies). You meet three inhabitants: Marisol, Tobin, and Vek.
+
+
+  - Marisol says: "Tobin is a knave."
+
+  - Tobin says: "Marisol and Vek are the same type (both knights or both knaves)."
+
+  - Vek says: "Marisol is a knight."
+
+
+  Exactly one consistent assignment of types exists, and in it exactly one of the
+  three is a knight. Determine who the knight is. Answer with exactly one name inside
+  \boxed{}, e.g. \boxed{Name}.'
+---
+id: v3.reasoning.medium.02
+name: v3.reasoning.medium.02
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text\{\s*Alba\s*\}|Alba)\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(?:Priya|Dario|Kenji|Ruth)
+prompt: 'Five colleagues — Priya, Dario, Kenji, Alba, and Ruth — sit in a single row
+  of five chairs numbered 1 to 5 from left to right (chair 1 is the leftmost). All
+  of the following are true:
+
+
+  1. Priya sits in a lower-numbered chair than Dario.
+
+  2. Kenji and Alba sit in adjacent chairs.
+
+  3. Ruth sits in chair 1 or chair 5.
+
+  4. Dario sits in chair 3.
+
+  5. Priya does not sit in chair 1.
+
+  6. Kenji sits in a lower-numbered chair than Alba.
+
+
+  Exactly one seating satisfies all six conditions. Who sits in chair 5? Answer with
+  exactly one name inside \boxed{}, e.g. \boxed{Name}.'
+---
+id: v3.reasoning.medium.03
+name: v3.reasoning.medium.03
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b36\b
+prompt: How many three-digit integers (from 100 to 999 inclusive) have a digit sum
+  of exactly 10 and contain no digit equal to 0? Put the final answer (a single integer)
+  inside \boxed{}.
+---
+id: v3.reasoning.hard.01
+name: v3.reasoning.hard.01
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text(?:bf|rm|tt)?\{)?\s*Marisol\s*\}?\s*\}
+prompt: 'On a remote island every inhabitant is either a knight, who always tells
+  the truth, or a knave, who always lies. You meet five islanders: Tovren, Marisol,
+  Quibb, Essa, and Dalior. They make these statements:
+
+  - Tovren: "Essa and Quibb are of different types (one is a knight and the other
+  is a knave)."
+
+  - Marisol: "Dalior is a knave."
+
+  - Quibb: "Marisol is a knave or Essa is a knight (or both)."
+
+  - Essa: "Exactly two of the five of us are knights."
+
+  - Dalior: "Tovren and Marisol are both knaves."
+
+  Exactly one assignment of types is consistent with all five statements, and under
+  it exactly one of the five islanders is a knight. Determine who that knight is.
+  Give your final answer as exactly one name inside \boxed{}.'
+---
+id: v3.reasoning.hard.02
+name: v3.reasoning.hard.02
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text(?:bf|rm|tt)?\{)?\s*Sana\s*\}?\s*\}
+prompt: 'Six colleagues - Priya, Oskar, Lenka, Marek, Sana, and Teodor - sit around
+  a circular table with six seats numbered 1 through 6 clockwise. Two seats are adjacent
+  when their numbers differ by 1, and seats 1 and 6 are also adjacent. Two seats are
+  directly opposite when their numbers differ by 3 (the pairs are 1-4, 2-5, 3-6).
+  "Immediately clockwise of seat k" means seat k+1, and seat 1 is immediately clockwise
+  of seat 6.
+
+  Clues:
+
+  1. Priya sits in seat 1.
+
+  2. Oskar sits directly opposite Lenka.
+
+  3. Sana sits immediately clockwise of Oskar.
+
+  4. Teodor sits adjacent to Priya.
+
+  5. Marek sits directly opposite Teodor.
+
+  Exactly one seating arrangement satisfies all five clues. In that arrangement, who
+  sits in seat 4? Give your final answer as exactly one name inside \boxed{}.'
+---
+id: v3.reasoning.hard.03
+name: v3.reasoning.hard.03
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text(?:bf|rm|tt)?\{)?\s*\(?E\)?\s*\}?\s*\}
+prompt: 'Consider five basic statements about an incident at a records office:
+
+  S: the archive was sealed.  L: the ledger was copied.  V: the vault stayed open.  C:
+  the courier left early.  M: the manifest was signed.
+
+  All of the following premises are true:
+
+  1. If the archive was sealed, then the ledger was copied.
+
+  2. Exactly one of the following two is true: the ledger was copied; the vault stayed
+  open.
+
+  3. If the vault stayed open, then the courier left early.
+
+  4. If the courier left early, then the manifest was signed.
+
+  5. The manifest was signed only if the archive was not sealed.
+
+  6. The archive was sealed or the vault stayed open (or both).
+
+  7. The manifest was not signed.
+
+  Exactly one of the following five conclusions is logically entailed by the premises
+  (that is, it must be true in every situation consistent with all seven premises):
+
+  A. The vault stayed open.
+
+  B. The courier left early.
+
+  C. The archive was not sealed.
+
+  D. The ledger was not copied.
+
+  E. The archive was sealed.
+
+  Which one is entailed? Give your final answer as exactly one capital letter inside
+  \boxed{}, for example \boxed{A}.'
+---
+id: v3.reasoning.hard.04
+name: v3.reasoning.hard.04
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b402\b
+prompt: 'Count the strings of length 6 over the four-letter alphabet {P, Q, R, S}
+  that satisfy BOTH of the following conditions:
+
+  (a) no two adjacent characters of the string are equal, and
+
+  (b) the letter P appears in the string exactly twice.
+
+  Give the exact count as an integer. Put the final answer inside \boxed{}.'
+---
+id: v3.reasoning.hard.05
+name: v3.reasoning.hard.05
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*(?:\\text(?:bf|rm|tt)?\{)?\s*Bram\s*\}?\s*\}
+prompt: 'Four analysts - Ilse, Bram, Cato, and Femke - work on four different floors
+  of a building (floors 2, 3, 4, and 5; exactly one analyst per floor). Each drinks
+  a different beverage: matcha, espresso, rooibos, or oolong (exactly one each).
+
+  Clues:
+
+  1. Bram works exactly two floors below Femke.
+
+  2. Ilse does not work on floor 2.
+
+  3. Cato drinks espresso.
+
+  4. The matcha drinker works on floor 5.
+
+  5. The rooibos drinker works exactly one floor above Cato.
+
+  6. The oolong drinker works on floor 4.
+
+  Exactly one assignment of floors and beverages satisfies all six clues. In that
+  assignment, who works on floor 3? Give your final answer as exactly one name inside
+  \boxed{}.'
+---
+id: v3.reasoning.expert.01
+name: v3.reasoning.expert.01
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b5\b
+prompt: 'On an island, every inhabitant is either a knight (always tells the truth)
+  or a knave (always lies). Seven islanders — Marek, Odile, Petra, Quinn, Rasul, Sylvie,
+  and Timo — each make one statement. ''Or'' is always inclusive, and ''if P then
+  Q'' is the material conditional (false only when P is true and Q is false).
+
+
+  - Marek: "Odile and Petra are of the same type."
+
+  - Odile: "Exactly two of Marek, Rasul, and Timo are knights."
+
+  - Petra: "Quinn is a knave."
+
+  - Quinn: "Sylvie is a knight, or Marek is a knave, or both."
+
+  - Rasul: "An odd number of the seven of us are knights."
+
+  - Sylvie: "Petra and I are of different types."
+
+  - Timo: "Rasul is a knight if and only if Odile is a knave."
+
+
+  Exactly one assignment of types is consistent with all seven statements. How many
+  of the seven islanders are knights? Put the final number inside \boxed{}.'
+---
+id: v3.reasoning.expert.02
+name: v3.reasoning.expert.02
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Fenna\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(Ansel|Brix|Coral|Dagny|Elior|Gaspar|Hesta)[^{}]*\}
+prompt: 'Eight guests — Ansel, Brix, Coral, Dagny, Elior, Fenna, Gaspar, and Hesta
+  — sit around a circular table with seats numbered 1 through 8 in clockwise order.
+  Seat 8 is adjacent to seat 1. Definitions: two people are ADJACENT if and only if
+  their seat numbers differ by 1 or are the pair {1, 8}; ''immediately clockwise of
+  X'' means the next seat clockwise after X''s seat (seat number one greater, wrapping
+  from 8 to 1); ''exactly two seats clockwise of X'' means moving two positions in
+  the clockwise direction from X''s seat; ''directly opposite'' means four seats away
+  in either direction.
+
+
+  Clues:
+
+  1. Ansel sits in seat 3.
+
+  2. Coral sits immediately clockwise of Dagny.
+
+  3. Brix sits directly opposite Gaspar.
+
+  4. Elior sits adjacent to Fenna.
+
+  5. Fenna does not sit adjacent to Ansel.
+
+  6. Hesta sits in seat 7.
+
+  7. Brix sits exactly two seats clockwise of Coral.
+
+  8. Elior sits adjacent to Ansel.
+
+
+  Exactly one seating satisfies all clues. Who sits directly opposite Dagny? End your
+  response with the answer as exactly one name inside \boxed{}, e.g. \boxed{Name},
+  and use \boxed{} only once.'
+---
+id: v3.reasoning.expert.03
+name: v3.reasoning.expert.03
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Joren\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(Ilka|Kaveh|Lissa|Marun|Nedra)[^{}]*\}
+prompt: 'Six researchers — Ilka, Joren, Kaveh, Lissa, Marun, and Nedra — each give
+  exactly one seminar during one week, one per day from Monday through Saturday (six
+  days, six speakers, a perfect one-to-one assignment). ''Earlier'' always means an
+  earlier day of that week.
+
+
+  Clues:
+
+  1. Nedra presents on Monday.
+
+  2. Nedra presents earlier than Kaveh, and Kaveh presents earlier than Lissa.
+
+  3. Exactly two of the six seminar days fall strictly between Nedra''s day and Joren''s
+  day.
+
+  4. Ilka presents neither on Monday nor on Saturday.
+
+  5. Marun presents on the day immediately after Ilka''s day.
+
+  6. Lissa does not present on Friday.
+
+  7. Kaveh presents earlier than Ilka.
+
+
+  Exactly one schedule satisfies all clues. Who presents on Thursday? End your response
+  with the answer as exactly one name inside \boxed{}, e.g. \boxed{Name}, and use
+  \boxed{} only once.'
+---
+id: v3.reasoning.expert.04
+name: v3.reasoning.expert.04
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b4\b
+prompt: 'A pumping station is described by four atomic propositions: A = "the array
+  is powered", V = "the vent is open", C = "the coolant is flowing", D = "the drain
+  is sealed". All conditionals are material conditionals and ''or'' is inclusive.
+  The following four premises all hold:
+
+
+  P1. If the array is powered, then the vent is open or the coolant is flowing (or
+  both).
+
+  P2. It is not the case that the vent is open and the drain is sealed.
+
+  P3. If the coolant is flowing, then the drain is sealed.
+
+  P4. The array is powered.
+
+
+  A statement is ENTAILED by the premises if it is true in every truth assignment
+  to A, V, C, D that makes all four premises true. Consider these five statements:
+
+
+  (1) The vent is open or the drain is sealed (or both).
+
+  (2) It is not the case that: the array is powered and the vent is not open and the
+  coolant is not flowing.
+
+  (3) If the coolant is flowing, then the vent is not open.
+
+  (4) The vent is open.
+
+  (5) If the drain is sealed, then the array is powered.
+
+
+  Exactly how many of the five statements (1)-(5) are entailed by the premises? Put
+  the final count inside \boxed{}.'
+---
+id: v3.reasoning.expert.05
+name: v3.reasoning.expert.05
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b64400\b
+prompt: 'Consider strings of length 13 over the alphabet {0, 1, 2}. Call a string
+  ADMISSIBLE if it satisfies BOTH conditions:
+
+  (a) every pair of adjacent characters differs by at most 1 in numeric value (so
+  0 may be followed by 0 or 1; 1 by 0, 1, or 2; 2 by 1 or 2), and
+
+  (b) the string does NOT contain "012" as a contiguous substring.
+
+
+  How many admissible strings of length 13 are there? Give the exact integer inside
+  \boxed{}.'
+---
+id: v3.reasoning.expert.06
+name: v3.reasoning.expert.06
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Yotam\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(Vasco|Wren|Xael|Zora)[^{}]*\}
+prompt: 'Five cottages stand in a row, numbered 1 (leftmost) to 5 (rightmost). Each
+  cottage has exactly one resident (Vasco, Wren, Xael, Yotam, Zora), exactly one pet
+  (crow, ferret, gecko, hound, iguana), and exactly one favourite drink (cider, espresso,
+  matcha, oolong, punch); each resident, pet, and drink is used exactly once. ''Directly
+  next to'' means the cottage numbers differ by exactly 1.
+
+
+  Clues:
+
+  1. Vasco lives in the leftmost cottage.
+
+  2. Wren lives directly next to Yotam.
+
+  3. Zora lives in the middle cottage.
+
+  4. Wren keeps the hound.
+
+  5. The crow is kept in a cottage directly next to Vasco''s cottage.
+
+  6. The ferret is not kept in cottage 1 and not kept in cottage 5.
+
+  7. The iguana is kept in the leftmost cottage.
+
+  8. Zora drinks matcha.
+
+  9. The resident who keeps the gecko drinks cider.
+
+  10. Espresso is drunk in the rightmost cottage.
+
+  11. Punch is drunk in a cottage directly next to the cottage with the iguana.
+
+  12. Yotam does not drink oolong.
+
+
+  Exactly one full arrangement satisfies all clues. Who keeps the gecko? End your
+  response with the answer as exactly one name inside \boxed{}, e.g. \boxed{Name},
+  and use \boxed{} only once.'
+---
+id: v3.reasoning.expert.07
+name: v3.reasoning.expert.07
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Fife\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^{}]*(Beryl|Casta|Doran|Ewart|Gunda)[^{}]*\}
+prompt: 'On an island, every inhabitant is either a knight (always tells the truth)
+  or a knave (always lies). Six islanders — Beryl, Casta, Doran, Ewart, Fife, and
+  Gunda — each make one statement. ''Or'' is always inclusive, and ''if P then Q''
+  is the material conditional (false only when P is true and Q is false).
+
+
+  - Beryl: "Exactly one of the six of us is a knave."
+
+  - Casta: "Beryl and Ewart are both knights."
+
+  - Doran: "If Fife is a knight, then Gunda is a knight."
+
+  - Ewart: "Doran is a knight."
+
+  - Fife: "Gunda and Beryl are not both knights."
+
+  - Gunda: "Beryl is a knight, or Ewart is a knave, or both."
+
+
+  Exactly one assignment of types is consistent with all six statements, and in that
+  assignment exactly one islander is a knave. Name that knave. End your response with
+  the answer as exactly one name inside \boxed{}, e.g. \boxed{Name}, and use \boxed{}
+  only once.'
+---
+id: v3.reasoning.expert.08
+name: v3.reasoning.expert.08
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b336\b
+prompt: 'Seven panelists — Pia, Quon, Rho, Sef, Tovi, Ume, and Vail — are to be seated
+  in a single row of 7 chairs numbered 1 through 7, one panelist per chair. A seating
+  must satisfy ALL of the following constraints:
+
+  (a) Pia and Quon do not sit in adjacent chairs (chair numbers differing by 1);
+
+  (b) Rho sits in a lower-numbered chair than Sef;
+
+  (c) Tovi sits in neither chair 1 nor chair 7;
+
+  (d) Ume and Vail sit in adjacent chairs.
+
+
+  How many distinct seatings satisfy all four constraints? Give the exact integer
+  inside \boxed{}.'
+---
+id: v3.reasoning.frontier.01
+name: v3.reasoning.frontier.01
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b4\b
+prompt: 'On the island of Veyra every inhabitant is either a knight (always tells
+  the truth) or a knave (always lies). Eight islanders — Toran, Vessa, Orin, Malda,
+  Quill, Senna, Ryx and Pell — make one statement each:
+
+  - Toran: "Vessa and Ryx are of the same type (both knights or both knaves)."
+
+  - Vessa: "Exactly three of the eight of us are knights."
+
+  - Orin: "Toran is a knave or Malda is a knight (inclusive or)."
+
+  - Malda: "Quill is a knave."
+
+  - Quill: "Senna and I are both knights."
+
+  - Senna: "Ryx is a knave."
+
+  - Ryx: "Orin and Malda are of different types."
+
+  - Pell: "Vessa is a knave and exactly four of the eight of us are knights."
+
+  There is exactly one assignment of types consistent with all eight statements. How
+  many of the eight islanders are knights? Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.02
+name: v3.reasoning.frontier.02
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Fenra\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^}]*\b(Dovan|Ilex|Ostin|Brill|Cava)\b[^}]*\}
+prompt: 'On the island of Skarrow every inhabitant is either a knight (always tells
+  the truth) or a knave (always lies). Six islanders — Dovan, Ilex, Fenra, Ostin,
+  Brill and Cava — are questioned about a brass key. Exactly one of the six holds
+  the key. They say:
+
+  - Dovan: "The key-holder is a knave."
+
+  - Ilex: "Dovan holds the key."
+
+  - Fenra: "I hold the key if and only if I am a knight."
+
+  - Ostin: "Exactly two of the six of us are knights."
+
+  - Brill: "Cava holds the key, or Ostin is a knave (inclusive or)."
+
+  - Cava: "I do not hold the key, and Dovan is a knave."
+
+  The identity of the key-holder is uniquely determined by these statements. Who holds
+  the key? Finish with your answer as exactly one name inside \boxed{}, e.g. \boxed{Name}
+  — the bare name only, nothing else inside the braces.'
+---
+id: v3.reasoning.frontier.03
+name: v3.reasoning.frontier.03
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Hutt\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^}]*\b(Arla|Bex|Corm|Della|Evo|Fyn|Grae)\b[^}]*\}
+prompt: 'Eight friends — Arla, Bex, Corm, Della, Evo, Fyn, Grae and Hutt — sit at
+  a round table with seats numbered 1 through 8 clockwise, one person per seat. Seat
+  k is directly opposite seat k+4 (so 1-5, 2-6, 3-7, 4-8 are opposite pairs). Two
+  seats are adjacent when their numbers differ by 1, and seat 8 is also adjacent to
+  seat 1. "Immediately clockwise of seat k" means seat k+1 (and seat 1 is immediately
+  clockwise of seat 8). All of the following are true:
+
+  1. Arla sits in seat 1.
+
+  2. Bex sits directly opposite Corm.
+
+  3. Della sits immediately clockwise of Bex.
+
+  4. Evo is not adjacent to Arla.
+
+  5. Fyn sits in an even-numbered seat.
+
+  6. Grae is adjacent to Corm.
+
+  7. Hutt is not directly opposite Della.
+
+  8. Evo sits exactly two seats clockwise of Fyn (going clockwise from Fyn, the second
+  seat is Evo''s).
+
+  There is exactly one seating satisfying all clues. Who sits in seat 5? Finish with
+  your answer as exactly one name inside \boxed{}, e.g. \boxed{Name} — the bare name
+  only, nothing else inside the braces.'
+---
+id: v3.reasoning.frontier.04
+name: v3.reasoning.frontier.04
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Maro\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^}]*\b(Korrin|Nembra|Tessel|Vox|Ilding)\b[^}]*\}
+prompt: 'Six conference talks — Korrin, Nembra, Tessel, Vox, Ilding and Maro — are
+  scheduled into six consecutive hourly slots numbered 1 through 6, exactly one talk
+  per slot. All of the following are true:
+
+  1. Korrin is in an earlier slot than Nembra.
+
+  2. Tessel is in neither slot 1 nor slot 6.
+
+  3. Vox is in the slot immediately after Ilding''s (Vox''s slot number is Ilding''s
+  plus one).
+
+  4. Maro is in an odd-numbered slot.
+
+  5. Nembra''s slot number and Tessel''s slot number differ by more than 1.
+
+  6. Ilding is in an earlier slot than Korrin.
+
+  7. Vox is not in slot 4.
+
+  8. Korrin is in an even-numbered slot.
+
+  There is exactly one schedule satisfying all clues. Which talk is in slot 5? Finish
+  with your answer as exactly one talk name inside \boxed{}, e.g. \boxed{Name} — the
+  bare name only, nothing else inside the braces.'
+---
+id: v3.reasoning.frontier.05
+name: v3.reasoning.frontier.05
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b10\b
+prompt: 'Consider classical propositional logic over the atoms p, q, r, s, t. "If
+  X then Y" is the material conditional, and "or" is always inclusive. Take these
+  five premises:
+
+  P1: If p then (q or not r).
+
+  P2: (not q) or s.
+
+  P3: r or t.
+
+  P4: If s then not t.
+
+  P5: p or r.
+
+  Now consider these five candidate conclusions:
+
+  C1: If r then s.
+
+  C2: If q then r.
+
+  C3: If t then not s.
+
+  C4: q or t.
+
+  C5: If t then not q.
+
+  A conclusion is entailed when it is true in every truth assignment that satisfies
+  all five premises simultaneously. Determine exactly which of C1–C5 are entailed
+  by the premises, then report the SUM of the indices of the entailed conclusions
+  (for example, if exactly C1 and C4 were entailed you would answer 5; if none were
+  entailed you would answer 0). Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.06
+name: v3.reasoning.frontier.06
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b321\b
+prompt: 'Count the strings of length 13 over the alphabet {R, G, B} that satisfy ALL
+  three conditions:
+
+  (a) no two adjacent letters are equal;
+
+  (b) the letter R appears exactly five times;
+
+  (c) the letter G is never immediately followed by the letter B (the substring "GB"
+  never occurs).
+
+  Give the exact count. Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.07
+name: v3.reasoning.frontier.07
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b292\b
+prompt: 'Seven people — Pia, Quon, Rafe, Sil, Tova, Ume and Vint — are to be seated
+  in a single row of seven chairs numbered 1 through 7, one person per chair. Count
+  the seatings that satisfy ALL of the following:
+
+  1. Pia and Quon are not in adjacent chairs (their chair numbers differ by more than
+  1).
+
+  2. Rafe is in a lower-numbered chair than Sil.
+
+  3. Tova is in neither chair 1 nor chair 7.
+
+  4. Ume and Vint are in adjacent chairs (their chair numbers differ by exactly 1).
+
+  5. Sil is not in chair 4.
+
+  Give the exact number of valid seatings. Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.08
+name: v3.reasoning.frontier.08
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Marek\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^}]*\b(Odile|Petra|Rasin|Sylva)\b[^}]*\}
+prompt: 'Five market stalls stand in a row, numbered 1 to 5 from left to right. Each
+  stall has exactly one trader (Marek, Odile, Petra, Rasin, Sylva), exactly one awning
+  colour (crimson, ochre, teal, ivory, slate) and exactly one ware (spice, silk, glass,
+  copper, salt); every trader, colour and ware is used exactly once. "Left" means
+  a lower stall number, "adjacent" means stall numbers differing by exactly 1, and
+  "at an end" means stall 1 or stall 5. All of the following are true:
+
+  1. The slate stall is at an end.
+
+  2. Stall 3 has the ochre awning.
+
+  3. The ivory stall is somewhere to the left of the crimson stall.
+
+  4. Marek''s stall is immediately to the left of the teal stall.
+
+  5. Odile is at stall 1.
+
+  6. Rasin''s stall is adjacent to the crimson stall.
+
+  7. Sylva''s stall is somewhere to the right of Petra''s.
+
+  8. Rasin''s stall is not at an end.
+
+  9. The trader at the teal stall sells glass.
+
+  10. Odile sells spice.
+
+  11. Petra sells neither spice nor salt.
+
+  12. The copper seller is immediately to the right of the silk seller.
+
+  13. The salt seller''s stall is not at an end.
+
+  There is exactly one arrangement satisfying all clues. Which trader sells salt?
+  Finish with your answer as exactly one name inside \boxed{}, e.g. \boxed{Name} —
+  the bare name only, nothing else inside the braces.'
+---
+id: v3.reasoning.frontier.09
+name: v3.reasoning.frontier.09
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b4\b
+prompt: 'Ten islanders stand in a line at positions 1 through 10. Each is either a
+  knight (always tells the truth) or a knave (always lies). The person at position
+  1 says: "At least one of the ten of us is a knave." For each i from 2 to 10, the
+  person at position i says: "The number of knaves among the ten of us is a multiple
+  of i." (Recall that 0 is a multiple of every positive integer.) There is exactly
+  one assignment of types consistent with all ten statements. How many of the ten
+  are knights? Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.10
+name: v3.reasoning.frontier.10
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b24\b
+prompt: 'A radio network has eight relay stations named Kel, Mor, Nav, Osk, Pru, Qem,
+  Rin and Sol. Exactly these thirteen pairs of stations are directly linked:
+
+  Kel–Mor, Kel–Nav, Kel–Pru, Mor–Nav, Mor–Osk, Mor–Sol, Nav–Osk, Nav–Rin, Osk–Pru,
+  Pru–Qem, Qem–Rin, Qem–Sol, Rin–Sol.
+
+  Each station must be assigned exactly one of three frequencies (F1, F2, F3), and
+  directly linked stations must receive different frequencies. Count the number of
+  distinct valid frequency assignments (assignments differing at any station count
+  as different; the three frequencies are distinguishable). Put the final integer
+  inside \boxed{}.'
+---
+id: v3.reasoning.frontier.11
+name: v3.reasoning.frontier.11
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \b18\b
+prompt: 'Seven Boolean variables a, b, c, d, e, f, g each take the value true or false.
+  Count the assignments (out of the 128 possible) that satisfy ALL six constraints
+  simultaneously:
+
+  1. If a is true, then b is true and g is false.
+
+  2. At least one of b, c, d is true.
+
+  3. c and d are not both true.
+
+  4. If e is true, then f is true.
+
+  5. g is true if and only if at least one of d, e is true.
+
+  6. If f is true, then b is true or g is true (inclusive or).
+
+  Give the exact number of satisfying assignments. Put the final integer inside \boxed{}.'
+---
+id: v3.reasoning.frontier.12
+name: v3.reasoning.frontier.12
+category: reasoning
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: regex_match
+expected: \\boxed\{\s*Kolvo\s*\}
+metadata:
+  must_not_match:
+  - \\boxed\{[^}]*\b(Varek|Lunn|Essa|Trin|Merri)\b[^}]*\}
+prompt: 'A ledger was stolen from the Brasshouse vault by exactly one of six clerks:
+  Varek, Lunn, Essa, Trin, Kolvo or Merri. Under questioning each clerk made two statements:
+
+  - Varek: (1) "Kolvo is innocent." (2) "I stole it."
+
+  - Lunn: (1) "I did not steal it." (2) "Varek''s second statement is false."
+
+  - Essa: (1) "Kolvo is guilty or Trin is guilty (inclusive or)." (2) "I am innocent."
+
+  - Trin: (1) "Essa stole it." (2) "Lunn is the thief."
+
+  - Kolvo: (1) "Trin''s first statement is false." (2) "Merri is innocent."
+
+  - Merri: (1) "Varek is innocent." (2) "Both of Kolvo''s statements are true."
+
+  It is known that every clerk either told the truth in both of their statements or
+  lied in both of their statements, and that exactly two of the six clerks lied in
+  both. There is exactly one thief consistent with all of this. Who stole the ledger?
+  Finish with your answer as exactly one name inside \boxed{}, e.g. \boxed{Name} —
+  the bare name only, nothing else inside the braces.'

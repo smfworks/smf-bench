@@ -1,0 +1,271 @@
+# Video Understanding Tests (17 tests)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 2
+# Videos are loaded from VIDEO_DIR (default: /home/mikesai1/NemoVault/queries/multimodal-test-images)
+# Evaluator: text_contains (keyword-based scoring against expected answer)
+#
+# Video files required:
+#   09-bouncing-ball.mp4 — red ball bouncing on blue background
+#   10-shapes-motion.mp4 — green square (horizontal), yellow triangle (vertical), blue circle (pulsing)
+#   11-color-cycle.mp4 — cycling colors: red, green, blue, cyan, magenta, yellow
+
+# ============================================================
+# Category 1: Video Description (4 tests)
+# ============================================================
+
+- id: video_1a_describe
+  name: "V1a — Describe video"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Describe what happens in this video. What objects do you see and how do they move?"
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [red, ball, circle, bouncing, blue, background]
+  min_matches: 3
+  max_tokens: 300
+  temperature: 0.3
+
+- id: video_1b_colors
+  name: "V1b — Identify colors"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "What color is the background in this video? What color is the moving object?"
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [blue, red]
+  min_matches: 2
+  max_tokens: 100
+  temperature: 0.3
+
+- id: video_1c_shapes
+  name: "V1c — List shapes"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "List all the shapes you see in this video and describe each one's color and movement pattern."
+  video_file: 10-shapes-motion.mp4
+  expected_keywords: [green, square, horizontal, yellow, triangle, vertical, blue, circle, pulsing]
+  min_matches: 4
+  max_tokens: 300
+  temperature: 0.3
+
+- id: video_1d_color_order
+  name: "V1d — Color cycle order"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "What colors appear in this video and in what order?"
+  video_file: 11-color-cycle.mp4
+  expected_keywords: [red, green, blue, cyan, magenta, yellow]
+  min_matches: 4
+  max_tokens: 200
+  temperature: 0.3
+
+# ============================================================
+# Category 2: Motion Analysis (3 tests)
+# ============================================================
+
+- id: video_2a_trajectory
+  name: "V2a — Trajectory"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Describe the trajectory of the moving object. Is it linear, circular, or bouncing? Explain your reasoning."
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [bouncing, direction, boundary, linear]
+  min_matches: 2
+  max_tokens: 250
+  temperature: 0.3
+
+- id: video_2b_motion_types
+  name: "V2b — Motion types"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Which shape moves horizontally? Which shape moves vertically? Which shape changes size?"
+  video_file: 10-shapes-motion.mp4
+  expected_keywords: [square, horizontal, triangle, vertical, circle, size]
+  min_matches: 3
+  max_tokens: 200
+  temperature: 0.3
+
+- id: video_2c_predict
+  name: "V2c — Predict next frame"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "If this video continues, predict where the ball will be in the next few frames based on its current trajectory."
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [bouncing, continue, pattern, direction, next]
+  min_matches: 2
+  max_tokens: 200
+  temperature: 0.3
+
+# ============================================================
+# Category 3: Counting (3 tests)
+# ============================================================
+
+- id: video_3a_count_objects
+  name: "V3a — Count objects"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "How many distinct objects are in this video?"
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: ["1", "one", "ball"]
+  min_matches: 1
+  max_tokens: 50
+  temperature: 0.3
+
+- id: video_3b_count_shapes
+  name: "V3b — Count shapes"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "How many distinct shapes are in this video? List them."
+  video_file: 10-shapes-motion.mp4
+  expected_keywords: ["3", "three", "square", "triangle", "circle"]
+  min_matches: 2
+  max_tokens: 100
+  temperature: 0.3
+
+- id: video_3c_count_colors
+  name: "V3c — Count colors"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "How many different colors appear in this video?"
+  video_file: 11-color-cycle.mp4
+  expected_keywords: ["6", "six"]
+  min_matches: 1
+  max_tokens: 50
+  temperature: 0.3
+
+# ============================================================
+# Category 4: Multi-Video (2 tests)
+# ============================================================
+
+- id: video_4a_compare
+  name: "V4a — Compare videos"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Compare these two videos. What is similar and what is different in terms of objects, colors, and motion?"
+  video_files: [09-bouncing-ball.mp4, 10-shapes-motion.mp4]
+  expected_keywords: [ball, shapes, square, triangle, circle, different, motion]
+  min_matches: 3
+  max_tokens: 400
+  temperature: 0.3
+
+- id: video_4b_color_variety
+  name: "V4b — Color variety comparison"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Which video has more color variety? Describe the colors in each."
+  video_files: [09-bouncing-ball.mp4, 11-color-cycle.mp4]
+  expected_keywords: [blue, red, green, cyan, magenta, yellow, "6", "2"]
+  min_matches: 3
+  max_tokens: 200
+  temperature: 0.3
+
+# ============================================================
+# Category 5: Video Reasoning (3 tests)
+# ============================================================
+
+- id: video_5a_physics
+  name: "V5a — Physics reasoning"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "If this were a physics simulation, what rules would govern the object's movement? What happens at the boundaries?"
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [bounce, reflection, velocity, boundary, wall]
+  min_matches: 2
+  max_tokens: 300
+  temperature: 0.3
+
+- id: video_5b_motion_rules
+  name: "V5b — Motion rules"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "The green square, yellow triangle, and blue circle each follow different motion rules. Describe what rule each shape follows."
+  video_file: 10-shapes-motion.mp4
+  expected_keywords: [square, horizontal, linear, triangle, vertical, circle, pulsing, sinusoidal]
+  min_matches: 3
+  max_tokens: 300
+  temperature: 0.3
+
+- id: video_5c_color_pattern
+  name: "V5c — Color pattern"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Is there a pattern to the color changes? If so, describe the pattern and predict the next color."
+  video_file: 11-color-cycle.mp4
+  expected_keywords: [cycling, pattern, repeating, sequence, next]
+  min_matches: 2
+  max_tokens: 200
+  temperature: 0.3
+
+# ============================================================
+# Category 6: Video + Text (2 tests)
+# ============================================================
+
+- id: video_6a_json
+  name: "V6a — JSON description"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Write a short JSON object describing this video with fields: object_count, primary_color, background_color, motion_type."
+  video_file: 09-bouncing-ball.mp4
+  expected_keywords: [object_count, primary_color, background_color, motion_type, bouncing, red, blue]
+  min_matches: 4
+  max_tokens: 150
+  temperature: 0.3
+
+- id: video_6b_markdown_table
+  name: "V6b — Markdown table"
+  category: video
+  dimension: quality
+  requires_modalities: [text, video_in]
+  requires_capabilities: [video]
+  evaluator: text_contains
+  prompt: "Create a table (in markdown) listing each shape, its color, and its motion type."
+  video_file: 10-shapes-motion.mp4
+  expected_keywords: [square, green, horizontal, triangle, yellow, vertical, circle, blue, pulsing]
+  min_matches: 4
+  max_tokens: 250
+  temperature: 0.3

@@ -1,0 +1,101 @@
+# Context Length Scaling Tests (6 sub-tests: 100 → 128K tokens)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 6
+# Evaluator: performance (records throughput and correctness; no pass/fail)
+# Measures: input prompt tokens, output tokens, wall time, throughput, correctness
+# Correctness check: answer must contain "56" (7 × 8)
+
+- id: perf_context_100
+  name: "Context @ ~100 tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 100
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]
+
+- id: perf_context_500
+  name: "Context @ ~500 tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 500
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]
+
+- id: perf_context_2000
+  name: "Context @ ~2K tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 2000
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]
+
+- id: perf_context_8000
+  name: "Context @ ~8K tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 8000
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]
+
+- id: perf_context_32000
+  name: "Context @ ~32K tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 32000
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]
+
+- id: perf_context_128000
+  name: "Context @ ~128K tokens"
+  category: context_scaling
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning, context_long]
+  evaluator: performance
+  prompt_template: context_scaling
+  target_tokens: 128000
+  base_prompt: "What is 7 × 8? Answer with just the number."
+  expected_correct: "56"
+  max_tokens: 200
+  temperature: 0.3
+  metadata:
+    measures: [prompt_tokens, output_tokens, wall_time, throughput, correct]

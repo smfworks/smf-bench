@@ -1,0 +1,1372 @@
+# Aeon-Bench-Pod Tier-0 Deterministic Tests — Coding (30 cases)
+# Extracted from Aeon-Bench-Pod (MIT License, Copyright 2026 AEON-7)
+# Categories: coding — exponential difficulty ladder (easy → frontier)
+# All cases require text modality only
+
+id: v3.coding.easy.01
+name: v3.coding.easy.01
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert clamp_all([3, -7, 12, 5], 0, 10) == [3, 0, 10, 5]
+
+  assert clamp_all([], -5, 5) == []
+
+  assert clamp_all([4, 4, 4], 4, 4) == [4, 4, 4]
+
+  assert clamp_all([-2, -1, 0, 1, 2], -1, 1) == [-1, -1, 0, 1, 1]
+
+  assert clamp_all([100], -50, 50) == [50]
+
+  assert clamp_all([0.5, 2.5], 1, 2) == [1, 2]
+
+  _orig = [9, -9, 3]
+
+  _out = clamp_all(_orig, 0, 5)
+
+  assert _orig == [9, -9, 3], ''input list was mutated''
+
+  assert _out == [5, 0, 3]'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def clamp_all(nums, lo, hi):
+
+
+  It takes a list of numbers `nums` and two bounds `lo <= hi`, and returns a NEW list
+  where every element is clamped into the closed interval [lo, hi]: values below `lo`
+  become `lo`, values above `hi` become `hi`, and values already inside the interval
+  are kept unchanged. The original list must not be modified, order is preserved,
+  and an empty input list returns an empty list. Elements may be ints or floats. Use
+  only the Python standard library. Output only a single Python code block containing
+  the function.'
+---
+id: v3.coding.easy.02
+name: v3.coding.easy.02
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert count_token("red blue red green red", "red") == 3
+
+  assert count_token("", "red") == 0
+
+  assert count_token("redred red", "red") == 1
+
+  assert count_token("  spaced   out   spaced ", "spaced") == 2
+
+  assert count_token("Red red RED", "red") == 1
+
+  assert count_token("a\tb\na b", "b") == 2'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def count_token(text, token):
+
+
+  It splits the string `text` on any run of whitespace (spaces, tabs, newlines — i.e.
+  Python''s default str.split() behaviour, so leading/trailing whitespace produces
+  no empty tokens) and returns the number of resulting tokens that are EXACTLY equal
+  to the string `token`. The comparison is case-sensitive and whole-token only: substrings
+  do not count (e.g. the token "red" does not match inside "redred"). An empty `text`
+  returns 0. Use only the Python standard library. Output only a single Python code
+  block containing the function.'
+---
+id: v3.coding.medium.01
+name: v3.coding.medium.01
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert covered_length([]) == 0
+
+  assert covered_length([(2, 7)]) == 5
+
+  assert covered_length([(1, 4), (2, 6), (8, 10)]) == 7
+
+  assert covered_length([(0, 5), (5, 9)]) == 9
+
+  assert covered_length([(3, 3), (4, 2), (1, 6)]) == 5
+
+  assert covered_length([(-8, -3), (-5, 0), (1, 2)]) == 9
+
+  assert covered_length([(1, 9), (2, 3), (4, 5), (6, 7)]) == 8
+
+  assert covered_length([(10, 20), (10, 20), (15, 25)]) == 15'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function covered_length(intervals) that takes a list of half-open
+  integer intervals [s, e) given as (s, e) tuples and returns the total integer length
+  of the union of all intervals. Rules: intervals may overlap, touch, be duplicated,
+  or be given in any order; coordinates may be negative; any tuple with e <= s is
+  empty and contributes nothing; an empty input list returns 0. Touching intervals
+  like (0,5) and (5,9) merge into a span of length 9. Use only the Python standard
+  library. Output only a single Python code block.'
+---
+id: v3.coding.medium.02
+name: v3.coding.medium.02
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert rank_tokens(["zil", "arb", "zil", "arb", "zil"], 2) == ["zil", "arb"]
+
+  assert rank_tokens(["mox", "kel", "mox", "kel"], 1) == ["kel"]
+
+  assert rank_tokens(["b", "a", "c"], 3) == ["a", "b", "c"]
+
+  assert rank_tokens(["q"], 5) == ["q"]
+
+  assert rank_tokens([], 3) == []
+
+  assert rank_tokens(["d", "d", "c", "c", "b", "b", "a"], 3) == ["b", "c", "d"]
+
+  assert rank_tokens(["Ab", "ab", "Ab"], 2) == ["Ab", "ab"]'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: Write a Python function rank_tokens(tokens, k) that takes a list of strings
+  and an integer k, and returns a list of the k most frequent tokens ordered by frequency
+  descending; tokens with equal frequency are ordered lexicographically ascending
+  (plain string comparison, case-sensitive, so 'Ab' sorts before 'ab'). If there are
+  fewer than k distinct tokens, return them all in that same order. An empty input
+  list returns []. Use only the Python standard library. Output only a single Python
+  code block.
+---
+id: v3.coding.medium.03
+name: v3.coding.medium.03
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert count_networks(5, []) == 5
+
+  assert count_networks(1, []) == 1
+
+  assert count_networks(4, [(0, 1), (1, 2), (2, 3)]) == 1
+
+  assert count_networks(6, [(0, 1), (2, 3), (3, 2), (4, 4)]) == 4
+
+  assert count_networks(7, [(0, 1), (1, 2), (0, 2), (5, 6)]) == 4
+
+  assert count_networks(8, [(0, 7), (7, 3), (3, 0), (1, 2), (4, 5)]) == 4'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function count_networks(n, links) that returns the number
+  of connected components in an undirected graph with n nodes labelled 0..n-1 and
+  an edge list links of (a, b) tuples. Rules: links may contain duplicate edges, edges
+  given in both directions, and self-loops (a, a) — none of these change connectivity;
+  isolated nodes (appearing in no link) each count as their own component; with an
+  empty link list the answer is n. All labels are valid (0 <= a, b < n). Use only
+  the Python standard library. Output only a single Python code block.'
+---
+id: v3.coding.hard.01
+name: v3.coding.hard.01
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert count_bounded_combinations([(3, 2), (5, 1), (7, 4)], 24) == 1
+
+  assert count_bounded_combinations([(1, 5), (2, 3), (4, 2)], 13) == 5
+
+  assert count_bounded_combinations([(6, 10)], 25) == 0
+
+  assert count_bounded_combinations([(2, 50), (3, 50)], 97) == 16
+
+  assert count_bounded_combinations([(4, 0), (5, 3)], 10) == 1
+
+  assert count_bounded_combinations([], 0) == 1
+
+  assert count_bounded_combinations([(9, 3)], 0) == 1
+
+  assert count_bounded_combinations([(4, 0)], 4) == 0'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def count_bounded_combinations(coins, target):
+
+
+  coins is a list of (value, count) tuples: each coin denomination `value` (a positive
+  int) may be used at most `count` times (count is an int >= 0). target is an int
+  >= 0. Return the number of distinct multisets of coins whose values sum exactly
+  to target (order never matters; two multisets differ only if some denomination is
+  used a different number of times). An empty coins list can only form target 0. Note
+  that summing to 0 is always possible in exactly one way (choose nothing), and a
+  denomination with count 0 contributes nothing. Use only the Python standard library.
+  Output only a single Python code block.'
+---
+id: v3.coding.hard.02
+name: v3.coding.hard.02
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "assert max_weight_schedule([]) == 0\nassert max_weight_schedule([(4, 9,\
+  \ 7)]) == 7\nassert max_weight_schedule([(1, 3, 5), (2, 5, 6), (4, 6, 5), (6, 7,\
+  \ 4), (5, 8, 11), (7, 9, 2)]) == 17\nassert max_weight_schedule([(1, 3, 4), (3,\
+  \ 5, 4), (5, 7, 4)]) == 12\nassert max_weight_schedule([(0, 10, 9), (1, 2, 3), (2,\
+  \ 4, 3), (4, 6, 3), (6, 9, 3)]) == 12\nassert max_weight_schedule([(0, 5, 10), (0,\
+  \ 5, 7), (1, 4, 12), (2, 3, 1)]) == 12\nassert max_weight_schedule([(3, 7, 6), (1,\
+  \ 4, 2), (6, 10, 5), (0, 2, 4), (9, 12, 3), (4, 6, 4), (7, 9, 7)]) == 20\nimport\
+  \ random\nrandom.seed(7)\n_J = [(i, i + 1, 2) for i in range(100000)]\nfor _ in\
+  \ range(50000):\n    _s = random.randrange(0, 99990)\n    _J.append((_s, _s + 10,\
+  \ 1))\nrandom.shuffle(_J)\nassert max_weight_schedule(_J) == 200000"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def max_weight_schedule(jobs):
+
+
+  jobs is a list of (start, end, weight) tuples of ints with start < end and weight
+  > 0. Choose a subset of the jobs, no two of which overlap in time, maximizing the
+  total weight; return that maximum total weight as an int (0 for an empty list).
+  A job ending at time t is COMPATIBLE with a job starting at time t (touching endpoints
+  do not count as overlap). Duplicate and fully-contained jobs may appear. jobs can
+  contain up to 2*10^5 entries, so an O(n^2) approach may time out — aim for O(n log
+  n) (e.g. sort plus binary search DP). Use only the Python standard library. Output
+  only a single Python code block.'
+---
+id: v3.coding.hard.03
+name: v3.coding.hard.03
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert eval_expr("3+4*2") == 11
+
+  assert eval_expr("(1-9)/2") == -4
+
+  assert eval_expr("-(2+3)*-4") == 20
+
+  assert eval_expr(" 10 / 3 ") == 3
+
+  assert eval_expr("-7/2") == -3
+
+  assert eval_expr("2*((3-5)*(4+1)-7)/-3") == 11
+
+  assert eval_expr("--6") == 6
+
+  assert eval_expr("100 - 2*3*4 + (8/-3)") == 74'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def eval_expr(s):
+
+
+  s is a string containing a valid arithmetic expression made of: non-negative integer
+  literals, the binary operators + - * /, unary minus (which may be repeated, e.g.
+  "--6" is 6, and may apply to a parenthesized group), parentheses, and arbitrary
+  spaces. Precedence is standard: unary minus binds tightest, then * and / (left-associative),
+  then + and - (left-associative). Division / is INTEGER division that truncates toward
+  ZERO (so eval_expr("-7/2") == -3 and eval_expr("8/-3") == -2 — note this differs
+  from Python''s // floor division for negative results). Division by zero will not
+  occur. Return the resulting int. Use only the Python standard library and do NOT
+  call eval or exec. Output only a single Python code block.'
+---
+id: v3.coding.hard.04
+name: v3.coding.hard.04
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert cheapest_route(5, [(0,1,7),(0,2,3),(2,1,1),(1,3,2),(2,3,9),(3,4,4),(1,4,10)],
+  0, 4) == 10
+
+  assert cheapest_route(5, [(0,1,7),(0,2,3),(2,1,1),(1,3,2),(2,3,9),(3,4,4),(1,4,10)],
+  4, 0) == -1
+
+  assert cheapest_route(3, [(0,1,5),(0,1,2),(1,2,2)], 0, 2) == 4
+
+  assert cheapest_route(4, [(0,1,1),(1,2,1)], 0, 3) == -1
+
+  assert cheapest_route(2, [(0,1,0),(1,0,0)], 0, 1) == 0
+
+  assert cheapest_route(1, [], 0, 0) == 0
+
+  assert cheapest_route(4, [(0,1,4),(0,2,1),(2,1,1),(1,3,1),(2,3,6),(0,3,7)], 0, 3)
+  == 3
+
+  import random
+
+  random.seed(20260704)
+
+  _N = 4000
+
+  _E = [(i, i + 1, 3) for i in range(_N - 1)]
+
+  _E += [(random.randrange(_N), random.randrange(_N), random.randrange(50000, 99999))
+  for _ in range(90000)]
+
+  random.shuffle(_E)
+
+  assert cheapest_route(_N, _E, 0, _N - 1) == 3 * (_N - 1)'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def cheapest_route(n, edges, src, dst):
+
+
+  There are n nodes numbered 0..n-1. edges is a list of DIRECTED edges (u, v, w) meaning
+  you can travel from u to v at cost w, where w is an int >= 0 (zero-cost edges are
+  allowed, and parallel edges between the same pair may appear). src and dst are node
+  ids. Return the minimum total cost of any path from src to dst as an int, or -1
+  if dst is unreachable from src. If src == dst the answer is 0. The graph can have
+  up to 10^5 edges, so your solution must be efficiently implemented (e.g. Dijkstra
+  with a heap — an O(n * edges) approach may time out). Use only the Python standard
+  library. Output only a single Python code block.'
+---
+id: v3.coding.hard.05
+name: v3.coding.hard.05
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "assert lru_trace(2, [(\"put\",1,10),(\"put\",2,20),(\"get\",1),(\"put\"\
+  ,3,30),(\"get\",2),(\"put\",4,40),(\"get\",1),(\"get\",3),(\"get\",4)]) == [10,\
+  \ -1, -1, 30, 40]\nassert lru_trace(1, [(\"put\",7,70),(\"get\",7),(\"put\",8,80),(\"\
+  get\",7),(\"get\",8)]) == [70, -1, 80]\nassert lru_trace(3, [(\"put\",5,50),(\"\
+  put\",6,60),(\"put\",5,55),(\"put\",7,70),(\"put\",8,80),(\"get\",5),(\"get\",6),(\"\
+  get\",8)]) == [55, -1, 80]\nassert lru_trace(2, [(\"get\",9),(\"put\",9,90),(\"\
+  get\",9),(\"get\",9),(\"put\",10,100),(\"put\",11,110),(\"get\",9),(\"get\",11)])\
+  \ == [-1, 90, 90, -1, 110]\nassert lru_trace(2, [(\"put\",1,1),(\"get\",2),(\"put\"\
+  ,3,3),(\"put\",4,4),(\"get\",1),(\"get\",3),(\"get\",4)]) == [-1, -1, 3, 4]\nassert\
+  \ lru_trace(3, [(\"put\",1,1),(\"put\",2,2),(\"put\",3,3),(\"put\",2,22),(\"put\"\
+  ,4,4),(\"get\",1),(\"get\",2),(\"get\",3),(\"get\",4)]) == [-1, 22, 3, 4]\nimport\
+  \ random\nrandom.seed(424242)\n_OPS = []\nfor _i in range(500000):\n    if random.random()\
+  \ < 0.5:\n        _OPS.append((\"put\", random.randrange(200000), _i))\n    else:\n\
+  \        _OPS.append((\"get\", random.randrange(200000)))\n_R = lru_trace(120000,\
+  \ _OPS)\nassert len(_R) == 249737\nassert sum(_R) == 19302621758"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def lru_trace(capacity, ops):
+
+
+  Simulate a Least-Recently-Used (LRU) cache with the given positive int capacity.
+  ops is a list of operations, each either ("put", key, value) or ("get", key), with
+  int keys and values. Semantics: "put" inserts or updates key -> value and makes
+  that key the MOST recently used; if the insert pushes the cache above capacity,
+  evict the LEAST recently used key first. "get" returns the value if the key is present
+  (and makes that key the MOST recently used) or -1 if absent — a failed get must
+  NOT change any recency state. Return the list of results of the "get" operations,
+  in order. Every operation must run in O(1) average time — capacity can be tens of
+  thousands and ops can number in the hundreds of thousands, so an implementation
+  that scans or does O(n) list surgery per operation will time out. Use only the Python
+  standard library. Output only a single Python code block.'
+---
+id: v3.coding.expert.01
+name: v3.coding.expert.01
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert min_partition_cost([7], 10) == 10
+
+  assert min_partition_cost([1, 1000000, 1], 2) == 6
+
+  assert min_partition_cost([3, 1, 4, 1, 5, 9, 2, 6], 4) == 12
+
+  assert min_partition_cost(list(range(100)), 1) == 100
+
+  import random
+
+  _r = random.Random(777)
+
+  assert min_partition_cost([_r.randrange(-1000, 1000) for _ in range(60)], 30) ==
+  1733
+
+  _r = random.Random(90417)
+
+  assert min_partition_cost([_r.randrange(-10**6, 10**6) for _ in range(400)], 5000)
+  == 1989541'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function min_partition_cost(a: list[int], k: int) -> int.
+  Partition the list a (1 <= len(a) <= 500; elements are integers that may be negative,
+  |a[i]| <= 10**6) into one or more contiguous non-empty segments covering the whole
+  list in order. The cost of a segment is (max(segment) - min(segment)) + k, where
+  k (0 <= k <= 10**6) is a fixed per-segment fee added for every segment you create.
+  Return the minimum possible total cost over all partitions. Example: for a=[1, 1000000,
+  1], k=2 the answer is 6: three single-element segments cost (0+2)+(0+2)+(0+2)=6,
+  whereas one big segment costs (999999)+2. Use only the Python standard library;
+  an O(n^2) dynamic program is fast enough. Output only a single Python code block.'
+---
+id: v3.coding.expert.02
+name: v3.coding.expert.02
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "assert union_area([]) == 0\nassert union_area([(0, 0, 10, 10), (2, 2, 5,\
+  \ 5)]) == 100\nassert union_area([(0, 0, 3, 3), (3, 0, 6, 3)]) == 18\nassert union_area([(0,\
+  \ 0, 4, 4), (0, 0, 4, 4)]) == 16\nassert union_area([(0, 0, 2, 8), (0, 0, 8, 2)])\
+  \ == 28\nimport random\n_r = random.Random(424242)\n_m = []\nfor _ in range(40):\n\
+  \    _x1 = _r.randrange(0, 10**6); _x2 = _x1 + _r.randrange(1, 10**5)\n    _y1 =\
+  \ _r.randrange(0, 10**6); _y2 = _y1 + _r.randrange(1, 10**5)\n    _m.append((_x1,\
+  \ _y1, _x2, _y2))\nassert union_area(_m) == 98454865279\n_r = random.Random(555321)\n\
+  _b = []\nfor _ in range(250):\n    _x1 = _r.randrange(-10**9, 10**9 - 10**6); _x2\
+  \ = _x1 + _r.randrange(1, 10**8)\n    _y1 = _r.randrange(-10**9, 10**9 - 10**6);\
+  \ _y2 = _y1 + _r.randrange(1, 10**8)\n    _b.append((_x1, _y1, _x2, _y2))\nassert\
+  \ union_area(_b) == 561685826399033135"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function union_area(rects: list[tuple[int, int, int, int]])
+  -> int that returns the exact area of the union of axis-aligned rectangles. Each
+  rectangle is given as (x1, y1, x2, y2) with x1 < x2 and y1 < y2, covering the half-open
+  region [x1, x2) x [y1, y2). Coordinates are integers with magnitude up to 10**9,
+  so filling a unit grid is impossible — use coordinate compression with a sweep,
+  or an equivalent exact method. Rectangles may overlap, be nested, be exact duplicates,
+  or touch edge-to-edge (touching edges share zero area). Overlapping area counts
+  once. An empty input list returns 0. There are at most 300 rectangles and your function
+  must finish well within 10 seconds. Use only the Python standard library. Output
+  only a single Python code block.'
+---
+id: v3.coding.expert.03
+name: v3.coding.expert.03
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert eval_expr("2+3*4") == 14
+
+  assert eval_expr("2@3*4") == 44
+
+  assert eval_expr("2*3@4") == 34
+
+  assert eval_expr("2^3^2") == 512
+
+  assert eval_expr("(2+2)^2@1") == 33
+
+  assert eval_expr("10 - 2 - 3") == 5
+
+  assert eval_expr("5@5@2") == 107
+
+  assert eval_expr("2^(7-5)^3") == 256
+
+  assert eval_expr("1+2@3^2") == 30
+
+  assert eval_expr("7") == 7'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function eval_expr(s: str) -> int that evaluates an arithmetic
+  expression over arbitrary-precision integers. Tokens: non-negative decimal integer
+  literals, the binary operators + - * @ ^, parentheses ( ), and optional spaces which
+  may appear between any two tokens. There are NO unary operators; literals are never
+  negative, though intermediate and final values may become negative through subtraction.
+  Semantics and precedence: ''+'' and ''-'' are ordinary addition and subtraction,
+  precedence 1, left-associative. ''*'' is ordinary multiplication, precedence 2,
+  left-associative. ''@'' is a custom operator defined by a @ b = a*b + a + b, ALSO
+  precedence 2 and left-associative, so chains mixing ''*'' and ''@'' group strictly
+  left to right. ''^'' is integer exponentiation, precedence 3 (the highest), RIGHT-associative;
+  every exponent is guaranteed to evaluate to a non-negative integer. Parentheses
+  override all precedence. The input is always a syntactically valid expression. Examples:
+  eval_expr(''2@3'') == 11 and eval_expr(''2^3^2'') == 512. Use only the Python standard
+  library. Output only a single Python code block.'
+---
+id: v3.coding.expert.04
+name: v3.coding.expert.04
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "assert count_shortest_paths(3, [(0, 1, 2), (0, 1, 2), (1, 2, 3), (0, 2,\
+  \ 5)], 0, 2) == (5, 3)\nassert count_shortest_paths(4, [(0, 1, 1)], 0, 3) == (-1,\
+  \ 0)\nassert count_shortest_paths(3, [(0, 1, 1)], 1, 1) == (0, 1)\n_G = []\nfor\
+  \ _rr in range(12):\n    for _cc in range(12):\n        if _cc + 1 < 12: _G.append((_rr\
+  \ * 12 + _cc, _rr * 12 + _cc + 1, 7))\n        if _rr + 1 < 12: _G.append((_rr *\
+  \ 12 + _cc, (_rr + 1) * 12 + _cc, 7))\nassert count_shortest_paths(144, _G, 0, 143)\
+  \ == (154, 705432)\n_D = []\nfor _i in range(50):\n    _b = 3 * _i\n    _D += [(_b,\
+  \ _b + 1, 1), (_b, _b + 2, 1), (_b + 1, _b + 3, 1), (_b + 2, _b + 3, 1)]\nassert\
+  \ count_shortest_paths(151, _D, 0, 150) == (100, 65980984)\nimport random\n_r =\
+  \ random.Random(66601)\n_B = []\nfor _ in range(120000):\n    _u = _r.randrange(20000);\
+  \ _v = _r.randrange(20000)\n    _B.append((_u, _v, 3 if (_u + _v) % 2 else 6))\n\
+  assert count_shortest_paths(20000, _B, 0, 19999) == (15, 2)"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function count_shortest_paths(n: int, edges: list[tuple[int,
+  int, int]], s: int, t: int) -> tuple[int, int] for an UNDIRECTED graph with n nodes
+  labelled 0..n-1. Each entry (u, v, w) is an edge of positive integer weight w. The
+  list may contain parallel edges — each parallel edge is a distinct edge, so two
+  parallel (u, v) edges give two distinct paths — and self-loops, which can never
+  lie on a shortest path. Return (d, c) where d is the shortest-path distance from
+  s to t and c is the number of distinct shortest paths modulo 998244353; a path is
+  a sequence of edges, and two paths differ if their edge sequences differ. If t is
+  unreachable from s return (-1, 0). If s == t return (0, 1). n can be up to 20000
+  with up to 120000 edges, so use Dijkstra with a binary heap and count paths during
+  the relaxation. Use only the Python standard library. Output only a single Python
+  code block.'
+---
+id: v3.coding.expert.05
+name: v3.coding.expert.05
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "assert max_schedule_value([], 5) == 0\nassert max_schedule_value([(0, 3,\
+  \ 10), (3, 6, 10), (6, 9, 10)], 0) == 30\nassert max_schedule_value([(0, 3, 10),\
+  \ (3, 6, 10), (6, 9, 10)], 1) == 20\nassert max_schedule_value([(1, 4, 5), (2, 6,\
+  \ 7), (5, 9, 4)], 0) == 9\nimport random\n_r = random.Random(9021)\n_m = []\nfor\
+  \ _ in range(200):\n    _s = _r.randrange(0, 5000); _e = _s + _r.randrange(1, 300)\n\
+  \    _m.append((_s, _e, _r.randrange(1, 500)))\nassert max_schedule_value(_m, 3)\
+  \ == 15690\n_r = random.Random(50909)\n_bj = []\nfor _ in range(50000):\n    _s\
+  \ = _r.randrange(0, 10**8); _e = _s + _r.randrange(1, 10**5)\n    _bj.append((_s,\
+  \ _e, _r.randrange(1, 10**6)))\nassert max_schedule_value(_bj, 250) == 3513719966"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function max_schedule_value(jobs: list[tuple[int, int, int]],
+  g: int) -> int. Each job (s, e, v) occupies the half-open time interval [s, e) with
+  integer 0 <= s < e <= 10**9 and has integer value v > 0. You select a subset of
+  jobs for a single machine that needs a cooldown of g >= 0 time units between consecutive
+  jobs: whenever job A is immediately followed by job B in the selection (ordered
+  by time), B''s start must satisfy start_B >= end_A + g. With g == 0 this is ordinary
+  non-overlap where touching endpoints (start_B == end_A) ARE allowed. Return the
+  maximum achievable total value; the empty selection is feasible and has value 0.
+  There can be up to 50000 jobs, so an O(n log n) solution (sort by end time + binary-search
+  DP) is required — an O(n^2) DP will time out. Use only the Python standard library.
+  Output only a single Python code block.'
+---
+id: v3.coding.expert.06
+name: v3.coding.expert.06
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert count_distinct_substrings("z") == 1
+
+  assert count_distinct_substrings("aaaa") == 4
+
+  assert count_distinct_substrings("abab") == 7
+
+  assert count_distinct_substrings("mississippi") == 53
+
+  assert count_distinct_substrings("ab" * 50) == 199
+
+  import random
+
+  _r = random.Random(31337)
+
+  _s = "".join(_r.choice("abc") for _ in range(30000))
+
+  assert count_distinct_substrings(_s) == 449759708'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function count_distinct_substrings(s: str) -> int that returns
+  the number of distinct non-empty substrings of s. The alphabet is lowercase a-z
+  and len(s) can be up to 30000, so materialising all O(n^2) substrings (for example
+  a set of slices) will exhaust memory and time — use a suffix automaton, a suffix
+  array with LCP, or a comparable linear/near-linear structure. The count itself can
+  be returned as a plain Python int (it exceeds 32-bit range). Must finish well within
+  10 seconds on a 30000-character input. Use only the Python standard library. Output
+  only a single Python code block.'
+---
+id: v3.coding.expert.07
+name: v3.coding.expert.07
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert sliding_median_sum([4, -2, 7], 1) == 9
+
+  assert sliding_median_sum([9, 1, 8, 2], 4) == 5
+
+  assert sliding_median_sum([-5, -2], 2) == -4
+
+  assert sliding_median_sum([5, -1, 3, 2], 2) == 5
+
+  assert sliding_median_sum([1, 2, 3], 3) == 2
+
+  import random
+
+  _r = random.Random(778899)
+
+  _a = [_r.randrange(-10**9, 10**9) for _ in range(100000)]
+
+  assert sliding_median_sum(_a, 4999) == 113826330940
+
+  assert sliding_median_sum(_a[:50000], 1000) == 240106233242'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function sliding_median_sum(a: list[int], w: int) -> int with
+  1 <= w <= len(a) <= 100000 and |a[i]| <= 10**9. For every contiguous window of length
+  w (there are len(a) - w + 1 of them), compute the window median defined as follows:
+  let b be the sorted window; if w is odd the median is b[w // 2]; if w is even the
+  median is (b[w // 2 - 1] + b[w // 2]) // 2 using Python floor division, which rounds
+  toward negative infinity when the sum is negative and odd. Return the sum of the
+  medians of all windows. Re-sorting every window from scratch is too slow at the
+  largest sizes (w can be ~5000 with 100000 elements) — maintain the window incrementally,
+  e.g. a sorted list updated with bisect insert/delete, or two heaps with lazy deletion.
+  Must finish well within 10 seconds. Use only the Python standard library. Output
+  only a single Python code block.'
+---
+id: v3.coding.expert.08
+name: v3.coding.expert.08
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert format_rational(1, 8, 2) == "0.12"
+
+  assert format_rational(3, 8, 2) == "0.38"
+
+  assert format_rational(-1, 8, 2) == "-0.12"
+
+  assert format_rational(-1, 1000, 2) == "0.00"
+
+  assert format_rational(5, 2, 0) == "2"
+
+  assert format_rational(7, 2, 0) == "4"
+
+  assert format_rational(-5, 2, 0) == "-2"
+
+  assert format_rational(0, 7, 3) == "0.000"
+
+  assert format_rational(999, 1000, 2) == "1.00"
+
+  assert format_rational(10**30 + 1, 7, 25) == "142857142857142857142857142857.2857142857142857142857143"'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function format_rational(p: int, q: int, d: int) -> str that
+  formats the exact rational number p/q (q >= 1, p any integer with |p| up to 10**30,
+  0 <= d <= 50) as a decimal string rounded to exactly d fractional digits using round-half-to-even
+  (banker''s rounding), computed EXACTLY with integer arithmetic — binary floats or
+  the built-in round() on floats will fail the tie cases. Rounding rule: round the
+  magnitude |p|/q to d digits; on an exact tie (the discarded part is exactly half
+  of the last kept unit) round so the last kept digit is even; then re-apply the sign,
+  EXCEPT that a result equal to zero is written without a minus sign. Output format:
+  if d == 0, just the integer digits (e.g. ''4''); otherwise the integer digits, a
+  ''.'', then exactly d digits (zero-padded), e.g. ''0.12'' or ''-0.38''. No exponent
+  notation, no ''+'' sign, no separators. Examples: format_rational(1, 8, 2) == ''0.12''
+  because 0.125 ties to the even digit 2, while format_rational(3, 8, 2) == ''0.38''.
+  Use only the Python standard library (the decimal module is allowed but unnecessary).
+  Output only a single Python code block.'
+---
+id: v3.coding.frontier.01
+name: v3.coding.frontier.01
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert count_avoiding(0, "01", 1000) == 1
+
+  assert count_avoiding(3, "11", 1000000007) == 5
+
+  assert count_avoiding(4, "0", 5) == 1
+
+  assert count_avoiding(10, "0101", 1000000007) == 667
+
+  assert count_avoiding(173, "10011", 982451653) == 842407351
+
+  assert count_avoiding(10**18, "110101", 1000000007) == 594504505
+
+  assert count_avoiding(10**17 + 3, "010010111011", 998244353) == 595023172'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def count_avoiding(n: int, pattern: str, mod: int) -> int
+
+
+  It must return the number of binary strings of length exactly n (alphabet ''0''
+  and ''1'') that do NOT contain `pattern` as a contiguous substring, reduced modulo
+  `mod`.
+
+
+  Constraints: 0 <= n <= 10**18; 1 <= len(pattern) <= 12; pattern consists only of
+  ''0'' and ''1''; 2 <= mod <= 10**9 + 7 (mod is NOT guaranteed prime). For n = 0
+  the answer is 1 (the empty string). n goes up to 10**18, so any O(n)-time DP will
+  time out; your solution must run in time polynomial in len(pattern) and logarithmic
+  in n.
+
+
+  Examples: count_avoiding(3, ''11'', 1000000007) == 5; count_avoiding(4, ''0'', 5)
+  == 1. Use only the Python standard library. The grader appends hidden asserts to
+  your code and runs everything with a hard 10-second limit, so respect the stated
+  complexity requirements. Output only a single Python code block.'
+---
+id: v3.coding.frontier.02
+name: v3.coding.frontier.02
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\nimport math\n_g = _rnd(424242)\n\
+  R = 10 ** 8\npts = []\nfor _ in range(40000):\n    x = next(_g) % (2 * R + 1) -\
+  \ R\n    y = math.isqrt(R * R - x * x)\n    if next(_g) & 1:\n        y = -y\n \
+  \   pts.append((x, y))\nassert max_dist_sq([(0, 0)]) == 0\nassert max_dist_sq([(3,\
+  \ -1), (3, -1), (3, -1)]) == 0\nassert max_dist_sq([(0, 0), (3, 4)]) == 25\nassert\
+  \ max_dist_sq([(-5, 2), (1, 2), (9, 2), (4, 2)]) == 196\nassert max_dist_sq([(0,\
+  \ 0), (10, 0), (10, 10), (0, 10), (5, 5), (5, 0)]) == 200\nassert max_dist_sq(pts)\
+  \ == 39999999994562920"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def max_dist_sq(points: list[tuple[int, int]]) -> int
+
+
+  Given a list of 2D points with integer coordinates, return the exact MAXIMUM squared
+  Euclidean distance (dx*dx + dy*dy) over all pairs of points. If the list has fewer
+  than 2 distinct points, return 0.
+
+
+  Constraints: 1 <= len(points) <= 40000; |x|, |y| <= 10**8; duplicates, collinear
+  sets, and fully degenerate inputs are possible and must be handled. One hidden test
+  places 40000 points on a huge circle: the brute-force O(n^2) pair scan is ~8*10**8
+  distance evaluations and will NOT finish in time, and on that input the convex hull
+  itself has tens of thousands of vertices, so an O(h^2) scan over hull vertices will
+  not finish either. You need an O(n log n) approach (e.g. convex hull plus rotating
+  calipers). All arithmetic must stay exact (integers). Use only the Python standard
+  library. The grader appends hidden asserts to your code and runs everything with
+  a hard 10-second limit, so respect the stated complexity requirements. Output only
+  a single Python code block.'
+---
+id: v3.coding.frontier.03
+name: v3.coding.frontier.03
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert rex_match("[ab]*c?d+", "abbad")
+
+  assert not rex_match("[ab]*c?d+", "abbadc")
+
+  assert rex_match("[^xy]+x?", "abcx")
+
+  assert not rex_match("[^xy]+x?", "xabc")
+
+  assert rex_match(".?.?.?", "")
+
+  assert not rex_match("a+", "")
+
+  assert rex_match("a*a*a*a*a*a*a*a*a*a*a", "a" * 5000)
+
+  assert not rex_match("a*a*a*a*a*a*a*a*a*a*b", "a" * 5000)'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def rex_match(pattern: str, s: str) -> bool
+
+
+  It decides whether the ENTIRE string s (full match, not search) matches the pattern
+  in the following mini-regex language. A pattern is a sequence of atoms, each optionally
+  followed by exactly one quantifier.
+
+
+  Atoms:
+
+  - a lowercase letter: matches exactly that character;
+
+  - ''.'' : matches any single character;
+
+  - ''[abc]'' : a class listing 1-5 distinct lowercase letters, matches any single
+  listed character;
+
+  - ''[^abc]'' : negated class, matches any single character that is NOT listed.
+
+
+  Quantifiers: ''?'' (0 or 1 repetitions), ''*'' (0 or more), ''+'' (1 or more).
+
+
+  Guarantees: the pattern is syntactically valid, has at most 30 atoms, and contains
+  no other metacharacters (no groups, no alternation, no anchors); s consists of lowercase
+  letters, 0 <= len(s) <= 5000. Return a boolean.
+
+
+  WARNING: hidden tests include adversarial patterns such as ''a*a*a*a*a*a*a*a*a*a*b''
+  matched against ''a''*5000 - a naive exponential backtracking matcher will time
+  out. Use a polynomial-time approach (NFA state-set simulation or dynamic programming).
+  You may NOT call the `re` module or any other regex library; implement the matcher
+  yourself. Use only the Python standard library. The grader appends hidden asserts
+  to your code and runs everything with a hard 10-second limit, so respect the stated
+  complexity requirements. Output only a single Python code block.'
+---
+id: v3.coding.frontier.04
+name: v3.coding.frontier.04
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(24680)\n\
+  n_big = 60000\nedges_big = [(next(_g) % n_big, next(_g) % n_big) for _ in range(120000)]\n\
+  assert min_edges_to_strongly_connect(1, []) == 0\nassert min_edges_to_strongly_connect(3,\
+  \ [(0, 1), (1, 2), (2, 0)]) == 0\nassert min_edges_to_strongly_connect(3, [(0, 1),\
+  \ (1, 2)]) == 1\nassert min_edges_to_strongly_connect(4, [(0, 1), (1, 0)]) == 3\n\
+  assert min_edges_to_strongly_connect(6, [(0, 1), (1, 2), (2, 0), (3, 4), (4, 5),\
+  \ (5, 3)]) == 2\nassert min_edges_to_strongly_connect(5, [(0, 1), (0, 2), (1, 3),\
+  \ (2, 3), (3, 4), (4, 4)]) == 1\nassert min_edges_to_strongly_connect(n_big, edges_big)\
+  \ == 8126"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def min_edges_to_strongly_connect(n: int, edges: list[tuple[int, int]]) -> int
+
+
+  You are given a directed graph with vertices 0..n-1 and a list of directed edges
+  (u, v). The list may contain duplicate edges and self-loops, and vertices may be
+  isolated. Return the MINIMUM number of directed edges that must be ADDED to make
+  the graph strongly connected (every vertex can reach every other vertex). A graph
+  with exactly one vertex is already strongly connected (answer 0).
+
+
+  Constraints: 1 <= n <= 60000; 0 <= len(edges) <= 120000. Hidden tests include a
+  graph with n = 60000 and 120000 edges, so recursive DFS will blow Python''s recursion
+  stack unless you raise the limit - an iterative implementation is strongly recommended.
+  Target O(n + m) time.
+
+
+  Examples: min_edges_to_strongly_connect(3, [(0,1),(1,2)]) == 1; min_edges_to_strongly_connect(4,
+  [(0,1),(1,0)]) == 3 (two isolated vertices). Use only the Python standard library.
+  The grader appends hidden asserts to your code and runs everything with a hard 10-second
+  limit, so respect the stated complexity requirements. Output only a single Python
+  code block.'
+---
+id: v3.coding.frontier.05
+name: v3.coding.frontier.05
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(13579)\n\
+  ivs_big = []\nfor _ in range(3000):\n    l = next(_g) % 1000000\n    w = 2 + next(_g)\
+  \ % 2000\n    k = 1 + next(_g) % 3\n    ivs_big.append((l, l + w, k))\nassert min_stab_points([(5,\
+  \ 5, 1)]) == 1\nassert min_stab_points([(0, 2, 3)]) == 3\nassert min_stab_points([(1,\
+  \ 3, 1), (2, 5, 1), (6, 8, 2)]) == 3\nassert min_stab_points([(1, 4, 2), (3, 6,\
+  \ 2), (5, 8, 2)]) == 4\nassert min_stab_points([(0, 10, 2), (3, 6, 2), (8, 9, 1)])\
+  \ == 3\nassert min_stab_points(ivs_big) == 2204"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def min_stab_points(intervals: list[tuple[int, int, int]]) -> int
+
+
+  Each tuple (l, r, need) describes the closed integer interval [l, r] and a demand:
+  at least `need` of the chosen points must lie inside [l, r] (endpoints included).
+  You must choose a set of DISTINCT integer points (any integers, not restricted to
+  interval endpoints) so that every interval''s demand is met, and return the minimum
+  possible number of chosen points.
+
+
+  Constraints: 1 <= len(intervals) <= 3000; 0 <= l <= r <= 10**9; 1 <= need <= r -
+  l + 1 (so a feasible choice always exists). Intervals overlap in adversarial ways:
+  points must be shared between overlapping intervals whenever possible - a per-interval
+  greedy that ignores sharing will overcount.
+
+
+  Example: min_stab_points([(1, 3, 1), (2, 5, 1), (6, 8, 2)]) == 3 (e.g. choose {3,
+  7, 8}). Use only the Python standard library. The grader appends hidden asserts
+  to your code and runs everything with a hard 10-second limit, so respect the stated
+  complexity requirements. Output only a single Python code block.'
+---
+id: v3.coding.frontier.06
+name: v3.coding.frontier.06
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(86420)\n\
+  s_big = \"\".join(\"ab\"[next(_g) & 1] for _ in range(20000))\nassert longest_repeated(\"\
+  \", 2) == 0\nassert longest_repeated(\"abcd\", 2) == 0\nassert longest_repeated(\"\
+  xyz\", 1) == 3\nassert longest_repeated(\"abcabcab\", 2) == 5\nassert longest_repeated(\"\
+  aaaa\", 3) == 2\nassert longest_repeated(s_big, 5) == 16\nassert longest_repeated(s_big,\
+  \ 2) == 25"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def longest_repeated(s: str, k: int) -> int
+
+
+  Return the length of the longest substring of s that occurs at least k times in
+  s. Occurrences are counted by starting position and MAY overlap each other. If no
+  non-empty substring occurs k or more times, return 0. For k == 1 the answer is len(s).
+
+
+  Constraints: 0 <= len(s) <= 20000, lowercase letters only; 1 <= k <= 20000. Hidden
+  tests use strings of length 20000 over a 2-letter alphabet (huge numbers of repeats),
+  so enumerating all O(n^2) substrings will not fit in time or memory - use a suffix
+  automaton / suffix array, or binary search on the answer length combined with rolling
+  hashes.
+
+
+  Examples: longest_repeated(''abcabcab'', 2) == 5 (''abcab'' occurs at positions
+  0 and 3); longest_repeated(''aaaa'', 3) == 2 (''aa'' occurs at positions 0, 1, 2).
+  Use only the Python standard library. The grader appends hidden asserts to your
+  code and runs everything with a hard 10-second limit, so respect the stated complexity
+  requirements. Output only a single Python code block.'
+---
+id: v3.coding.frontier.07
+name: v3.coding.frontier.07
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(11223)\n\
+  sa = \"\".join(\"abcd\"[next(_g) % 4] for _ in range(55))\nsb = \"\".join(\"abcd\"\
+  [next(_g) % 4] for _ in range(55))\nsc = \"\".join(\"abcd\"[next(_g) % 4] for _\
+  \ in range(55))\nassert scs3_len(\"\", \"\", \"\") == 0\nassert scs3_len(\"abc\"\
+  , \"\", \"\") == 3\nassert scs3_len(\"ab\", \"ba\", \"aa\") == 3\nassert scs3_len(\"\
+  abc\", \"bca\", \"cab\") == 5\nassert scs3_len(\"aaa\", \"aaa\", \"aaa\") == 3\n\
+  assert scs3_len(sa, sb, \"\") == 76\nassert scs3_len(sa, sb, sc) == 84"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def scs3_len(a: str, b: str, c: str) -> int
+
+
+  Return the length of a SHORTEST string that contains all three of a, b and c as
+  (not necessarily contiguous) subsequences simultaneously.
+
+
+  Constraints: 0 <= len(a), len(b), len(c) <= 55; lowercase letters only. Note that
+  the classic two-string formula |a| + |b| - LCS(a, b) does NOT generalize to three
+  strings, and pairwise/greedy merging is not optimal - you need dynamic programming
+  over all three positions at once.
+
+
+  Examples: scs3_len(''ab'', ''ba'', ''aa'') == 3 (''aba'' works); scs3_len(''abc'',
+  '''', '''') == 3; scs3_len('''', '''', '''') == 0. Use only the Python standard
+  library. The grader appends hidden asserts to your code and runs everything with
+  a hard 10-second limit, so respect the stated complexity requirements. Output only
+  a single Python code block.'
+---
+id: v3.coding.frontier.08
+name: v3.coding.frontier.08
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(44444)\n\
+  n_mid = 2000\na_mid = [next(_g) % 50 for _ in range(n_mid)]\nqs_mid = []\nfor _\
+  \ in range(2000):\n    l = next(_g) % n_mid\n    qs_mid.append((l, l + next(_g)\
+  \ % (n_mid - l)))\n_g = _rnd(55555)\nn_big = 100000\na_big = [next(_g) % 1000 for\
+  \ _ in range(n_big)]\nqs_big = []\nfor _ in range(100000):\n    l = next(_g) % n_big\n\
+  \    qs_big.append((l, l + next(_g) % (n_big - l)))\nM61 = 2**61 - 1\nassert distinct_counts([3,\
+  \ 1, 3, 2, 1], [(0, 4), (1, 3), (2, 2), (0, 2)]) == [3, 3, 1, 2]\nassert distinct_counts([7,\
+  \ 7, 7, 7, 7], [(0, 4), (2, 3)]) == [1, 1]\n_am = distinct_counts(a_mid, qs_mid)\n\
+  assert sum((i + 61) * v for i, v in enumerate(_am)) % M61 == 94511566\n_ab = distinct_counts(a_big,\
+  \ qs_big)\nassert len(_ab) == 100000\nassert sum((i + 61) * v for i, v in enumerate(_ab))\
+  \ % M61 == 4749885055822"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def distinct_counts(a: list[int], queries: list[tuple[int, int]]) -> list[int]
+
+
+  For each query (l, r) with 0-based INCLUSIVE indices l <= r, compute the number
+  of DISTINCT values in the slice a[l..r]. Return the answers as a list, in the same
+  order as the queries.
+
+
+  Constraints: 1 <= len(a) <= 100000; 1 <= len(queries) <= 100000; 0 <= values <=
+  10**9. Hidden tests use 100000 elements and 100000 queries with average range length
+  ~25000, so answering each query independently with len(set(a[l:r+1])) is ~2.5*10**9
+  operations and will NOT finish - you need an offline technique (e.g. sort queries
+  by right endpoint and maintain last-occurrence contributions in a Fenwick tree)
+  or an equally efficient approach.
+
+
+  Example: distinct_counts([3, 1, 3, 2, 1], [(0, 4), (1, 3), (2, 2)]) == [3, 3, 1].
+  Use only the Python standard library. The grader appends hidden asserts to your
+  code and runs everything with a hard 10-second limit, so respect the stated complexity
+  requirements. Output only a single Python code block.'
+---
+id: v3.coding.frontier.09
+name: v3.coding.frontier.09
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: 'assert mod_floor_sum(1) == 0
+
+  assert mod_floor_sum(6) == 3
+
+  assert mod_floor_sum(9999) == 17748198
+
+  assert mod_floor_sum(10**7 + 19) == 17753365420837
+
+  assert mod_floor_sum(10**12) == 177532966574642659861022'
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def mod_floor_sum(n: int) -> int
+
+
+  Return the EXACT value of sum(n mod i for i in range(1, n + 1)) - the sum of the
+  remainders of n divided by every integer from 1 to n.
+
+
+  Constraints: 1 <= n <= 10**12. A direct loop over 10**12 terms is impossible; exploit
+  the fact that floor(n / i) takes only O(sqrt(n)) distinct values and sum each block
+  with an arithmetic-series formula. Watch the block boundaries - off-by-one errors
+  in the block ranges are the classic failure mode. The result is an exact (large)
+  integer, no modulus.
+
+
+  Examples: mod_floor_sum(1) == 0; mod_floor_sum(6) == 3. Use only the Python standard
+  library. The grader appends hidden asserts to your code and runs everything with
+  a hard 10-second limit, so respect the stated complexity requirements. Output only
+  a single Python code block.'
+---
+id: v3.coding.frontier.10
+name: v3.coding.frontier.10
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(31337)\n\
+  _gens = [((next(_g) << 29) ^ next(_g)) % (1 << 60) for _ in range(45)]\nnums_big\
+  \ = []\nfor _ in range(20000):\n    mask = ((next(_g) << 29) ^ next(_g)) % (1 <<\
+  \ 45)\n    x = 0\n    for gi in range(45):\n        if (mask >> gi) & 1:\n     \
+  \       x ^= _gens[gi]\n    nums_big.append(x)\nassert kth_subset_xor([], 1) ==\
+  \ 0\nassert kth_subset_xor([0, 0, 0], 1) == 0\nassert kth_subset_xor([1, 2], 3)\
+  \ == 2\nassert kth_subset_xor([5, 5, 5], 2) == 5\nassert kth_subset_xor([12, 7,\
+  \ 9, 4], 6) == 5\nassert kth_subset_xor([12, 7, 9, 4], 16) == 15\nassert kth_subset_xor(nums_big,\
+  \ 1) == 0\nassert kth_subset_xor(nums_big, 31415926535897) == 1029437080728241195"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def kth_subset_xor(nums: list[int], k: int) -> int
+
+
+  Let S be the set of DISTINCT values obtainable by XOR-ing together the elements
+  of some subset of nums (the empty subset gives 0, so 0 is always in S). Sort S ascending;
+  return its k-th smallest element (1-indexed).
+
+
+  Constraints: 0 <= len(nums) <= 50000; 0 <= nums[i] < 2**60; 1 <= k <= |S|. |S| is
+  always a power of two and can be as large as 2**60, so enumerating S is impossible
+  - build a linear basis of the numbers over GF(2), put it in reduced row-echelon
+  form, and map the bits of k-1 onto the reduced basis vectors.
+
+
+  Examples: kth_subset_xor([1, 2], 3) == 2 (S = {0, 1, 2, 3}); kth_subset_xor([5,
+  5, 5], 2) == 5 (S = {0, 5}); kth_subset_xor([], 1) == 0. Use only the Python standard
+  library. The grader appends hidden asserts to your code and runs everything with
+  a hard 10-second limit, so respect the stated complexity requirements. Output only
+  a single Python code block.'
+---
+id: v3.coding.frontier.11
+name: v3.coding.frontier.11
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _rnd(seed):\n    s = seed\n    while True:\n        s = (s * 6364136223846793005\
+  \ + 1442695040888963407) % (1 << 64)\n        yield s >> 33\n_g = _rnd(77777)\n\
+  a_mid = [next(_g) % 100 for _ in range(2000)]\n_g = _rnd(88888)\na_big = [next(_g)\
+  \ % (10**9) for _ in range(100000)]\nassert count_lis([]) == 0\nassert count_lis([2,\
+  \ 2, 2]) == 3\nassert count_lis([1, 3, 2, 4]) == 2\nassert count_lis([5, 4, 3, 2,\
+  \ 1]) == 5\nassert count_lis(a_mid) == 413876172\nassert count_lis(a_big) == 819603544"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def count_lis(a: list[int]) -> int
+
+
+  Let L be the length of the longest STRICTLY increasing subsequence of a. Return
+  the number of distinct index subsequences of length L that are strictly increasing,
+  modulo 1000000007. For an empty list return 0.
+
+
+  Constraints: 0 <= len(a) <= 100000; 0 <= values <= 10**9; duplicates allowed (equal
+  values can NOT extend each other - strict increase required). Hidden tests use 100000
+  elements, so the O(n^2) DP will time out: you need O(n log n), e.g. a Fenwick tree
+  over compressed values storing, per prefix, the best length together with the count
+  of ways achieving it.
+
+
+  Examples: count_lis([2, 2, 2]) == 3 (three subsequences of length 1); count_lis([1,
+  3, 2, 4]) == 2 ([1,3,4] and [1,2,4]); count_lis([5, 4, 3, 2, 1]) == 5. Use only
+  the Python standard library. The grader appends hidden asserts to your code and
+  runs everything with a hard 10-second limit, so respect the stated complexity requirements.
+  Output only a single Python code block.'
+---
+id: v3.coding.frontier.12
+name: v3.coding.frontier.12
+category: coding
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.3
+evaluator: programmatic
+expected: "def _tl(x):\n    return [tuple(t) for t in tokenize(x)]\ndef _raises(fn):\n\
+  \    try:\n        fn()\n        return False\n    except ValueError:\n        return\
+  \ True\nassert _tl(\"x = 1\") == [(\"ID\", \"x\"), (\"OP\", \"=\"), (\"NUM\", \"\
+  1\")]\nassert _tl(\"1e+5\") == [(\"NUM\", \"1e+5\")]\nassert _tl(\"1e+ 3.14.15\"\
+  ) == [(\"NUM\", \"1\"), (\"ID\", \"e\"), (\"OP\", \"+\"), (\"NUM\", \"3.14\"), (\"\
+  OP\", \".\"), (\"NUM\", \"15\")]\nassert _tl(\"1.e3 1e2e3\") == [(\"NUM\", \"1\"\
+  ), (\"OP\", \".\"), (\"ID\", \"e3\"), (\"NUM\", \"1e2\"), (\"ID\", \"e3\")]\nassert\
+  \ _tl(\"x-->y # arrow\\nz**2\") == [(\"ID\", \"x\"), (\"OP\", \"-\"), (\"OP\", \"\
+  ->\"), (\"ID\", \"y\"), (\"ID\", \"z\"), (\"OP\", \"**\"), (\"NUM\", \"2\")]\nassert\
+  \ _tl(\"a<==b 1_000\") == [(\"ID\", \"a\"), (\"OP\", \"<=\"), (\"OP\", \"=\"), (\"\
+  ID\", \"b\"), (\"NUM\", \"1\"), (\"ID\", \"_000\")]\nassert _tl('s = \"a\\\\\"b\\\
+  \\n\"') == [(\"ID\", \"s\"), (\"OP\", \"=\"), (\"STR\", '\"a\\\\\"b\\\\n\"')]\n\
+  assert _raises(lambda: tokenize('\"abc'))\nassert _raises(lambda: tokenize('\"a\\\
+  \\qb\"'))\nassert _raises(lambda: tokenize(\"a @ b\"))"
+metadata:
+  eval_type: unit_test
+  language: python
+prompt: 'Write a Python function with the exact signature:
+
+
+  def tokenize(src: str) -> list[tuple[str, str]]
+
+
+  Implement a lexer that scans src left to right with MAXIMAL MUNCH and returns a
+  list of (kind, lexeme) tuples. Rules, in the order they must be tried at each position:
+
+
+  1. Whitespace (space, tab, carriage return, newline) is skipped and produces no
+  token.
+
+  2. ''#'' starts a comment: skip everything up to (not including) the next newline.
+
+  3. STR: a double-quoted string literal. Inside, the only legal escapes are \" \\
+  \n \t (backslash followed by a double quote, a backslash, the letter n, or the letter
+  t). Any other character after a backslash must raise ValueError. A string with no
+  closing quote must raise ValueError. The lexeme is the RAW source slice including
+  both quotes (do not decode escapes).
+
+  4. NUM: starts with an ASCII digit. Grammar: digits, optionally followed by ''.''+digits,
+  optionally followed by an exponent (''e'' or ''E'', optional ''+'' or ''-'', then
+  digits). Each optional part is consumed ONLY if it is completely valid at that position;
+  otherwise it is left for later tokens. So ''1e+5'' is one NUM ''1e+5'', but ''1e+''
+  lexes as NUM ''1'' then ID ''e'' then OP ''+'', and ''1.e3'' lexes as NUM ''1''
+  then OP ''.'' then ID ''e3'' (the ''.'' is not followed by a digit). Underscores
+  are NOT part of numbers: ''1_000'' is NUM ''1'' then ID ''_000''.
+
+  5. ID: [A-Za-z_][A-Za-z0-9_]* (ASCII only).
+
+  6. OP: the two-character operators ** == != <= >= -> are tried first, then the single
+  characters + - * / % < > = ( ) , : . So ''x-->y'' lexes as ID, OP ''-'', OP ''->'',
+  ID.
+
+  7. Any character that fits no rule raises ValueError.
+
+
+  Kinds are exactly the strings ''STR'', ''NUM'', ''ID'', ''OP''. src is ASCII, len(src)
+  <= 10000.
+
+
+  Example: tokenize(''x = 1'') == [(''ID'', ''x''), (''OP'', ''=''), (''NUM'', ''1'')].
+  Use only the Python standard library. The grader appends hidden asserts to your
+  code and runs everything with a hard 10-second limit, so respect the stated complexity
+  requirements. Output only a single Python code block.'

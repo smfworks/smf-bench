@@ -1,0 +1,41 @@
+# Model manifest: Qwen3.6-35B-A3B-NVFP4
+# Running on DGX Spark (spark-56bc) via vLLM v0.24.0
+# Port 8888, host network mode, 262K context, MTP speculative decoding
+# Tool-calling enabled (qwen3_coder parser)
+
+model_id: "qwen3.6-35b-a3b-nvfp4"
+name: "Qwen3.6-35B-A3B-NVFP4"
+provider: "qwen"
+served_name: "nvidia/Qwen3.6-35B-A3B-NVFP4"
+
+# Input modalities supported (enum: text, image_in, video_in, audio_in, image_out, audio_out, video_out, embed)
+input_modalities:
+  - text
+
+# Output modalities supported
+output_modalities:
+  - text
+
+# Capabilities (enum: vision, video, audio, ocr, chart, reasoning, coding,
+#               writing, tool_calling, agentic, image_gen, audio_gen, video_gen,
+#               stt, context_long)
+capabilities:
+  - reasoning
+  - coding
+  - writing
+  - tool_calling
+  - context_long
+  - streaming
+
+context_length: 262144
+max_output_tokens: 8192
+
+# Engine metadata (passed to runner, not used for capability gating)
+metadata:
+  endpoint: "http://spark-56bc:8888/v1"
+  api_key: "dummy"
+  engine: "vLLM"
+  engine_version: "0.24.0"
+  quantization: "NVFP4"
+  speculative_decoding: "MTP"
+  tool_call_parser: "qwen3_coder"

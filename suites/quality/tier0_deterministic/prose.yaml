@@ -1,0 +1,879 @@
+# Aeon-Bench-Pod Tier-0 Deterministic Tests — Prose (30 cases)
+# Extracted from Aeon-Bench-Pod (MIT License, Copyright 2026 AEON-7)
+# These cases are Tier-1 rubric-based, but each has an embedded tier0_check
+# that provides a deterministic pass/fail signal. We extract the first
+# required tier0_check from each rubric.
+
+id: v3.prose.easy.01
+name: v3.prose.easy.01
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write an acrostic poem about an autumn tree. The poem must have EXACTLY five
+  lines, and the first letters of the lines, read top to bottom, must spell the word
+  MAPLE: line 1 starts with capital M, line 2 with capital A, line 3 with capital
+  P, line 4 with capital L, line 5 with capital E. Do not leave blank lines between
+  the lines. Respond with ONLY the five lines of the poem and nothing else (no title,
+  no commentary).'
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: line
+  op: ==
+  rubric_id: five_lines
+  rubric_question: Does the poem contain exactly five non-empty lines?
+---
+id: v3.prose.easy.02
+name: v3.prose.easy.02
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: Write a single paragraph of EXACTLY four sentences describing a coastal night
+  scene. Every sentence must begin with the exact three words "Beneath the lighthouse"
+  (capital B, then lowercase "the lighthouse"). Each sentence must end with a period,
+  and you must not use any other periods, question marks, or exclamation marks anywhere
+  (so no abbreviations like "Mr." and no decimal numbers). Respond with ONLY the paragraph
+  and nothing else (no title, no commentary).
+evaluator: structural_count
+expected: 4
+metadata:
+  unit: sentence
+  op: ==
+  rubric_id: four_sentences
+  rubric_question: Does the paragraph contain exactly four sentences?
+---
+id: v3.prose.medium.01
+name: v3.prose.medium.01
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: Write an acrostic poem of exactly 6 lines about an old lighthouse keeper.
+  The first letter of line 1 must be G, of line 2 A, of line 3 R, of line 4 N, of
+  line 5 E, and of line 6 T (spelling GARNET downward). Each line must start immediately
+  with its letter (no leading punctuation or quotation marks) and contain at least
+  three words. Do not include a title, blank lines, or any text before or after the
+  poem. Output ONLY the 6-line poem.
+evaluator: structural_count
+expected: 6
+metadata:
+  unit: line
+  op: ==
+  rubric_id: six_lines
+  rubric_question: Does the output contain exactly 6 non-empty lines?
+---
+id: v3.prose.medium.02
+name: v3.prose.medium.02
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: Write a single descriptive paragraph of exactly 8 sentences depicting a desert
+  mining town at dusk. Every sentence must begin with the exact phrase 'Under the
+  copper sky' (anaphora). Every sentence must end with a period. Use no other sentence-ending
+  punctuation (no '!' or '?'), no abbreviations containing periods (write 'Mister',
+  not 'Mr.'), no ellipses, no quotation marks, and no numerals. Output ONLY the paragraph,
+  with no title and no text before or after it.
+evaluator: structural_count
+expected: 8
+metadata:
+  unit: sentence
+  op: ==
+  rubric_id: eight_sentences
+  rubric_question: Does the paragraph contain exactly 8 sentences?
+---
+id: v3.prose.medium.03
+name: v3.prose.medium.03
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a formal letter of complaint from a resident named Tobin Ash to a town
+  councillor named Councillor Marbeth about broken streetlamps on Fenwick Lane. The
+  letter must consist of EXACTLY 5 blocks separated by single blank lines, in this
+  order: (1) a subject line reading exactly ''Subject: Broken Streetlamps on Fenwick
+  Lane''; (2) the salutation ''Dear Councillor Marbeth,'' on its own line; (3) a first
+  body paragraph that opens with the words ''I am writing to''; (4) a second body
+  paragraph that opens with the words ''I would be grateful if''; (5) a closing block
+  of exactly two lines: ''Yours sincerely,'' on the first line and ''Tobin Ash'' on
+  the second. Do not add a date, address, title, or any other text. Output ONLY the
+  letter.'
+evaluator: structural_count
+expected: 5
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: five_blocks
+  rubric_question: Does the letter consist of exactly 5 blank-line-separated blocks?
+---
+id: v3.prose.hard.01
+name: v3.prose.hard.01
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write an acrostic poem of exactly 8 lines about a lighthouse keeper''s final
+  night on duty. Constraints: (1) The first letters of the 8 lines, read top to bottom,
+  must spell MOONVEIL — each line must begin with the corresponding CAPITAL letter
+  (M, O, O, N, V, E, I, L). (2) Every line must contain at least 5 words (a word is
+  any run of characters separated by spaces; punctuation attaches to its word). (3)
+  The poem must contain the word ''lantern'' and the word ''tide'' somewhere. Output
+  ONLY the 8 lines of the poem — no title, no preamble, no commentary.'
+evaluator: structural_count
+expected: 8
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the response have exactly 8 non-empty lines?
+---
+id: v3.prose.hard.02
+name: v3.prose.hard.02
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a tritina (a compact sestina variant) about an abandoned shipyard.
+  Structure: exactly 4 stanzas separated by blank lines. Stanzas 1-3 have exactly
+  3 lines each; stanza 4 (the envoi) is a single line, so the poem has exactly 10
+  lines total. The three end-words are: copper, harbor, sparrow. Rotation: stanza
+  1''s lines must END with copper, harbor, sparrow (in that order); stanza 2''s lines
+  end with sparrow, copper, harbor; stanza 3''s lines end with harbor, sparrow, copper.
+  Trailing punctuation after an end-word is allowed. The one-line envoi must contain
+  all three end-words, appearing in this order: copper, then harbor, then sparrow.
+  Every line (including the envoi) must contain at least 6 space-separated words.
+  Output ONLY the poem — no title or commentary.'
+evaluator: structural_count
+expected: 4
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: stanzas
+  rubric_question: Does the response have exactly 4 stanzas separated by blank lines?
+---
+id: v3.prose.hard.03
+name: v3.prose.hard.03
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a single prose paragraph of exactly 12 sentences about the fictional
+  town of Quarryhaven preparing for a river flood. Constraints: (1) Every sentence
+  must begin with the exact words ''Before the'' (capital B). (2) The town name ''Quarryhaven''
+  must appear at least 3 times. (3) The paragraph must be at least 120 words long
+  (words are space-separated tokens). (4) The final sentence must end with the word
+  ''began'' followed by a period. (5) End sentences ONLY with periods — no ''?'' or
+  ''!'', and no other periods anywhere (no abbreviations like ''Mr.'', no decimal
+  numbers). Output ONLY the paragraph as one single block of text with no line breaks,
+  no title, no commentary.'
+evaluator: structural_count
+expected: 12
+metadata:
+  unit: sentence
+  op: ==
+  rubric_id: sentences
+  rubric_question: Does the paragraph contain exactly 12 sentences?
+---
+id: v3.prose.hard.04
+name: v3.prose.hard.04
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a lipogram: a single prose paragraph describing a bustling midnight
+  food bazaar, using ONLY words that contain no letter ''e'' — the letter ''e'' (and
+  capital ''E'') must not appear ANYWHERE in your output. Constraints: (1) at least
+  60 words long (words are space-separated tokens); (2) at least 5 sentences, each
+  ending with a period; (3) the paragraph must include the exact word ''aroma'' and
+  the exact word ''moonlight''. Output ONLY the paragraph — no title, no preamble,
+  no commentary (remember: the banned letter must not appear even in punctuation-adjacent
+  text).'
+evaluator: regex_match
+expected: '[eE]'
+---
+id: v3.prose.hard.05
+name: v3.prose.hard.05
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a 10-line micro-story about a clockmaker named Ilsabet who repairs
+  a town''s great tower clock before it strikes twelve. Formal constraints: (1) exactly
+  10 lines, one per row, with NO blank lines between them; (2) counting words as space-separated
+  tokens (punctuation attaches to its word), each ODD-numbered line (1,3,5,7,9) must
+  contain EXACTLY 4 words and each EVEN-numbered line (2,4,6,8,10) must contain EXACTLY
+  8 words; (3) line 1 must begin with the exact words ''The clockmaker''; (4) the
+  name ''Ilsabet'' must appear somewhere in the story; (5) the final word of line
+  10 must be ''midnight.'' (the word midnight followed by a period). Output ONLY the
+  10 lines — no title, no commentary.'
+evaluator: structural_count
+expected: 10
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the response have exactly 10 non-empty lines?
+---
+id: v3.prose.expert.01
+name: v3.prose.expert.01
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a sestina about a lighthouse keeper completing her final inventory
+  before leaving the light for good. It must have exactly 39 lines arranged as 7 stanzas
+  separated by blank lines: six sestets (6 lines each) followed by a 3-line envoi.
+  Every line must END with one of these six words (punctuation after the end word
+  is allowed, but the end word itself must be the line''s final word exactly — ''copper'',
+  not ''coppers''): copper, fog, ledger, gull, brine, wick. The end words of the six
+  sestets, in line order, must be exactly — Stanza 1: copper, fog, ledger, gull, brine,
+  wick; Stanza 2: wick, copper, brine, fog, gull, ledger; Stanza 3: ledger, wick,
+  gull, copper, fog, brine; Stanza 4: brine, ledger, fog, wick, copper, gull; Stanza
+  5: gull, brine, copper, ledger, wick, fog; Stanza 6: fog, gull, wick, brine, ledger,
+  copper. Envoi (stanza 7, 3 lines): line 1 must contain the word ''fog'' and end
+  with ''copper''; line 2 must contain the word ''gull'' and end with ''ledger'';
+  line 3 must contain the word ''brine'' and end with ''wick''. Output only the poem:
+  no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 39
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines_39
+  rubric_question: Does the poem have exactly 39 non-empty lines?
+---
+id: v3.prose.expert.02
+name: v3.prose.expert.02
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a 10-line poem about a moth drawn to a lit window at night. Constraints:
+  exactly 10 lines with no blank lines between them; the first letters of the lines,
+  read top to bottom, must spell VELVETMOTH (line 1 starts with V, line 2 with E,
+  line 3 with L, line 4 with V, line 5 with E, line 6 with T, line 7 with M, line
+  8 with O, line 9 with T, line 10 with H); every line must contain exactly 7 words,
+  where a word is any run of characters separated by spaces (hyphenated compounds
+  count as one word); and the poem must contain the word ''moth''. Output only the
+  poem: no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 10
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines_10
+  rubric_question: Does the poem have exactly 10 non-empty lines?
+---
+id: v3.prose.expert.03
+name: v3.prose.expert.03
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a single paragraph of narrative prose (one block, no blank lines) about
+  a violinist playing at night by a harbor, under ALL of these constraints: the letter
+  ''e'' (uppercase or lowercase) must not appear anywhere in your output; the paragraph
+  must contain at least 100 words; it must consist of exactly 8 sentences, each ending
+  with a period, exclamation mark, or question mark (use no abbreviations, no digits
+  with decimal points, and no ellipses, so that every ''.'' ends a sentence); and
+  it must include the words ''moonlight'', ''harbor'', and ''violin''. Output only
+  the paragraph: no title, no explanation, no markdown.'
+evaluator: regex_match
+expected: e
+---
+id: v3.prose.expert.04
+name: v3.prose.expert.04
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a 12-line poem about the hour before a city wakes. Constraints: exactly
+  12 lines with no blank lines; every line must begin with the exact phrase ''Before
+  the '' (capital B, lowercase ''the'', single spaces); the final word of every line
+  must end with the letters ''ing'' (punctuation after that word is allowed); and
+  the poem must contain the words ''lamplighter'' and ''estuary''. Output only the
+  poem: no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 12
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines_12
+  rubric_question: Does the poem have exactly 12 non-empty lines?
+---
+id: v3.prose.expert.05
+name: v3.prose.expert.05
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a ''diamond'' poem describing a thunderstorm arriving over, and then
+  leaving, a wheat field. It must have exactly 15 lines with no blank lines. Line
+  1 has exactly 1 word, line 2 exactly 2 words, and so on, adding one word per line
+  up to line 8 with exactly 8 words; the count then descends one word per line: line
+  9 has 7 words, line 10 has 6, line 11 has 5, line 12 has 4, line 13 has 3, line
+  14 has 2, and line 15 has 1. A word is any run of non-space characters (hyphenated
+  compounds count as one word). The poem must contain the word ''thunderhead''. Output
+  only the poem: no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 15
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines_15
+  rubric_question: Does the poem have exactly 15 non-empty lines?
+---
+id: v3.prose.expert.06
+name: v3.prose.expert.06
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a formal letter of complaint with EXACTLY this structure — eight blocks
+  separated by blank lines, in this order: (1) the date line, exactly: 14 March 2031
+  — (2) the reference line, exactly: Ref: KLM-7734/C — (3) the salutation, exactly:
+  Dear Dr. Ashgrove-Pell, — (4) a first body paragraph beginning with the exact words:
+  I am writing to — (5) a second body paragraph beginning with the exact word: Furthermore,
+  — (6) a third body paragraph beginning with the exact words: I would be grateful
+  if — (7) the closing, exactly: Yours sincerely, — (8) the signature, exactly: Marisol
+  Quenby-Achterberg. The letter is addressed to the Meridian Canal Trust and complains
+  that the writer''s narrowboat, the Nightjar, was damaged on 27 February 2031 when
+  contractors lowered the water level of a holding basin without notice during lock
+  maintenance. Somewhere in the body you must state the exact repair cost £1,742.50,
+  mention the exact date 27 February 2031, and name the vessel Nightjar. The whole
+  letter must be at least 120 words. Match capitalisation exactly as given. Output
+  only the letter itself: no subject line, no postal addresses, no explanation, no
+  markdown.'
+evaluator: structural_count
+expected: 8
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: blocks_8
+  rubric_question: Does the letter consist of exactly 8 blank-line-separated blocks?
+---
+id: v3.prose.expert.07
+name: v3.prose.expert.07
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a single-paragraph story (one block, no blank lines) of exactly 11
+  sentences about a medieval apprentice scribe copying a manuscript through a winter
+  night. The first letters of the 11 sentences, in order, must spell SILVERQUILL (sentence
+  1 starts with S, 2 with I, 3 with L, 4 with V, 5 with E, 6 with R, 7 with Q, 8 with
+  U, 9 with I, 10 with L, 11 with L). Every sentence must end with a period, exclamation
+  mark, or question mark, and the characters ''.'', ''!'' and ''?'' must not appear
+  anywhere else (no abbreviations, no decimal numbers, no ellipses). The story must
+  contain the words ''inkwell'' and ''parchment'' and be at least 90 words long. Output
+  only the story: no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: one_block
+  rubric_question: Is the story a single paragraph with no blank lines?
+---
+id: v3.prose.expert.08
+name: v3.prose.expert.08
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a story of exactly 15 sentences about a night train crossing a frozen
+  plain, in which EVERY sentence contains exactly 10 words. Counting rules: a word
+  is any run of characters containing no spaces and no sentence-ending punctuation;
+  each sentence must end with a period, exclamation mark, or question mark, and those
+  three characters must not appear anywhere except at the ends of sentences (so no
+  abbreviations, no ellipses, and no numbers with decimal points); commas, hyphens,
+  and apostrophes inside words are fine and do not split words. The story must mention
+  the town name ''Verakhta'' and contain the word ''samovar''. Write it as one paragraph
+  with no blank lines. Output only the story: no title, no explanation, no markdown.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: one_block
+  rubric_question: Is the story a single paragraph with no blank lines?
+---
+id: v3.prose.frontier.01
+name: v3.prose.frontier.01
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: "Write a sestina about an abandoned fishing village. Follow this structure\
+  \ EXACTLY:\n- Exactly 7 stanzas separated by single blank lines: six 6-line stanzas,\
+  \ then a 3-line envoi (39 lines total).\n- The six end-words are: lantern, salt,\
+  \ harbor, thread, winter, bell.\n- Every line must END with its required end-word\
+  \ in exactly this singular form (the end-word may be followed only by punctuation;\
+  \ 'lanterns', 'bells' etc. are NOT acceptable as line endings). Required end-word\
+  \ order:\n  Stanza 1: lantern, salt, harbor, thread, winter, bell\n  Stanza 2: bell,\
+  \ lantern, winter, salt, thread, harbor\n  Stanza 3: harbor, bell, thread, lantern,\
+  \ salt, winter\n  Stanza 4: winter, harbor, salt, bell, lantern, thread\n  Stanza\
+  \ 5: thread, winter, lantern, harbor, bell, salt\n  Stanza 6: salt, thread, bell,\
+  \ winter, harbor, lantern\n- Envoi (stanza 7): line 1 must contain the word 'lantern'\
+  \ somewhere and END with 'salt'; line 2 must contain 'harbor' and END with 'thread';\
+  \ line 3 must contain 'winter' and END with 'bell'.\nOutput ONLY the piece itself\
+  \ in plain ASCII text: no title, no preamble, no explanation, no markdown code fences,\
+  \ no trailing commentary."
+evaluator: structural_count
+expected: 7
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: stanzas
+  rubric_question: Does the poem have exactly 7 blank-line-separated stanzas?
+---
+id: v3.prose.frontier.02
+name: v3.prose.frontier.02
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: "Write a DOUBLE acrostic poem of exactly 12 lines about a sea expedition.\
+  \ Constraints:\n- Reading the FIRST letter of each line, top to bottom, must spell\
+  \ BRINEHARVEST.\n- The LAST letter of each line (the final alphabetic character,\
+  \ ignoring any closing punctuation) must spell CARTOGRAPHER, top to bottom.\n  Line\
+  \ 1: first letter B, last letter C\n  Line 2: first letter R, last letter A\n  Line\
+  \ 3: first letter I, last letter R\n  Line 4: first letter N, last letter T\n  Line\
+  \ 5: first letter E, last letter O\n  Line 6: first letter H, last letter G\n  Line\
+  \ 7: first letter A, last letter R\n  Line 8: first letter R, last letter A\n  Line\
+  \ 9: first letter V, last letter P\n  Line 10: first letter E, last letter H\n \
+  \ Line 11: first letter S, last letter E\n  Line 12: first letter T, last letter\
+  \ R\n- Each line must begin directly with its required letter (no leading punctuation\
+  \ or quote marks).\n- Every line must contain at least 5 words.\nOutput ONLY the\
+  \ piece itself in plain ASCII text: no title, no preamble, no explanation, no markdown\
+  \ code fences, no trailing commentary."
+evaluator: structural_count
+expected: 12
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the poem have exactly 12 non-empty lines?
+---
+id: v3.prose.frontier.03
+name: v3.prose.frontier.03
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a single prose paragraph describing a foggy harbor town at night, under
+  ALL of these constraints:
+
+  - The letter ''e'' (upper or lower case) must NOT appear anywhere in your text.
+  This is a strict lipogram.
+
+  - The paragraph must contain between 100 and 150 words (inclusive).
+
+  - It must consist of exactly 8 sentences. End sentences only with ''.'', ''!'' or
+  ''?'', and do not use periods anywhere else (no abbreviations like ''Mr.'', no decimal
+  numbers, no digits at all).
+
+  - It must include each of these words at least once: harbor, midnight, salt, fog.
+
+  - One paragraph only: no blank lines, no headings, no list items.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: one_para
+  rubric_question: Is the response a single paragraph (no blank-line breaks)?
+---
+id: v3.prose.frontier.04
+name: v3.prose.frontier.04
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a univocalic prose passage about a cold northern night, using ''o''
+  as the ONLY vowel:
+
+  - The letters ''a'', ''e'', ''i'', ''u'' (upper or lower case) must NOT appear anywhere.
+  Only the vowel ''o'' is allowed (''y'' is permitted).
+
+  - Between 40 and 60 words (inclusive).
+
+  - Exactly 5 sentences. End sentences only with ''.'', ''!'' or ''?''; no periods
+  anywhere else, no abbreviations, no digits.
+
+  - Must include each of these words at least once: moon, wolf, frost, snow.
+
+  - One paragraph only: no blank lines.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: one_para
+  rubric_question: Is the response a single paragraph (no blank-line breaks)?
+---
+id: v3.prose.frontier.05
+name: v3.prose.frontier.05
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: "Write a 19-line 'diamond' poem about an old stone wall in farmland, where\
+  \ the number of words per line rises from 1 to 10 and falls back to 1. Exact words-per-line\
+  \ requirement (a word is any whitespace-separated token):\n  line 1: 1, line 2:\
+  \ 2, line 3: 3, line 4: 4, line 5: 5, line 6: 6, line 7: 7, line 8: 8, line 9: 9,\
+  \ line 10: 10, line 11: 9, line 12: 8, line 13: 7, line 14: 6, line 15: 5, line\
+  \ 16: 4, line 17: 3, line 18: 2, line 19: 1.\n- Line 1 and line 19 must each be\
+  \ exactly the single word: stone (no punctuation on those two lines).\n- Line 10\
+  \ (the 10-word line) must contain the word 'meridian'.\n- No blank lines between\
+  \ lines.\nOutput ONLY the piece itself in plain ASCII text: no title, no preamble,\
+  \ no explanation, no markdown code fences, no trailing commentary."
+evaluator: structural_count
+expected: 19
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the poem have exactly 19 non-empty lines?
+---
+id: v3.prose.frontier.06
+name: v3.prose.frontier.06
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a 12-line harvest litany with a strict repeating anaphora pattern:
+
+  - Lines 1, 4, 7, 10 must begin with exactly: Grant us
+
+  - Lines 2, 5, 8, 11 must begin with exactly: Before the
+
+  - Lines 3, 6, 9, 12 must begin with exactly: We carry
+
+  - Lines 1 through 11 must each END with a semicolon '';'' (the semicolon is the
+  last character of the line).
+
+  - Line 12 must END with a period ''.''.
+
+  - Every line must contain between 8 and 12 words (inclusive; a word is any whitespace-separated
+  token).
+
+  - Exactly 12 lines, no blank lines.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 12
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the litany have exactly 12 non-empty lines?
+---
+id: v3.prose.frontier.07
+name: v3.prose.frontier.07
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: "Write a formal letter of complaint about being charged twice for one delivery\
+  \ of archival paper. The letter must have EXACTLY this block structure — 7 blocks\
+  \ separated by single blank lines:\n  Block 1: the date line, exactly: 12 March\
+  \ 2031\n  Block 2: the salutation, exactly: Dear Madam Quenavere,\n  Blocks 3-6:\
+  \ four body paragraphs. Paragraph 1 must begin with exactly 'Records show'; paragraph\
+  \ 2 with 'Under the terms'; paragraph 3 with 'In view of'; paragraph 4 with 'Notwithstanding'.\n\
+  \  Block 7: the closing, exactly two lines: 'Yours faithfully,' then 'Tobias Marchbank'\
+  \ (no punctuation after the name).\nAdditional constraints:\n- The account reference\
+  \ QN-4471/C must appear EXACTLY twice in the letter (no more, no fewer).\n- The\
+  \ words 'very', 'really', and any form of 'utilize'/'utilise' are forbidden.\n-\
+  \ The whole letter must contain between 150 and 250 words (inclusive).\n- Do not\
+  \ use abbreviations written with periods (write 'Madam', not 'Ms.').\nOutput ONLY\
+  \ the piece itself in plain ASCII text: no title, no preamble, no explanation, no\
+  \ markdown code fences, no trailing commentary."
+evaluator: structural_count
+expected: 7
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: blocks
+  rubric_question: Does the letter have exactly 7 blank-line-separated blocks?
+---
+id: v3.prose.frontier.08
+name: v3.prose.frontier.08
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a very short story about a bookkeeper named Odaline Ferrous who finds
+  an impossible entry in her own ledger. Formal constraints:
+
+  - Exactly 14 sentences, each on its own line (14 lines, no blank lines).
+
+  - Odd-numbered sentences (1st, 3rd, ... 13th) must contain EXACTLY 6 words; even-numbered
+  sentences (2nd, 4th, ... 14th) must contain EXACTLY 13 words. A word is any whitespace-separated
+  token; attached punctuation counts as part of the word.
+
+  - Every sentence must end with a period. Do not use ''!'', ''?'', digits, or abbreviations
+  written with periods.
+
+  - The name ''Odaline Ferrous'' must appear at least once.
+
+  - The 14th sentence must end with the word ''ledger.'' (the word ledger followed
+  by the final period).
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 14
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the story have exactly 14 non-empty lines?
+---
+id: v3.prose.frontier.09
+name: v3.prose.frontier.09
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Compose a WORD-LEVEL palindrome sentence of exactly 15 words: the sequence
+  of words must read identically forwards and backwards (word 1 = word 15, word 2
+  = word 14, and so on; capitalization may differ).
+
+  - Word 8 (the center word) must be exactly ''mirror''.
+
+  - The words ''salt'' and ''evening'' must each appear somewhere in the sentence.
+
+  - No word may be immediately repeated (word k must differ from word k+1).
+
+  - Words consist of letters only: no hyphens, apostrophes, or digits. Punctuation
+  between words and a final period are allowed.
+
+  - Output the sentence on a single line.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: line
+  op: ==
+  rubric_id: one_line
+  rubric_question: Is the response a single non-empty line?
+---
+id: v3.prose.frontier.10
+name: v3.prose.frontier.10
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a REVERSE abecedarian poem about a lighthouse keeper: exactly 26 lines,
+  where line 1 begins with the letter Z, line 2 with Y, line 3 with X, and so on backwards
+  through the alphabet, ending with line 26 beginning with A.
+
+  - Each line must begin directly with its required letter (any word starting with
+  that letter; no leading punctuation).
+
+  - Every line must contain between 5 and 8 words (inclusive; a word is any whitespace-separated
+  token).
+
+  - The word ''lighthouse'' must appear at least once in the poem.
+
+  - No blank lines.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 26
+metadata:
+  unit: line
+  op: ==
+  rubric_id: lines
+  rubric_question: Does the poem have exactly 26 non-empty lines?
+---
+id: v3.prose.frontier.11
+name: v3.prose.frontier.11
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a SNOWBALL sentence: a single English sentence of exactly 12 words
+  in which word 1 has exactly 1 letter, word 2 has exactly 2 letters, word 3 has exactly
+  3 letters, and so on up to word 12 with exactly 12 letters.
+
+  - Word 7 must be exactly: carried
+
+  - Words contain letters only (no hyphens, apostrophes, or digits). Commas between
+  words are allowed.
+
+  - The sentence must end with a single period and be written on one line.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: line
+  op: ==
+  rubric_id: one_line
+  rubric_question: Is the response a single non-empty line?
+---
+id: v3.prose.frontier.12
+name: v3.prose.frontier.12
+category: prose
+dimension: quality
+requires_modalities:
+- text
+requires_capabilities:
+- reasoning
+max_tokens: 4096
+temperature: 0.7
+prompt: 'Write a tautogram about sturgeon migrating: EVERY word must begin with the
+  letter ''s'' (upper or lower case).
+
+  - Between 30 and 40 words (inclusive).
+
+  - Exactly 4 sentences. End sentences only with ''.'', ''!'' or ''?''; no periods
+  anywhere else. Semicolons and commas are allowed inside sentences.
+
+  - Must include each of these words at least once: seventeen, silver, sturgeon.
+
+  - No digits, no apostrophes, no contractions, no hyphenated words whose second part
+  starts with another letter.
+
+  - One paragraph only: no blank lines.
+
+  Output ONLY the piece itself in plain ASCII text: no title, no preamble, no explanation,
+  no markdown code fences, no trailing commentary.'
+evaluator: structural_count
+expected: 1
+metadata:
+  unit: stanza
+  op: ==
+  rubric_id: one_para
+  rubric_question: Is the response a single paragraph (no blank-line breaks)?

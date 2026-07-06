@@ -1,0 +1,60 @@
+# Concurrency Tests (4 sub-tests: 1, 2, 4, 8 parallel requests)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 5
+# Evaluator: performance (records success rate and wall time; no pass/fail)
+# Measures: success count, wall time, errors
+
+- id: perf_concurrency_1
+  name: "Concurrency @ 1"
+  category: concurrency
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a short story about a robot learning to paint"
+  max_tokens: 512
+  temperature: 0.7
+  concurrency: 1
+  metadata:
+    measures: [success_count, wall_time, errors]
+
+- id: perf_concurrency_2
+  name: "Concurrency @ 2"
+  category: concurrency
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a short story about a robot learning to paint"
+  max_tokens: 512
+  temperature: 0.7
+  concurrency: 2
+  metadata:
+    measures: [success_count, wall_time, errors]
+
+- id: perf_concurrency_4
+  name: "Concurrency @ 4"
+  category: concurrency
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a short story about a robot learning to paint"
+  max_tokens: 512
+  temperature: 0.7
+  concurrency: 4
+  metadata:
+    measures: [success_count, wall_time, errors]
+
+- id: perf_concurrency_8
+  name: "Concurrency @ 8"
+  category: concurrency
+  dimension: performance
+  requires_modalities: [text]
+  requires_capabilities: [reasoning]
+  evaluator: performance
+  prompt: "Write a short story about a robot learning to paint"
+  max_tokens: 512
+  temperature: 0.7
+  concurrency: 8
+  metadata:
+    measures: [success_count, wall_time, errors]

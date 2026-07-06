@@ -1,0 +1,517 @@
+# Agentic Tasks (16 tasks) — extracted from Aeon-Bench-Pod (MIT License, Copyright 2026 AEON-7)
+# These tasks require a harness with file/shell tools (e.g., Hermes, OpenClaw, OpenCode).
+# Scoring is based on OBSERVABLE OUTCOMES: files produced + final answer text.
+# Kinds: file_io (10), app (2), game (2), animation (2)
+# Evaluator: agentic_file_check — checks file contents + answer text against success spec
+
+id: av2-01-compute-write
+name: Compute and write to file
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Compute 17 * 23 + 9. Write ONLY the resulting number
+  to a file named result.txt in the current directory, then state the number in your final answer.'
+setup_files: {}
+success:
+  files:
+    result.txt:
+      contains:
+      - '400'
+  answer_contains:
+  - '400'
+timeout_s: 180
+---
+id: av2-02-config-extract
+name: Extract value from JSON config
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Read the file config.json in the current directory.
+  Find the value of service.port and write ONLY that number to a file named port.txt, then state the port number in your final answer.'
+setup_files:
+  config.json: '{"service": {"name": "aeon-gateway", "port": 8443, "debug": false}, "owner": "platform-team"}
+
+    '
+success:
+  files:
+    port.txt:
+      contains:
+      - '8443'
+  answer_contains:
+  - '8443'
+timeout_s: 180
+---
+id: av2-03-csv-filter
+name: Filter CSV by column value
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Read data.csv in the current directory. Create
+  filtered.csv containing the header row plus ONLY the data rows whose score column is greater than or equal to 80, in their original order and original column order (no extra columns, no extra rows). Reply
+  DONE when filtered.csv is written.'
+setup_files:
+  data.csv: 'name,score,active
+
+    alice,91,yes
+
+    bob,47,no
+
+    carol,88,yes
+
+    dave,59,yes
+
+    erin,95,no
+
+    '
+success:
+  files:
+    filtered.csv:
+      equals: 'name,score,active
+
+        alice,91,yes
+
+        carol,88,yes
+
+        erin,95,no
+
+        '
+  answer_contains:
+  - done
+timeout_s: 180
+---
+id: av2-04-log-count
+name: Count ERROR lines in log
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Count how many LINES in the file app.log contain
+  the string ERROR. Write ONLY that number to a file named count.txt, then state the count in your final answer.'
+setup_files:
+  app.log: '2026-06-30 10:00:01 INFO boot sequence started
+
+    2026-06-30 10:00:02 ERROR failed to bind port 8080
+
+    2026-06-30 10:00:03 INFO retrying bind
+
+    2026-06-30 10:00:04 ERROR failed to bind port 8080
+
+    2026-06-30 10:00:05 WARN falling back to port 8081
+
+    2026-06-30 10:00:06 INFO listening on 8081
+
+    2026-06-30 10:00:07 ERROR upstream timeout gateway-1
+
+    2026-06-30 10:00:08 ERROR upstream timeout gateway-2
+
+    2026-06-30 10:00:09 INFO upstream recovered
+
+    2026-06-30 10:00:10 ERROR disk usage above 90%
+
+    2026-06-30 10:00:11 WARN cache eviction slow
+
+    2026-06-30 10:00:12 ERROR checksum mismatch on shard 3
+
+    2026-06-30 10:00:13 INFO shard 3 rebuilt
+
+    2026-06-30 10:00:14 ERROR worker crashed pid 4177
+
+    2026-06-30 10:00:15 INFO worker restarted
+
+    '
+success:
+  files:
+    count.txt:
+      equals: '7'
+  answer_contains:
+  - '7'
+timeout_s: 180
+---
+id: av2-05-script-and-output
+name: Write script, run, save output
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a Python script named fib.py in the current
+  directory that prints the first 8 Fibonacci numbers starting from 0 and 1, on ONE line, separated by commas (i.e. it prints: 0,1,1,2,3,5,8,13). Run the script and save its exact output to a file named
+  fib_out.txt. Then state the last number of the sequence in your final answer.'
+setup_files: {}
+success:
+  files:
+    fib.py:
+      contains:
+      - print
+    fib_out.txt:
+      contains:
+      - 0,1,1,2,3,5,8,13
+  answer_contains:
+  - '13'
+timeout_s: 240
+---
+id: av2-06-bugfix-run
+name: Fix bug and run script
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. The script buggy.py in the current directory is
+  supposed to print the SUM of the list [3, 5, 7, 11] (which is 26) but it has a one-line bug. Fix the bug by editing buggy.py in place, run the fixed script, and write its exact output to a file named
+  out.txt. Then state the printed number in your final answer.'
+setup_files:
+  buggy.py: "def total(nums):\n    s = 0\n    for n in nums:\n        s -= n\n    return s\n\nif __name__ == \"__main__\":\n    print(total([3, 5, 7, 11]))\n"
+success:
+  files:
+    buggy.py:
+      contains:
+      - +
+    out.txt:
+      equals: '26'
+  answer_contains:
+  - '26'
+timeout_s: 240
+---
+id: av2-07-json-spec
+name: Create JSON from spec
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Create a file named report.json in the current
+  directory containing a single JSON object with exactly these keys and values: "status" set to the string "ok", "count" set to the number 3, and "items" set to the list ["a", "b", "c"]. Reply DONE when
+  the file is written.'
+setup_files: {}
+success:
+  files:
+    report.json:
+      contains:
+      - '"status"'
+      - '"ok"'
+      - '"count"'
+      - '3'
+      - '"items"'
+      - '"a"'
+      - '"b"'
+      - '"c"'
+  answer_contains:
+  - done
+timeout_s: 180
+---
+id: av2-08-multifile-summary
+name: Read multiple files and summarize
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. The current directory holds alpha.txt, beta.txt
+  and gamma.txt, each containing a line like ''servers: N''. Read all three, add the three server counts together, and write a file named summary.txt containing exactly one line: ''total: <sum>''. Then
+  state the total in your final answer.'
+setup_files:
+  alpha.txt: 'servers: 4
+
+    '
+  beta.txt: 'servers: 7
+
+    '
+  gamma.txt: 'servers: 1
+
+    '
+success:
+  files:
+    summary.txt:
+      contains:
+      - 'total: 12'
+  answer_contains:
+  - '12'
+timeout_s: 180
+---
+id: av2-09-rename
+name: Rename file preserving content
+category: agentic
+dimension: quality
+kind: file_io
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Rename the file draft_notes.txt in the current
+  directory to final_notes.txt, keeping its content unchanged. Reply DONE when the rename is complete.'
+setup_files:
+  draft_notes.txt: 'quarterly sync notes v2
+
+    '
+success:
+  files:
+    final_notes.txt:
+      contains:
+      - quarterly sync notes v2
+  answer_contains:
+  - done
+timeout_s: 180
+---
+id: av2-10-reasoning-only
+name: Pure reasoning (no file I/O)
+category: agentic
+dimension: quality
+kind: reasoning
+difficulty: medium
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Do NOT write any files for this task. A train departs
+  at 09:20 and arrives at 11:05 the same morning. How many minutes does the journey take? Give the number of minutes in your final answer.'
+setup_files: {}
+success:
+  files: {}
+  answer_contains:
+  - '105'
+timeout_s: 120
+---
+id: av2-11-app-counter
+name: Counter app (HTML)
+category: agentic
+dimension: quality
+kind: app
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named counter.html
+  in the current directory (all CSS and JS inline, no external resources). It must implement an interactive counter app: an element with id "count" that displays the current value starting at 0, and three
+  buttons with ids "inc", "dec" and "reset". Wire click handlers with addEventListener so "inc" increases the value by 1, "dec" decreases it by 1, and "reset" sets it back to 0, updating the #count element
+  each time. Reply DONE when counter.html is written.'
+setup_files: {}
+success:
+  files:
+    counter.html:
+      contains:
+      - <script
+      - id="count"
+      - id="inc"
+      - id="dec"
+      - id="reset"
+      - addEventListener
+      - getElementById
+  answer_contains:
+  - done
+timeout_s: 300
+---
+id: av2-12-app-todo
+name: Todo list app (HTML)
+category: agentic
+dimension: quality
+kind: app
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named todo.html
+  in the current directory (all CSS and JS inline, no external resources). It must implement an interactive to-do list: a text input with id "todo-input", an "Add" button with id "add-btn", and an empty
+  list with id "todo-list". Clicking Add (wired via addEventListener) must read the input, and if non-empty append a new <li> for it to #todo-list using createElement/appendChild, then clear the input.
+  Reply DONE when todo.html is written.'
+setup_files: {}
+success:
+  files:
+    todo.html:
+      contains:
+      - <script
+      - id="todo-input"
+      - id="add-btn"
+      - id="todo-list"
+      - addEventListener
+      - createElement
+      - appendChild
+  answer_contains:
+  - done
+timeout_s: 300
+---
+id: av2-13-game-pong
+name: Pong game (HTML canvas)
+category: agentic
+dimension: quality
+kind: game
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named pong.html
+  in the current directory (all CSS and JS inline, no external resources, canvas only). It must implement a simple Pong-style game on a <canvas> element with id "game": use getContext("2d") to draw, move
+  a paddle up/down when the ArrowUp/ArrowDown keys are pressed (handled via addEventListener on keydown), bounce a ball off the walls, and animate the game loop with requestAnimationFrame. Reply DONE when
+  pong.html is written.'
+setup_files: {}
+success:
+  files:
+    pong.html:
+      contains:
+      - <script
+      - <canvas
+      - id="game"
+      - getcontext
+      - requestAnimationFrame
+      - addEventListener
+      - keydown
+  answer_contains:
+  - done
+timeout_s: 300
+---
+id: av2-14-game-snake
+name: Snake game (HTML canvas)
+category: agentic
+dimension: quality
+kind: game
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named snake.html
+  in the current directory (all CSS and JS inline, no external resources, canvas only). It must implement a Snake game on a <canvas> element with id "board": use getContext("2d") to draw the snake and food,
+  steer the snake with the arrow keys (handled via addEventListener on keydown), grow the snake and update a score element with id "score" when it eats food, and drive the game loop with requestAnimationFrame.
+  Reply DONE when snake.html is written.'
+setup_files: {}
+success:
+  files:
+    snake.html:
+      contains:
+      - <script
+      - <canvas
+      - id="board"
+      - id="score"
+      - getcontext
+      - requestAnimationFrame
+      - addEventListener
+      - keydown
+  answer_contains:
+  - done
+timeout_s: 300
+---
+id: av2-15-anim-bounce
+name: Bouncing balls animation (HTML canvas)
+category: agentic
+dimension: quality
+kind: animation
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named bounce.html
+  in the current directory (all CSS and JS inline, no external resources, canvas only). It must animate several balls bouncing around inside a <canvas> element with id "scene": use getContext("2d"), give
+  each ball a position and velocity, update positions and reverse velocity at the walls every frame, redraw with arc/fill, and run the loop continuously with requestAnimationFrame. Reply DONE when bounce.html
+  is written.'
+setup_files: {}
+success:
+  files:
+    bounce.html:
+      contains:
+      - <script
+      - <canvas
+      - id="scene"
+      - getcontext
+      - requestAnimationFrame
+      - arc
+      - clearrect
+  answer_contains:
+  - done
+timeout_s: 300
+---
+id: av2-16-anim-starfield
+name: Starfield animation (HTML canvas)
+category: agentic
+dimension: quality
+kind: animation
+difficulty: hard
+requires_modalities:
+- text
+requires_capabilities:
+- tool_calling
+- tool_calling
+evaluator: agentic_file_check
+prompt: 'You are working in a sandbox: the CURRENT DIRECTORY is your workdir. Use your file/shell tools directly — do not ask questions, act autonomously. Write a self-contained single HTML file named starfield.html
+  in the current directory (all CSS and JS inline, no external resources, canvas only). It must animate a perspective starfield flying toward the viewer on a <canvas> element with id "stars": use getContext("2d"),
+  maintain an array of stars with a depth (z) value, advance them toward the camera each frame (recycling stars that pass the viewer), project them to screen coordinates, and drive the loop with requestAnimationFrame.
+  Reply DONE when starfield.html is written.'
+setup_files: {}
+success:
+  files:
+    starfield.html:
+      contains:
+      - <script
+      - <canvas
+      - id="stars"
+      - getcontext
+      - requestAnimationFrame
+      - fillrect
+  answer_contains:
+  - done
+timeout_s: 300

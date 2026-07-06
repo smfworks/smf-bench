@@ -1,0 +1,81 @@
+# Tool Calling Tests (2 tests)
+# Ported from qwen3-6-35b-full-65test-benchmark.py Dimension 8
+# Evaluator: tool_call (checks tool name and arguments)
+
+- id: tool_call_weather
+  name: "Weather tool call"
+  category: tool_calling
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [tool_calling]
+  evaluator: tool_call
+  prompt: "What's the weather like in Tokyo?"
+  expected:
+    tool: get_weather
+    args_contains:
+      location: Tokyo
+  max_tokens: 512
+  temperature: 0.3
+  metadata:
+    tools:
+      - type: function
+        function:
+          name: get_weather
+          description: "Get current weather for a location"
+          parameters:
+            type: object
+            properties:
+              location:
+                type: string
+                description: "City name"
+            required: [location]
+      - type: function
+        function:
+          name: calculate
+          description: "Evaluate a math expression"
+          parameters:
+            type: object
+            properties:
+              expression:
+                type: string
+                description: "Math expression to evaluate"
+            required: [expression]
+
+- id: tool_call_calculator
+  name: "Calculator tool call"
+  category: tool_calling
+  dimension: quality
+  requires_modalities: [text]
+  requires_capabilities: [tool_calling]
+  evaluator: tool_call
+  prompt: "Calculate 45 * 73"
+  expected:
+    tool: calculate
+    args_contains:
+      expression: "45 * 73"
+  max_tokens: 512
+  temperature: 0.3
+  metadata:
+    tools:
+      - type: function
+        function:
+          name: get_weather
+          description: "Get current weather for a location"
+          parameters:
+            type: object
+            properties:
+              location:
+                type: string
+                description: "City name"
+            required: [location]
+      - type: function
+        function:
+          name: calculate
+          description: "Evaluate a math expression"
+          parameters:
+            type: object
+            properties:
+              expression:
+                type: string
+                description: "Math expression to evaluate"
+            required: [expression]

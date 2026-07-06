@@ -1,0 +1,39 @@
+# Model manifest: NVIDIA Nemotron-Omni
+# Multimodal: text + audio + vision + video
+# Served via vLLM on DGX Spark (endpoint TBD)
+
+model_id: "nemotron-omni"
+name: "Nemotron-Omni"
+provider: "nvidia"
+served_name: "nvidia/Nemotron-Omni"
+
+# Input modalities supported
+input_modalities:
+  - text
+  - image_in
+  - video_in
+  - audio_in
+
+# Output modalities supported
+output_modalities:
+  - text
+
+# Capabilities
+capabilities:
+  - reasoning
+  - vision
+  - video
+  - audio
+  - writing
+
+context_length: 131072
+max_output_tokens: 4096
+
+# Engine metadata
+metadata:
+  endpoint: "http://spark-56bc:8889/v1"   # placeholder — confirm actual port
+  api_key: "dummy"
+  engine: "vLLM"
+  engine_version: "latest"
+  quantization: "NVFP4"
+  speculative_decoding: "none"

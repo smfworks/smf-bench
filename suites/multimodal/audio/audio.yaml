@@ -1,0 +1,47 @@
+# Audio Understanding Tests (3 tests)
+# Ported from nemotron-omni-local-benchmark.py
+# Evaluator: text_contains (keyword-based scoring)
+# Requires: audio modality support
+# Audio files loaded from AUDIO_DIR (default: /home/mikesai1/NemoVault/queries/multimodal-test-images)
+
+- id: audio_1_transcribe
+  name: "Audio transcription"
+  category: audio
+  dimension: quality
+  requires_modalities: [text, audio_in]
+  requires_capabilities: [audio]
+  evaluator: text_contains
+  prompt: "Transcribe what is being said in this audio clip."
+  audio_file: speech_sample.wav
+  expected_keywords: [hello, world, speech, audio, transcription]
+  min_matches: 2
+  max_tokens: 256
+  temperature: 0.3
+
+- id: audio_2_language
+  name: "Language identification"
+  category: audio
+  dimension: quality
+  requires_modalities: [text, audio_in]
+  requires_capabilities: [audio]
+  evaluator: text_contains
+  prompt: "What language is being spoken in this audio clip? Answer with just the language name."
+  audio_file: speech_sample.wav
+  expected_keywords: [English, Spanish, French, German, Chinese, Japanese]
+  min_matches: 1
+  max_tokens: 50
+  temperature: 0.3
+
+- id: audio_3_sentiment
+  name: "Audio sentiment analysis"
+  category: audio
+  dimension: quality
+  requires_modalities: [text, audio_in]
+  requires_capabilities: [audio]
+  evaluator: text_contains
+  prompt: "Analyze the sentiment and tone of the speaker in this audio clip. Is it positive, negative, or neutral?"
+  audio_file: speech_sample.wav
+  expected_keywords: [positive, negative, neutral, tone, sentiment]
+  min_matches: 1
+  max_tokens: 128
+  temperature: 0.3
