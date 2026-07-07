@@ -1,0 +1,1591 @@
+{
+  "tag": "qwen3.6-35b",
+  "endpoint": "http://spark-56bc:8888/v1",
+  "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+  "timestamp": "20260706_203823",
+  "reasoning_model": true,
+  "wall_time_seconds": 177.3,
+  "summary": {
+    "total": 181,
+    "passed": 16,
+    "failed": 5,
+    "error": 160,
+    "pass_rate": 8.8
+  },
+  "by_category": {
+    "reasoning": {
+      "pass": 7,
+      "fail": 1,
+      "error": 30
+    },
+    "math": {
+      "pass": 9,
+      "fail": 4,
+      "error": 17
+    },
+    "coding": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "instruction": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "prose": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "writing": {
+      "pass": 0,
+      "fail": 0,
+      "error": 5
+    },
+    "tool_calling": {
+      "pass": 0,
+      "fail": 0,
+      "error": 2
+    },
+    "agentic": {
+      "pass": 0,
+      "fail": 0,
+      "error": 16
+    }
+  },
+  "tests": [
+    {
+      "test_id": "reasoning_math_basic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 391",
+      "elapsed": 45.01033674296923,
+      "tokens_used": 197,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_math_advanced",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 5",
+      "elapsed": 1.3652150189736858,
+      "tokens_used": 195,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_logic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex 'cannot determine' did not match",
+      "elapsed": 1.4815982219297439,
+      "tokens_used": 177,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_coding",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: def reverse_linked_list(head):\n    prev = None\n    current = head\n    while current:\n        next_no",
+      "elapsed": 0.5143749479902908,
+      "tokens_used": 82,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: Canberra",
+      "elapsed": 0.6949066710658371,
+      "tokens_used": 82,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_speed",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 80",
+      "elapsed": 2.613868857966736,
+      "tokens_used": 348,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_instruction",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1. Apple\n2. Banana\n3",
+      "elapsed": 0.171984690008685,
+      "tokens_used": 40,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_world_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1989",
+      "elapsed": 0.6679570620181039,
+      "tokens_used": 81,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.easy.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 15072",
+      "elapsed": 3.4200229530688375,
+      "tokens_used": 470,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.easy.02",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 7",
+      "elapsed": 1.1654643290676177,
+      "tokens_used": 175,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 105",
+      "elapsed": 4.791912897024304,
+      "tokens_used": 651,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.02",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b16.913\\b' did not match",
+      "elapsed": 4.197575357975438,
+      "tokens_used": 571,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.03",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 10.312",
+      "elapsed": 5.442768682027236,
+      "tokens_used": 794,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 4.101",
+      "elapsed": 11.380200979067013,
+      "tokens_used": 1513,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.02",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 142.73",
+      "elapsed": 6.7434549879981205,
+      "tokens_used": 964,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.03",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b5.461\\b' did not match",
+      "elapsed": 0.23640812106896192,
+      "tokens_used": 182,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.04",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1.2986",
+      "elapsed": 12.36530387995299,
+      "tokens_used": 1673,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.05",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b8.750\\b' did not match",
+      "elapsed": 4.699857077095658,
+      "tokens_used": 683,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 14.595",
+      "elapsed": 9.733043634099886,
+      "tokens_used": 1347,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.02",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b7.683\\b' did not match",
+      "elapsed": 32.99236330005806,
+      "tokens_used": 4293,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.03",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 135.96",
+      "elapsed": 9.75021114910487,
+      "tokens_used": 1440,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.04",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "Server disconnected without sending a response.",
+      "elapsed": 17.72492454398889
+    },
+    {
+      "test_id": "v3.math.expert.05",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0026711069513112307
+    },
+    {
+      "test_id": "v3.math.expert.06",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0011850440641865134
+    },
+    {
+      "test_id": "v3.math.expert.07",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.001071537029929459
+    },
+    {
+      "test_id": "v3.math.expert.08",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007209080504253507
+    },
+    {
+      "test_id": "v3.math.frontier.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007004080107435584
+    },
+    {
+      "test_id": "v3.math.frontier.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000641750986687839
+    },
+    {
+      "test_id": "v3.math.frontier.03",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006854389794170856
+    },
+    {
+      "test_id": "v3.math.frontier.04",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006319700041785836
+    },
+    {
+      "test_id": "v3.math.frontier.05",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007758559659123421
+    },
+    {
+      "test_id": "v3.math.frontier.06",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006251810118556023
+    },
+    {
+      "test_id": "v3.math.frontier.07",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006986180087551475
+    },
+    {
+      "test_id": "v3.math.frontier.08",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006645689718425274
+    },
+    {
+      "test_id": "v3.math.frontier.09",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006017920095473528
+    },
+    {
+      "test_id": "v3.math.frontier.10",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007414669962599874
+    },
+    {
+      "test_id": "v3.math.frontier.11",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0019687790190801024
+    },
+    {
+      "test_id": "v3.math.frontier.12",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007508060662075877
+    },
+    {
+      "test_id": "v3.coding.easy.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000643210019916296
+    },
+    {
+      "test_id": "v3.coding.easy.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007473659934476018
+    },
+    {
+      "test_id": "v3.coding.medium.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000838923966512084
+    },
+    {
+      "test_id": "v3.coding.medium.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006249299040064216
+    },
+    {
+      "test_id": "v3.coding.medium.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006054509431123734
+    },
+    {
+      "test_id": "v3.coding.hard.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007375369314104319
+    },
+    {
+      "test_id": "v3.coding.hard.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000527863041497767
+    },
+    {
+      "test_id": "v3.coding.hard.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00059254199732095
+    },
+    {
+      "test_id": "v3.coding.hard.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006740590324625373
+    },
+    {
+      "test_id": "v3.coding.hard.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005406240234151483
+    },
+    {
+      "test_id": "v3.coding.expert.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005096850218251348
+    },
+    {
+      "test_id": "v3.coding.expert.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006321909604594111
+    },
+    {
+      "test_id": "v3.coding.expert.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000503725023008883
+    },
+    {
+      "test_id": "v3.coding.expert.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000519332941621542
+    },
+    {
+      "test_id": "v3.coding.expert.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005336040630936623
+    },
+    {
+      "test_id": "v3.coding.expert.06",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00046565604861825705
+    },
+    {
+      "test_id": "v3.coding.expert.07",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005118839908391237
+    },
+    {
+      "test_id": "v3.coding.expert.08",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006072210380807519
+    },
+    {
+      "test_id": "v3.coding.frontier.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005207940703257918
+    },
+    {
+      "test_id": "v3.coding.frontier.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004353469703346491
+    },
+    {
+      "test_id": "v3.coding.frontier.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004588160663843155
+    },
+    {
+      "test_id": "v3.coding.frontier.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004627759335562587
+    },
+    {
+      "test_id": "v3.coding.frontier.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00047494494356215
+    },
+    {
+      "test_id": "v3.coding.frontier.06",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004660059930756688
+    },
+    {
+      "test_id": "v3.coding.frontier.07",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007104580290615559
+    },
+    {
+      "test_id": "v3.coding.frontier.08",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005533529911190271
+    },
+    {
+      "test_id": "v3.coding.frontier.09",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005546730244532228
+    },
+    {
+      "test_id": "v3.coding.frontier.10",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006167609244585037
+    },
+    {
+      "test_id": "v3.coding.frontier.11",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005312630673870444
+    },
+    {
+      "test_id": "v3.coding.frontier.12",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006885180482640862
+    },
+    {
+      "test_id": "v3.reasoning.easy.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006667189300060272
+    },
+    {
+      "test_id": "v3.reasoning.easy.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005871719913557172
+    },
+    {
+      "test_id": "v3.reasoning.medium.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006628099363297224
+    },
+    {
+      "test_id": "v3.reasoning.medium.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006006620824337006
+    },
+    {
+      "test_id": "v3.reasoning.medium.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005592129891738296
+    },
+    {
+      "test_id": "v3.reasoning.hard.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006545300129801035
+    },
+    {
+      "test_id": "v3.reasoning.hard.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006831790087744594
+    },
+    {
+      "test_id": "v3.reasoning.hard.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006144510116428137
+    },
+    {
+      "test_id": "v3.reasoning.hard.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00047225598245859146
+    },
+    {
+      "test_id": "v3.reasoning.hard.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00047291500959545374
+    },
+    {
+      "test_id": "v3.reasoning.expert.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004969739820808172
+    },
+    {
+      "test_id": "v3.reasoning.expert.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004510260187089443
+    },
+    {
+      "test_id": "v3.reasoning.expert.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004540759837254882
+    },
+    {
+      "test_id": "v3.reasoning.expert.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005931009072810411
+    },
+    {
+      "test_id": "v3.reasoning.expert.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00046693591866642237
+    },
+    {
+      "test_id": "v3.reasoning.expert.06",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004884650697931647
+    },
+    {
+      "test_id": "v3.reasoning.expert.07",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00054519297555089
+    },
+    {
+      "test_id": "v3.reasoning.expert.08",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005089440383017063
+    },
+    {
+      "test_id": "v3.reasoning.frontier.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004982439568266273
+    },
+    {
+      "test_id": "v3.reasoning.frontier.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005966819589957595
+    },
+    {
+      "test_id": "v3.reasoning.frontier.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005090649938210845
+    },
+    {
+      "test_id": "v3.reasoning.frontier.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00046398607082664967
+    },
+    {
+      "test_id": "v3.reasoning.frontier.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005285630468279123
+    },
+    {
+      "test_id": "v3.reasoning.frontier.06",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004595560021698475
+    },
+    {
+      "test_id": "v3.reasoning.frontier.07",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004602960543707013
+    },
+    {
+      "test_id": "v3.reasoning.frontier.08",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006320110987871885
+    },
+    {
+      "test_id": "v3.reasoning.frontier.09",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.000508093973621726
+    },
+    {
+      "test_id": "v3.reasoning.frontier.10",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00046897598076611757
+    },
+    {
+      "test_id": "v3.reasoning.frontier.11",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004845049697905779
+    },
+    {
+      "test_id": "v3.reasoning.frontier.12",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005006350111216307
+    },
+    {
+      "test_id": "v3.instruction.easy.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005137448897585273
+    },
+    {
+      "test_id": "v3.instruction.easy.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005573430098593235
+    },
+    {
+      "test_id": "v3.instruction.medium.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006960579194128513
+    },
+    {
+      "test_id": "v3.instruction.medium.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005556530086323619
+    },
+    {
+      "test_id": "v3.instruction.medium.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005449430318549275
+    },
+    {
+      "test_id": "v3.instruction.hard.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005818520439788699
+    },
+    {
+      "test_id": "v3.instruction.hard.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005433229962363839
+    },
+    {
+      "test_id": "v3.instruction.hard.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005453630583360791
+    },
+    {
+      "test_id": "v3.instruction.hard.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007677270332351327
+    },
+    {
+      "test_id": "v3.instruction.hard.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005450240569189191
+    },
+    {
+      "test_id": "v3.instruction.expert.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005808520363643765
+    },
+    {
+      "test_id": "v3.instruction.expert.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005238238954916596
+    },
+    {
+      "test_id": "v3.instruction.expert.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005271440604701638
+    },
+    {
+      "test_id": "v3.instruction.expert.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005429829470813274
+    },
+    {
+      "test_id": "v3.instruction.expert.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006522089242935181
+    },
+    {
+      "test_id": "v3.instruction.expert.06",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005517130484804511
+    },
+    {
+      "test_id": "v3.instruction.expert.07",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005274729337543249
+    },
+    {
+      "test_id": "v3.instruction.expert.08",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005290639819577336
+    },
+    {
+      "test_id": "v3.instruction.frontier.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005223039770498872
+    },
+    {
+      "test_id": "v3.instruction.frontier.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005275339353829622
+    },
+    {
+      "test_id": "v3.instruction.frontier.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005184139590710402
+    },
+    {
+      "test_id": "v3.instruction.frontier.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006431899964809418
+    },
+    {
+      "test_id": "v3.instruction.frontier.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005302029894664884
+    },
+    {
+      "test_id": "v3.instruction.frontier.06",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005355230532586575
+    },
+    {
+      "test_id": "v3.instruction.frontier.07",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005476829828694463
+    },
+    {
+      "test_id": "v3.instruction.frontier.08",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005392229650169611
+    },
+    {
+      "test_id": "v3.instruction.frontier.09",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006155810551717877
+    },
+    {
+      "test_id": "v3.instruction.frontier.10",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007141570094972849
+    },
+    {
+      "test_id": "v3.instruction.frontier.11",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005571729270741343
+    },
+    {
+      "test_id": "v3.instruction.frontier.12",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005459830863401294
+    },
+    {
+      "test_id": "v3.prose.easy.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005706329829990864
+    },
+    {
+      "test_id": "v3.prose.easy.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005589830689132214
+    },
+    {
+      "test_id": "v3.prose.medium.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005671419203281403
+    },
+    {
+      "test_id": "v3.prose.medium.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007128280121833086
+    },
+    {
+      "test_id": "v3.prose.medium.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006106810178607702
+    },
+    {
+      "test_id": "v3.prose.hard.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005621330346912146
+    },
+    {
+      "test_id": "v3.prose.hard.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005572029622271657
+    },
+    {
+      "test_id": "v3.prose.hard.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0014223359758034348
+    },
+    {
+      "test_id": "v3.prose.hard.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005296840099617839
+    },
+    {
+      "test_id": "v3.prose.hard.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005539229605346918
+    },
+    {
+      "test_id": "v3.prose.expert.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006622800137847662
+    },
+    {
+      "test_id": "v3.prose.expert.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005173539975658059
+    },
+    {
+      "test_id": "v3.prose.expert.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005090640624985099
+    },
+    {
+      "test_id": "v3.prose.expert.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005334140732884407
+    },
+    {
+      "test_id": "v3.prose.expert.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0004968150751665235
+    },
+    {
+      "test_id": "v3.prose.expert.06",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005272829439491034
+    },
+    {
+      "test_id": "v3.prose.expert.07",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006259209476411343
+    },
+    {
+      "test_id": "v3.prose.expert.08",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005204039625823498
+    },
+    {
+      "test_id": "v3.prose.frontier.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005232440307736397
+    },
+    {
+      "test_id": "v3.prose.frontier.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005030849715694785
+    },
+    {
+      "test_id": "v3.prose.frontier.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005398539360612631
+    },
+    {
+      "test_id": "v3.prose.frontier.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005437739891931415
+    },
+    {
+      "test_id": "v3.prose.frontier.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006631899159401655
+    },
+    {
+      "test_id": "v3.prose.frontier.06",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005061249248683453
+    },
+    {
+      "test_id": "v3.prose.frontier.07",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005111349746584892
+    },
+    {
+      "test_id": "v3.prose.frontier.08",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.00048672500997781754
+    },
+    {
+      "test_id": "v3.prose.frontier.09",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005319640040397644
+    },
+    {
+      "test_id": "v3.prose.frontier.10",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005575530230998993
+    },
+    {
+      "test_id": "v3.prose.frontier.11",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005382329691201448
+    },
+    {
+      "test_id": "v3.prose.frontier.12",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007184480782598257
+    },
+    {
+      "test_id": "writing_article",
+      "category": "writing",
+      "suite": "writing",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006326709408313036
+    },
+    {
+      "test_id": "writing_summary",
+      "category": "writing",
+      "suite": "writing",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007725859759375453
+    },
+    {
+      "test_id": "writing_creative",
+      "category": "writing",
+      "suite": "writing",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006421399302780628
+    },
+    {
+      "test_id": "writing_technical",
+      "category": "writing",
+      "suite": "writing",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0005839320365339518
+    },
+    {
+      "test_id": "writing_format",
+      "category": "writing",
+      "suite": "writing",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0009242910891771317
+    },
+    {
+      "test_id": "tool_call_weather",
+      "category": "tool_calling",
+      "suite": "tool_calling",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0008874330669641495
+    },
+    {
+      "test_id": "tool_call_calculator",
+      "category": "tool_calling",
+      "suite": "tool_calling",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007742559537291527
+    },
+    {
+      "test_id": "av2-01-compute-write",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007354570552706718
+    },
+    {
+      "test_id": "av2-02-config-extract",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007114280015230179
+    },
+    {
+      "test_id": "av2-03-csv-filter",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007480870699509978
+    },
+    {
+      "test_id": "av2-04-log-count",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007301769219338894
+    },
+    {
+      "test_id": "av2-05-script-and-output",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0009807499591261148
+    },
+    {
+      "test_id": "av2-06-bugfix-run",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007540970109403133
+    },
+    {
+      "test_id": "av2-07-json-spec",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007084580138325691
+    },
+    {
+      "test_id": "av2-08-multifile-summary",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007808560039848089
+    },
+    {
+      "test_id": "av2-09-rename",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007435870356857777
+    },
+    {
+      "test_id": "av2-10-reasoning-only",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007805349305272102
+    },
+    {
+      "test_id": "av2-11-app-counter",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0007857260061427951
+    },
+    {
+      "test_id": "av2-12-app-todo",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0008874620543792844
+    },
+    {
+      "test_id": "av2-13-game-pong",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0006943679181858897
+    },
+    {
+      "test_id": "av2-14-game-snake",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0008914119098335505
+    },
+    {
+      "test_id": "av2-15-anim-bounce",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0008263839408755302
+    },
+    {
+      "test_id": "av2-16-anim-starfield",
+      "category": "agentic",
+      "suite": "agentic",
+      "status": "error",
+      "error": "All connection attempts failed",
+      "elapsed": 0.0008280639303848147
+    }
+  ]
+}

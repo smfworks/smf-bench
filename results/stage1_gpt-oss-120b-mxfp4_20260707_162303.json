@@ -1,0 +1,1369 @@
+{
+  "tag": "gpt-oss-120b-mxfp4",
+  "endpoint": "http://spark-56bc:8888/v1",
+  "model": "/model",
+  "timestamp": "20260707_162356",
+  "reasoning_model": true,
+  "wall_time_seconds": 52.9,
+  "summary": {
+    "total": 160,
+    "passed": 10,
+    "failed": 0,
+    "error": 150,
+    "pass_rate": 6.2
+  },
+  "by_category": {
+    "reasoning": {
+      "pass": 8,
+      "fail": 0,
+      "error": 30
+    },
+    "math": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "coding": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "instruction": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "prose": {
+      "pass": 0,
+      "fail": 0,
+      "error": 30
+    },
+    "writing": {
+      "pass": 2,
+      "fail": 0,
+      "error": 0
+    }
+  },
+  "tests": [
+    {
+      "test_id": "reasoning_math_basic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 391",
+      "elapsed": 3.9799670500215143,
+      "tokens_used": 215,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_math_advanced",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 5",
+      "elapsed": 6.006352778058499,
+      "tokens_used": 286,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_logic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: cannot determine",
+      "elapsed": 5.427072167978622,
+      "tokens_used": 278,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_coding",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: def reverse_list(head: ListNode | None) -> ListNode | None:\n    \"\"\"\n    Reverse a singly\u2011linked list",
+      "elapsed": 7.40797673293855,
+      "tokens_used": 335,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: Canberra",
+      "elapsed": 2.955573490005918,
+      "tokens_used": 172,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_speed",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 80",
+      "elapsed": 4.500269963988103,
+      "tokens_used": 237,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_instruction",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1. Apple  \n2. Banana  \n3",
+      "elapsed": 2.602655349066481,
+      "tokens_used": 171,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_world_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1989",
+      "elapsed": 2.9983406900428236,
+      "tokens_used": 176,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.easy.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 464 characters (more than 0 characters, which is t",
+      "elapsed": 0.003351219929754734
+    },
+    {
+      "test_id": "v3.math.easy.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 408 characters (more than 0 characters, which is t",
+      "elapsed": 0.0027529230574145913
+    },
+    {
+      "test_id": "v3.math.medium.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 478 characters (more than 0 characters, which is t",
+      "elapsed": 0.002588959992863238
+    },
+    {
+      "test_id": "v3.math.medium.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 537 characters (more than 0 characters, which is t",
+      "elapsed": 0.002173466025851667
+    },
+    {
+      "test_id": "v3.math.medium.03",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 583 characters (more than 0 characters, which is t",
+      "elapsed": 0.002024002023972571
+    },
+    {
+      "test_id": "v3.math.hard.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 871 characters (more than 0 characters, which is t",
+      "elapsed": 0.0019673440838232636
+    },
+    {
+      "test_id": "v3.math.hard.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 695 characters (more than 0 characters, which is t",
+      "elapsed": 0.0020067429868504405
+    },
+    {
+      "test_id": "v3.math.hard.03",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 807 characters (more than 0 characters, which is t",
+      "elapsed": 0.0022370340302586555
+    },
+    {
+      "test_id": "v3.math.hard.04",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 602 characters (more than 0 characters, which is t",
+      "elapsed": 0.0017630619695410132
+    },
+    {
+      "test_id": "v3.math.hard.05",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 727 characters (more than 0 characters, which is t",
+      "elapsed": 0.002530151978135109
+    },
+    {
+      "test_id": "v3.math.expert.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1067 characters (more than 0 characters, which is ",
+      "elapsed": 0.0021869048941880465
+    },
+    {
+      "test_id": "v3.math.expert.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 941 characters (more than 0 characters, which is t",
+      "elapsed": 0.001767751993611455
+    },
+    {
+      "test_id": "v3.math.expert.03",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 947 characters (more than 0 characters, which is t",
+      "elapsed": 0.001870697014965117
+    },
+    {
+      "test_id": "v3.math.expert.04",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 842 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016333259409293532
+    },
+    {
+      "test_id": "v3.math.expert.05",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 867 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016210769535973668
+    },
+    {
+      "test_id": "v3.math.expert.06",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 693 characters (more than 0 characters, which is t",
+      "elapsed": 0.0021675059106200933
+    },
+    {
+      "test_id": "v3.math.expert.07",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 724 characters (more than 0 characters, which is t",
+      "elapsed": 0.001572409993968904
+    },
+    {
+      "test_id": "v3.math.expert.08",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 893 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014783130027353764
+    },
+    {
+      "test_id": "v3.math.frontier.01",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 959 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016071979189291596
+    },
+    {
+      "test_id": "v3.math.frontier.02",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 848 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016913550207391381
+    },
+    {
+      "test_id": "v3.math.frontier.03",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 847 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014432440511882305
+    },
+    {
+      "test_id": "v3.math.frontier.04",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 849 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015477300621569157
+    },
+    {
+      "test_id": "v3.math.frontier.05",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 863 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016526160761713982
+    },
+    {
+      "test_id": "v3.math.frontier.06",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 799 characters (more than 0 characters, which is t",
+      "elapsed": 0.001951234065927565
+    },
+    {
+      "test_id": "v3.math.frontier.07",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 791 characters (more than 0 characters, which is t",
+      "elapsed": 0.0017616619588807225
+    },
+    {
+      "test_id": "v3.math.frontier.08",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 947 characters (more than 0 characters, which is t",
+      "elapsed": 0.001729983021505177
+    },
+    {
+      "test_id": "v3.math.frontier.09",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 713 characters (more than 0 characters, which is t",
+      "elapsed": 0.001776830991730094
+    },
+    {
+      "test_id": "v3.math.frontier.10",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 713 characters (more than 0 characters, which is t",
+      "elapsed": 0.001707363990135491
+    },
+    {
+      "test_id": "v3.math.frontier.11",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 867 characters (more than 0 characters, which is t",
+      "elapsed": 0.001447603921405971
+    },
+    {
+      "test_id": "v3.math.frontier.12",
+      "category": "math",
+      "suite": "math",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 853 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014161949511617422
+    },
+    {
+      "test_id": "v3.coding.easy.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 894 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013994750333949924
+    },
+    {
+      "test_id": "v3.coding.easy.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 916 characters (more than 0 characters, which is t",
+      "elapsed": 0.001525060972198844
+    },
+    {
+      "test_id": "v3.coding.medium.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 841 characters (more than 0 characters, which is t",
+      "elapsed": 0.001676454907283187
+    },
+    {
+      "test_id": "v3.coding.medium.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 804 characters (more than 0 characters, which is t",
+      "elapsed": 0.001652745995670557
+    },
+    {
+      "test_id": "v3.coding.medium.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 854 characters (more than 0 characters, which is t",
+      "elapsed": 0.0012283830437809229
+    },
+    {
+      "test_id": "v3.coding.hard.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1016 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013770769583061337
+    },
+    {
+      "test_id": "v3.coding.hard.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 996 characters (more than 0 characters, which is t",
+      "elapsed": 0.001606296980753541
+    },
+    {
+      "test_id": "v3.coding.hard.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1098 characters (more than 0 characters, which is ",
+      "elapsed": 0.001259411103092134
+    },
+    {
+      "test_id": "v3.coding.hard.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1022 characters (more than 0 characters, which is ",
+      "elapsed": 0.0017793909646570683
+    },
+    {
+      "test_id": "v3.coding.hard.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1262 characters (more than 0 characters, which is ",
+      "elapsed": 0.0017153529915958643
+    },
+    {
+      "test_id": "v3.coding.expert.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1038 characters (more than 0 characters, which is ",
+      "elapsed": 0.0020153019577264786
+    },
+    {
+      "test_id": "v3.coding.expert.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1075 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016873240238055587
+    },
+    {
+      "test_id": "v3.coding.expert.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1427 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013441370101645589
+    },
+    {
+      "test_id": "v3.coding.expert.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1207 characters (more than 0 characters, which is ",
+      "elapsed": 0.001679915003478527
+    },
+    {
+      "test_id": "v3.coding.expert.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1171 characters (more than 0 characters, which is ",
+      "elapsed": 0.0018339590169489384
+    },
+    {
+      "test_id": "v3.coding.expert.06",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 908 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015043619787320495
+    },
+    {
+      "test_id": "v3.coding.expert.07",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1166 characters (more than 0 characters, which is ",
+      "elapsed": 0.0011937839444726706
+    },
+    {
+      "test_id": "v3.coding.expert.08",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1418 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016473060240969062
+    },
+    {
+      "test_id": "v3.coding.frontier.01",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1213 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016612260369583964
+    },
+    {
+      "test_id": "v3.coding.frontier.02",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1384 characters (more than 0 characters, which is ",
+      "elapsed": 0.0017827110132202506
+    },
+    {
+      "test_id": "v3.coding.frontier.03",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1737 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014420339139178395
+    },
+    {
+      "test_id": "v3.coding.frontier.04",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1463 characters (more than 0 characters, which is ",
+      "elapsed": 0.0009954610140994191
+    },
+    {
+      "test_id": "v3.coding.frontier.05",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1391 characters (more than 0 characters, which is ",
+      "elapsed": 0.0012461019214242697
+    },
+    {
+      "test_id": "v3.coding.frontier.06",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1370 characters (more than 0 characters, which is ",
+      "elapsed": 0.001430224976502359
+    },
+    {
+      "test_id": "v3.coding.frontier.07",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1153 characters (more than 0 characters, which is ",
+      "elapsed": 0.001723623019643128
+    },
+    {
+      "test_id": "v3.coding.frontier.08",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1367 characters (more than 0 characters, which is ",
+      "elapsed": 0.0020159720443189144
+    },
+    {
+      "test_id": "v3.coding.frontier.09",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1154 characters (more than 0 characters, which is ",
+      "elapsed": 0.0017744220094755292
+    },
+    {
+      "test_id": "v3.coding.frontier.10",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1287 characters (more than 0 characters, which is ",
+      "elapsed": 0.001700054039247334
+    },
+    {
+      "test_id": "v3.coding.frontier.11",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1336 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014311450067907572
+    },
+    {
+      "test_id": "v3.coding.frontier.12",
+      "category": "coding",
+      "suite": "coding",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 2290 characters (more than 0 characters, which is ",
+      "elapsed": 0.001550070010125637
+    },
+    {
+      "test_id": "v3.reasoning.easy.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 644 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016503171063959599
+    },
+    {
+      "test_id": "v3.reasoning.easy.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 419 characters (more than 0 characters, which is t",
+      "elapsed": 0.0017441629897803068
+    },
+    {
+      "test_id": "v3.reasoning.medium.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 802 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015539700398221612
+    },
+    {
+      "test_id": "v3.reasoning.medium.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 864 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015651790890842676
+    },
+    {
+      "test_id": "v3.reasoning.medium.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 480 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015043319435790181
+    },
+    {
+      "test_id": "v3.reasoning.hard.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1019 characters (more than 0 characters, which is ",
+      "elapsed": 0.0015846890164539218
+    },
+    {
+      "test_id": "v3.reasoning.hard.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1072 characters (more than 0 characters, which is ",
+      "elapsed": 0.0018715779297053814
+    },
+    {
+      "test_id": "v3.reasoning.hard.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1396 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016591459279879928
+    },
+    {
+      "test_id": "v3.reasoning.hard.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 609 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013407079968601465
+    },
+    {
+      "test_id": "v3.reasoning.hard.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 963 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014741129707545042
+    },
+    {
+      "test_id": "v3.reasoning.expert.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1140 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013401280157268047
+    },
+    {
+      "test_id": "v3.reasoning.expert.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1379 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014648929936811328
+    },
+    {
+      "test_id": "v3.reasoning.expert.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1140 characters (more than 0 characters, which is ",
+      "elapsed": 0.001325249089859426
+    },
+    {
+      "test_id": "v3.reasoning.expert.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1392 characters (more than 0 characters, which is ",
+      "elapsed": 0.0015639589400961995
+    },
+    {
+      "test_id": "v3.reasoning.expert.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 720 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015334510244429111
+    },
+    {
+      "test_id": "v3.reasoning.expert.06",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1439 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014138950500637293
+    },
+    {
+      "test_id": "v3.reasoning.expert.07",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1160 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014754929579794407
+    },
+    {
+      "test_id": "v3.reasoning.expert.08",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 823 characters (more than 0 characters, which is t",
+      "elapsed": 0.001531110960058868
+    },
+    {
+      "test_id": "v3.reasoning.frontier.01",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1092 characters (more than 0 characters, which is ",
+      "elapsed": 0.0012798300012946129
+    },
+    {
+      "test_id": "v3.reasoning.frontier.02",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1082 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014444849221035838
+    },
+    {
+      "test_id": "v3.reasoning.frontier.03",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1304 characters (more than 0 characters, which is ",
+      "elapsed": 0.0017147440230473876
+    },
+    {
+      "test_id": "v3.reasoning.frontier.04",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1110 characters (more than 0 characters, which is ",
+      "elapsed": 0.0015621701022610068
+    },
+    {
+      "test_id": "v3.reasoning.frontier.05",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1088 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013786769704893231
+    },
+    {
+      "test_id": "v3.reasoning.frontier.06",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 638 characters (more than 0 characters, which is t",
+      "elapsed": 0.002037730999290943
+    },
+    {
+      "test_id": "v3.reasoning.frontier.07",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 872 characters (more than 0 characters, which is t",
+      "elapsed": 0.001387526048347354
+    },
+    {
+      "test_id": "v3.reasoning.frontier.08",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1575 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014627330237999558
+    },
+    {
+      "test_id": "v3.reasoning.frontier.09",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 833 characters (more than 0 characters, which is t",
+      "elapsed": 0.0012149229878559709
+    },
+    {
+      "test_id": "v3.reasoning.frontier.10",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 910 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016887850360944867
+    },
+    {
+      "test_id": "v3.reasoning.frontier.11",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 831 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015140820760279894
+    },
+    {
+      "test_id": "v3.reasoning.frontier.12",
+      "category": "reasoning",
+      "suite": "reasoning_tier0",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1264 characters (more than 0 characters, which is ",
+      "elapsed": 0.0015949979424476624
+    },
+    {
+      "test_id": "v3.instruction.easy.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 378 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014553029322996736
+    },
+    {
+      "test_id": "v3.instruction.easy.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 515 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016354660037904978
+    },
+    {
+      "test_id": "v3.instruction.medium.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 898 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013963059755042195
+    },
+    {
+      "test_id": "v3.instruction.medium.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 628 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013987049460411072
+    },
+    {
+      "test_id": "v3.instruction.medium.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 535 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015395699301734567
+    },
+    {
+      "test_id": "v3.instruction.hard.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 764 characters (more than 0 characters, which is t",
+      "elapsed": 0.0012408819748088717
+    },
+    {
+      "test_id": "v3.instruction.hard.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 677 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013704069424420595
+    },
+    {
+      "test_id": "v3.instruction.hard.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 759 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013083990197628736
+    },
+    {
+      "test_id": "v3.instruction.hard.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 676 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013548880815505981
+    },
+    {
+      "test_id": "v3.instruction.hard.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 814 characters (more than 0 characters, which is t",
+      "elapsed": 0.001656705979257822
+    },
+    {
+      "test_id": "v3.instruction.expert.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 739 characters (more than 0 characters, which is t",
+      "elapsed": 0.0021817460656166077
+    },
+    {
+      "test_id": "v3.instruction.expert.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 873 characters (more than 0 characters, which is t",
+      "elapsed": 0.001729152980260551
+    },
+    {
+      "test_id": "v3.instruction.expert.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 747 characters (more than 0 characters, which is t",
+      "elapsed": 0.001666276017203927
+    },
+    {
+      "test_id": "v3.instruction.expert.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 791 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016939339693635702
+    },
+    {
+      "test_id": "v3.instruction.expert.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 887 characters (more than 0 characters, which is t",
+      "elapsed": 0.0017829210264608264
+    },
+    {
+      "test_id": "v3.instruction.expert.06",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 817 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014417640632018447
+    },
+    {
+      "test_id": "v3.instruction.expert.07",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 990 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014025259297341108
+    },
+    {
+      "test_id": "v3.instruction.expert.08",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 925 characters (more than 0 characters, which is t",
+      "elapsed": 0.001426544040441513
+    },
+    {
+      "test_id": "v3.instruction.frontier.01",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1178 characters (more than 0 characters, which is ",
+      "elapsed": 0.0018131600227206945
+    },
+    {
+      "test_id": "v3.instruction.frontier.02",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1050 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016374069964513183
+    },
+    {
+      "test_id": "v3.instruction.frontier.03",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 946 characters (more than 0 characters, which is t",
+      "elapsed": 0.0017798710614442825
+    },
+    {
+      "test_id": "v3.instruction.frontier.04",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1111 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016395669663324952
+    },
+    {
+      "test_id": "v3.instruction.frontier.05",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1078 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014491439796984196
+    },
+    {
+      "test_id": "v3.instruction.frontier.06",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 920 characters (more than 0 characters, which is t",
+      "elapsed": 0.001699223998002708
+    },
+    {
+      "test_id": "v3.instruction.frontier.07",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1033 characters (more than 0 characters, which is ",
+      "elapsed": 0.001685364986769855
+    },
+    {
+      "test_id": "v3.instruction.frontier.08",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 914 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013787669595330954
+    },
+    {
+      "test_id": "v3.instruction.frontier.09",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 945 characters (more than 0 characters, which is t",
+      "elapsed": 0.001820440054871142
+    },
+    {
+      "test_id": "v3.instruction.frontier.10",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 832 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015843489672988653
+    },
+    {
+      "test_id": "v3.instruction.frontier.11",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 838 characters (more than 0 characters, which is t",
+      "elapsed": 0.0013450979022309184
+    },
+    {
+      "test_id": "v3.instruction.frontier.12",
+      "category": "instruction",
+      "suite": "instruction",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 987 characters (more than 0 characters, which is t",
+      "elapsed": 0.001132286968640983
+    },
+    {
+      "test_id": "v3.prose.easy.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 723 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014557139948010445
+    },
+    {
+      "test_id": "v3.prose.easy.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 767 characters (more than 0 characters, which is t",
+      "elapsed": 0.001351877930574119
+    },
+    {
+      "test_id": "v3.prose.medium.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 740 characters (more than 0 characters, which is t",
+      "elapsed": 0.0009258840000256896
+    },
+    {
+      "test_id": "v3.prose.medium.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 769 characters (more than 0 characters, which is t",
+      "elapsed": 0.0011803150409832597
+    },
+    {
+      "test_id": "v3.prose.medium.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1033 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013457279419526458
+    },
+    {
+      "test_id": "v3.prose.hard.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 856 characters (more than 0 characters, which is t",
+      "elapsed": 0.0011209869990125299
+    },
+    {
+      "test_id": "v3.prose.hard.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1072 characters (more than 0 characters, which is ",
+      "elapsed": 0.0010760880541056395
+    },
+    {
+      "test_id": "v3.prose.hard.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 973 characters (more than 0 characters, which is t",
+      "elapsed": 0.0010340799344703555
+    },
+    {
+      "test_id": "v3.prose.hard.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 869 characters (more than 0 characters, which is t",
+      "elapsed": 0.0023159600095823407
+    },
+    {
+      "test_id": "v3.prose.hard.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 996 characters (more than 0 characters, which is t",
+      "elapsed": 0.0014984420267865062
+    },
+    {
+      "test_id": "v3.prose.expert.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1394 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013881160411983728
+    },
+    {
+      "test_id": "v3.prose.expert.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 910 characters (more than 0 characters, which is t",
+      "elapsed": 0.0011040569515898824
+    },
+    {
+      "test_id": "v3.prose.expert.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 923 characters (more than 0 characters, which is t",
+      "elapsed": 0.0011799839558079839
+    },
+    {
+      "test_id": "v3.prose.expert.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 741 characters (more than 0 characters, which is t",
+      "elapsed": 0.0010251399362459779
+    },
+    {
+      "test_id": "v3.prose.expert.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 919 characters (more than 0 characters, which is t",
+      "elapsed": 0.0012030339566990733
+    },
+    {
+      "test_id": "v3.prose.expert.06",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1470 characters (more than 0 characters, which is ",
+      "elapsed": 0.0014762929640710354
+    },
+    {
+      "test_id": "v3.prose.expert.07",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1012 characters (more than 0 characters, which is ",
+      "elapsed": 0.00104343902785331
+    },
+    {
+      "test_id": "v3.prose.expert.08",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1038 characters (more than 0 characters, which is ",
+      "elapsed": 0.0012669410789385438
+    },
+    {
+      "test_id": "v3.prose.frontier.01",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1448 characters (more than 0 characters, which is ",
+      "elapsed": 0.0011435349006205797
+    },
+    {
+      "test_id": "v3.prose.frontier.02",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1369 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013386779464781284
+    },
+    {
+      "test_id": "v3.prose.frontier.03",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1053 characters (more than 0 characters, which is ",
+      "elapsed": 0.0009763319976627827
+    },
+    {
+      "test_id": "v3.prose.frontier.04",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 932 characters (more than 0 characters, which is t",
+      "elapsed": 0.0015597499441355467
+    },
+    {
+      "test_id": "v3.prose.frontier.05",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1078 characters (more than 0 characters, which is ",
+      "elapsed": 0.001540771103464067
+    },
+    {
+      "test_id": "v3.prose.frontier.06",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 961 characters (more than 0 characters, which is t",
+      "elapsed": 0.0019119259668514132
+    },
+    {
+      "test_id": "v3.prose.frontier.07",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1395 characters (more than 0 characters, which is ",
+      "elapsed": 0.0019102860242128372
+    },
+    {
+      "test_id": "v3.prose.frontier.08",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1156 characters (more than 0 characters, which is ",
+      "elapsed": 0.0016145179979503155
+    },
+    {
+      "test_id": "v3.prose.frontier.09",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 1015 characters (more than 0 characters, which is ",
+      "elapsed": 0.0013274189550429583
+    },
+    {
+      "test_id": "v3.prose.frontier.10",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 969 characters (more than 0 characters, which is t",
+      "elapsed": 0.001531410962343216
+    },
+    {
+      "test_id": "v3.prose.frontier.11",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 867 characters (more than 0 characters, which is t",
+      "elapsed": 0.0012099429732188582
+    },
+    {
+      "test_id": "v3.prose.frontier.12",
+      "category": "prose",
+      "suite": "prose",
+      "status": "error",
+      "error": "HTTP 400: {\"error\":{\"message\":\"This model's maximum context length is 4096 tokens. However, you requested 4096 output tokens and your prompt contains 958 characters (more than 0 characters, which is t",
+      "elapsed": 0.0016994139878079295
+    },
+    {
+      "test_id": "writing_article",
+      "category": "writing",
+      "suite": "writing",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Matched 6/6 keywords (need 4)",
+      "elapsed": 13.468180316966027,
+      "tokens_used": 543,
+      "evaluator": "text_contains"
+    },
+    {
+      "test_id": "writing_summary",
+      "category": "writing",
+      "suite": "writing",
+      "status": "pass",
+      "passed": true,
+      "score": 0.75,
+      "detail": "Matched 3/4 keywords (need 2); missing: ['machines']",
+      "elapsed": 3.261823702021502,
+      "tokens_used": 269,
+      "evaluator": "text_contains"
+    }
+  ]
+}

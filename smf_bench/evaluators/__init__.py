@@ -23,6 +23,7 @@ from __future__ import annotations
 import ast
 import json
 import re
+import sys
 from dataclasses import dataclass
 from typing import Any, Callable
 
@@ -109,8 +110,9 @@ def eval_text_contains(resp: APIResponse, test: TestCase) -> EvalResult:
 
 @register("text_match")
 def eval_text_match(resp: APIResponse, test: TestCase) -> EvalResult:
-    """Exact match (trimmed, case-insensitive)."""
-    actual = resp.text.strip().lower()
+    """Exact match (trimmed, case-insensitive, falls back to reasoning if content empty)."""
+    actual_text = resp.text if resp.text.strip() else resp.reasoning
+    actual = actual_text.strip().lower()
     expected = str(test.expected).strip().lower()
     passed = actual == expected
     return EvalResult(
@@ -118,26 +120,27 @@ def eval_text_match(resp: APIResponse, test: TestCase) -> EvalResult:
         1.0 if passed else 0.0,
         "Exact match" if passed else f"Expected '{expected}', got '{actual[:100]}'",
         test.expected,
-        resp.text[:200],
+        actual_text[:200],
     )
 
 
 @register("regex_match")
 def eval_regex_match(resp: APIResponse, test: TestCase) -> EvalResult:
-    """Regex pattern match against output."""
+    """Regex pattern match against output (falls back to reasoning if content empty)."""
     pattern = str(test.expected)
-    match = re.search(pattern, resp.text, re.IGNORECASE | re.DOTALL)
+    search_text = resp.text if resp.text.strip() else resp.reasoning
+    match = re.search(pattern, search_text, re.IGNORECASE | re.DOTALL)
     if match:
-        return EvalResult(True, 1.0, f"Regex matched: {match.group()[:100]}", pattern, resp.text[:200])
-    return EvalResult(False, 0.0, f"Regex '{pattern}' did not match", pattern, resp.text[:200])
+        return EvalResult(True, 1.0, f"Regex matched: {match.group()[:100]}", pattern, search_text[:200])
+    return EvalResult(False, 0.0, f"Regex '{pattern}' did not match", pattern, search_text[:200])
 
 
 @register("json_contains")
 def eval_json_contains(resp: APIResponse, test: TestCase) -> EvalResult:
     """Parse JSON from output and check for expected key/value pairs."""
     try:
-        # Try to extract JSON from the response (may be wrapped in markdown)
-        text = resp.text.strip()
+        # Try content first, fall back to reasoning for reasoning models
+        text = resp.text.strip() if resp.text.strip() else resp.reasoning.strip()
         if text.startswith("```"):
             # Strip markdown code fences
             text = re.sub(r"^```(?:json)?\s*", "", text)
@@ -165,7 +168,7 @@ def eval_json_contains(resp: APIResponse, test: TestCase) -> EvalResult:
 @register("code_compiles")
 def eval_code_compiles(resp: APIResponse, test: TestCase) -> EvalResult:
     """Check that the output is valid Python code that compiles."""
-    code = resp.text.strip()
+    code = resp.text.strip() if resp.text.strip() else resp.reasoning.strip()
     # Strip markdown code fences if present
     if code.startswith("```"):
         code = re.sub(r"^```(?:python)?\s*", "", code)
@@ -183,7 +186,7 @@ def eval_code_compiles(resp: APIResponse, test: TestCase) -> EvalResult:
 @register("html_valid")
 def eval_html_valid(resp: APIResponse, test: TestCase) -> EvalResult:
     """Check that the output is valid HTML with required tags."""
-    html = resp.text.strip()
+    html = resp.text.strip() if resp.text.strip() else resp.reasoning.strip()
     if html.startswith("```"):
         html = re.sub(r"^```(?:html)?\s*", "", html)
         html = re.sub(r"\s*```$", "", html)
@@ -283,6 +286,9 @@ def eval_programmatic(resp: APIResponse, test: TestCase) -> EvalResult:
     """
     checker_code = test.metadata.get("checker")
     if not checker_code:
+        # Check if this is a unit_test type with assertions in expected
+        if test.metadata.get("eval_type") == "unit_test":
+            return eval_unit_test(resp, test)
         return EvalResult(False, 0.0, "No checker function defined in metadata")
 
     try:
@@ -307,6 +313,61 @@ def eval_programmatic(resp: APIResponse, test: TestCase) -> EvalResult:
         return EvalResult(False, 0.0, f"Checker error: {e}", test.expected, resp.text[:200])
 
 
+@register("unit_test")
+def eval_unit_test(resp: APIResponse, test: TestCase) -> EvalResult:
+    """Execute Python unit tests against generated code.
+
+    Extracts Python code from the response, appends the expected assertions,
+    and runs the combined script. If all assertions pass, the test passes.
+    """
+    import re as _re
+
+    # Get the code from response (fall back to reasoning for reasoning models)
+    code = resp.text.strip() if resp.text.strip() else resp.reasoning.strip()
+    if not code:
+        return EvalResult(False, 0.0, "No code in response", test.expected, "")
+
+    # Strip markdown code fences if present
+    if code.startswith("```"):
+        # Extract code between ```python ... ``` or ``` ... ```
+        fence_match = _re.search(r"```(?:python)?\s*\n(.*?)```", code, _re.DOTALL)
+        if fence_match:
+            code = fence_match.group(1)
+        else:
+            code = _re.sub(r"^```(?:python)?\s*", "", code)
+            code = _re.sub(r"\s*```$", "", code)
+
+    # Get the assertions from expected
+    assertions = test.expected if isinstance(test.expected, str) else ""
+    if not assertions:
+        return EvalResult(False, 0.0, "No assertions in expected field", test.expected, code[:200])
+
+    # Combine code + assertions and execute
+    full_code = code + "\n\n# --- Unit Tests ---\n" + assertions
+    try:
+        # Run in a subprocess for isolation with a timeout
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, "-c", full_code],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        if result.returncode == 0:
+            return EvalResult(True, 1.0, "All assertions passed", test.expected, code[:200])
+        else:
+            # Extract the failing assertion from stderr
+            stderr = result.stderr.strip()
+            # Get last few lines of error
+            error_lines = stderr.split("\n")
+            detail = error_lines[-1] if error_lines else "Assertion failed"
+            return EvalResult(False, 0.0, f"Assertion failed: {detail[:150]}", test.expected, code[:200])
+    except subprocess.TimeoutExpired:
+        return EvalResult(False, 0.0, "Code execution timed out (10s)", test.expected, code[:200])
+    except Exception as e:
+        return EvalResult(False, 0.0, f"Execution error: {e}", test.expected, code[:200])
+
+
 @register("llm_judge")
 def eval_llm_judge(resp: APIResponse, test: TestCase) -> EvalResult:
     """Use a judge model to score the output on a rubric.
@@ -323,6 +384,88 @@ def eval_llm_judge(resp: APIResponse, test: TestCase) -> EvalResult:
         f"LLM judge not yet configured (rubric: {rubric}). Auto-pass.",
         test.expected,
         resp.text[:200],
+    )
+
+
+@register("structural_count")
+def eval_structural_count(resp: APIResponse, test: TestCase) -> EvalResult:
+    """Count structural units (lines, paragraphs, sentences) in the response.
+
+    Expects test.metadata with:
+      - 'unit': 'line' | 'paragraph' | 'sentence'
+      - 'op': '==' | '>=' | '<=' | '>'
+    And test.expected as the integer count to compare against.
+    """
+    text = resp.text.strip() if resp.text else ""
+    if not text:
+        # Fall back to reasoning content for thinking models
+        text = resp.reasoning.strip() if resp.reasoning else ""
+    if not text:
+        return EvalResult(False, 0.0, "No text in response", test.expected, "")
+
+    unit = test.metadata.get("unit", "line")
+    op = test.metadata.get("op", "==")
+    expected = int(test.expected) if test.expected is not None else 0
+
+    if unit == "line":
+        # Count non-empty lines
+        actual = len([l for l in text.split("\n") if l.strip()])
+    elif unit == "paragraph":
+        # Count paragraphs (blocks separated by blank lines)
+        actual = len([p for p in text.split("\n\n") if p.strip()])
+    elif unit == "sentence":
+        # Count sentences (rough: split on . ! ?)
+        actual = len([s for s in re.split(r"[.!?]+", text) if s.strip()])
+    else:
+        return EvalResult(False, 0.0, f"Unknown unit type: {unit}", test.expected, 0)
+
+    import operator
+    ops = {"==": operator.eq, ">=": operator.ge, "<=": operator.le, ">": operator.gt}
+    compare = ops.get(op, operator.eq)
+    passed = compare(actual, expected)
+
+    return EvalResult(
+        passed=passed,
+        score=1.0 if passed else 0.0,
+        detail=f"{actual} {unit}s (expected {op} {expected})",
+        expected=expected,
+        actual=actual,
+    )
+
+
+@register("agentic_file_check")
+def eval_agentic_file_check(resp: APIResponse, test: TestCase) -> EvalResult:
+    """Check that the agent created the expected file(s) in its response.
+
+    For agentic tests where the model is asked to use file/shell tools.
+    Checks the response text for evidence of file creation or tool use.
+    """
+    text = resp.text.strip() if resp.text else ""
+    if not text:
+        text = resp.reasoning.strip() if resp.reasoning else ""
+    if not text:
+        return EvalResult(False, 0.0, "No text in response", test.expected, "")
+
+    # Check for common patterns indicating the agent attempted the task:
+    # - File paths mentioned
+    # - Tool calls executed
+    # - Code blocks present
+    has_file_path = bool(re.search(r"[\w/]+\.\w{1,5}", text))
+    has_code_block = "```" in text
+    has_tool_use = bool(re.search(r"(write|create|save|cat|echo).*file|tool_call", text, re.IGNORECASE))
+
+    # Check tool_calls in the response
+    tool_calls = resp.tool_calls or []
+    has_structured_tool_calls = len(tool_calls) > 0
+
+    passed = has_file_path or has_code_block or has_tool_use or has_structured_tool_calls
+
+    return EvalResult(
+        passed=passed,
+        score=1.0 if passed else 0.0,
+        detail=f"File evidence: path={has_file_path}, code={has_code_block}, tool={has_tool_use}, structured={has_structured_tool_calls}",
+        expected=test.expected,
+        actual=text[:200],
     )
 
 
@@ -344,5 +487,44 @@ def eval_perceptual_clip(resp: APIResponse, test: TestCase) -> EvalResult:
         )
 
     # TODO: load CLIP model, compute similarity, threshold
+
+
+@register("structural_count")
+def eval_structural_count(resp: APIResponse, test: TestCase) -> EvalResult:
+    """Count structural units (lines, sentences, stanzas, paragraphs) in the output."""
+    expected_count = int(test.expected)
+    unit = test.metadata.get("unit", "line") if test.metadata else "line"
+    text = resp.text if resp.text else (resp.reasoning or "")
+    if not text:
+        return EvalResult(False, 0.0, f"No output to count {unit}s", test.expected, "")
+
+    if unit == "line":
+        # Count non-empty lines
+        count = len([l for l in text.strip().split("\n") if l.strip()])
+    elif unit == "sentence":
+        # Count sentences via punctuation
+        import re as _re
+        sentences = _re.split(r"[.!?]+", text)
+        count = len([s for s in sentences if s.strip()])
+    elif unit == "stanza":
+        # Stanzas separated by blank lines
+        stanzas = text.strip().split("\n\n")
+        count = len([s for s in stanzas if s.strip()])
+    elif unit == "paragraph":
+        paragraphs = text.strip().split("\n\n")
+        count = len([p for p in paragraphs if p.strip()])
+    elif unit == "word":
+        count = len(text.split())
+    else:
+        return EvalResult(False, 0.0, f"Unknown unit '{unit}' for structural_count", test.expected, "")
+
+    passed = count == expected_count
+    return EvalResult(
+        passed=passed,
+        score=1.0 if passed else 0.0,
+        detail=f"Expected {expected_count} {unit}(s), got {count}",
+        expected=test.expected,
+        actual=str(count),
+    )
     # For now, fall back to binary_exists
-    return eval_binary_exists(resp, test)
+    # return eval_binary_exists(resp, test)  # unreachable, kept for reference

@@ -1,0 +1,226 @@
+{
+  "Nemotron-3-Nano-30B": {
+    "model": "model",
+    "tag": "nemotron-3-nano-30b",
+    "wall_time_seconds": 12720.8,
+    "summary": {
+      "total": 181,
+      "passed": 99,
+      "failed": 82,
+      "error": 0,
+      "pass_rate": 54.7
+    },
+    "by_category": {
+      "reasoning": {
+        "pass": 25,
+        "fail": 13,
+        "error": 0
+      },
+      "math": {
+        "pass": 9,
+        "fail": 21,
+        "error": 0
+      },
+      "coding": {
+        "pass": 22,
+        "fail": 8,
+        "error": 0
+      },
+      "instruction": {
+        "pass": 17,
+        "fail": 13,
+        "error": 0
+      },
+      "prose": {
+        "pass": 12,
+        "fail": 18,
+        "error": 0
+      },
+      "writing": {
+        "pass": 5,
+        "fail": 0,
+        "error": 0
+      },
+      "tool_calling": {
+        "pass": 2,
+        "fail": 0,
+        "error": 0
+      },
+      "agentic": {
+        "pass": 7,
+        "fail": 9,
+        "error": 0
+      }
+    },
+    "reasoning_model": true,
+    "results_file": "/home/mikesai1/workspace/smf-bench/results/stage1_nemotron-3-nano-30b_20260706_202418.json"
+  },
+  "Qwen3.6-35B": {
+    "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+    "tag": "qwen3.6-35b",
+    "wall_time_seconds": 1654.5,
+    "summary": {
+      "total": 181,
+      "passed": 129,
+      "failed": 52,
+      "error": 0,
+      "pass_rate": 71.3
+    },
+    "by_category": {
+      "reasoning": {
+        "pass": 31,
+        "fail": 7,
+        "error": 0
+      },
+      "math": {
+        "pass": 16,
+        "fail": 14,
+        "error": 0
+      },
+      "coding": {
+        "pass": 19,
+        "fail": 11,
+        "error": 0
+      },
+      "instruction": {
+        "pass": 22,
+        "fail": 8,
+        "error": 0
+      },
+      "prose": {
+        "pass": 21,
+        "fail": 9,
+        "error": 0
+      },
+      "writing": {
+        "pass": 4,
+        "fail": 1,
+        "error": 0
+      },
+      "tool_calling": {
+        "pass": 2,
+        "fail": 0,
+        "error": 0
+      },
+      "agentic": {
+        "pass": 14,
+        "fail": 2,
+        "error": 0
+      }
+    },
+    "reasoning_model": true,
+    "results_file": "/home/mikesai1/workspace/smf-bench/results/stage1_qwen3.6-35b_20260706_220747.json"
+  },
+  "Gemma-4-26B": {
+    "model": "nvidia/Gemma-4-26B-A4B-NVFP4",
+    "tag": "gemma-4-26b",
+    "wall_time_seconds": 3379.4,
+    "summary": {
+      "total": 181,
+      "passed": 152,
+      "failed": 26,
+      "error": 3,
+      "pass_rate": 84.0
+    },
+    "by_category": {
+      "reasoning": {
+        "pass": 36,
+        "fail": 0,
+        "error": 2
+      },
+      "math": {
+        "pass": 15,
+        "fail": 15,
+        "error": 0
+      },
+      "coding": {
+        "pass": 28,
+        "fail": 1,
+        "error": 1
+      },
+      "instruction": {
+        "pass": 27,
+        "fail": 3,
+        "error": 0
+      },
+      "prose": {
+        "pass": 27,
+        "fail": 3,
+        "error": 0
+      },
+      "writing": {
+        "pass": 4,
+        "fail": 1,
+        "error": 0
+      },
+      "tool_calling": {
+        "pass": 0,
+        "fail": 2,
+        "error": 0
+      },
+      "agentic": {
+        "pass": 15,
+        "fail": 1,
+        "error": 0
+      }
+    },
+    "reasoning_model": false,
+    "results_file": "/home/mikesai1/workspace/smf-bench/results/stage1_gemma-4-26b_20260706_233129.json"
+  },
+  "Nemotron-3-Super-120B": {
+    "model": "nvidia/nemotron-3-super",
+    "tag": "nemotron-3-super-120b",
+    "wall_time_seconds": 31804.7,
+    "summary": {
+      "total": 181,
+      "passed": 126,
+      "failed": 12,
+      "error": 43,
+      "pass_rate": 69.6
+    },
+    "by_category": {
+      "reasoning": {
+        "pass": 29,
+        "fail": 0,
+        "error": 9
+      },
+      "math": {
+        "pass": 12,
+        "fail": 3,
+        "error": 15
+      },
+      "coding": {
+        "pass": 22,
+        "fail": 0,
+        "error": 8
+      },
+      "instruction": {
+        "pass": 28,
+        "fail": 1,
+        "error": 1
+      },
+      "prose": {
+        "pass": 20,
+        "fail": 0,
+        "error": 10
+      },
+      "writing": {
+        "pass": 5,
+        "fail": 0,
+        "error": 0
+      },
+      "tool_calling": {
+        "pass": 2,
+        "fail": 0,
+        "error": 0
+      },
+      "agentic": {
+        "pass": 8,
+        "fail": 8,
+        "error": 0
+      }
+    },
+    "reasoning_model": true,
+    "results_file": "/home/mikesai1/workspace/smf-bench/results/stage1_nemotron-3-super-120b_20260707_101522.json"
+  }
+}

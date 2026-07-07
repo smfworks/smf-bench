@@ -96,31 +96,56 @@ class APIClient:
         messages: list[dict],
         *,
         stream: bool = False,
+        max_retries: int = 3,
         **kwargs: Any,
     ) -> APIResponse:
-        """Send a chat completion request. Returns normalized APIResponse."""
+        """Send a chat completion request. Returns normalized APIResponse.
+
+        Retries up to max_retries times on connection errors (server disconnect,
+        timeout, connection refused) with exponential backoff.
+        """
         client = self._ensure_client()
         url = f"{self.base_url}/chat/completions"
         payload = self._payload(messages, **kwargs)
-        start = time.perf_counter()
 
-        try:
-            if stream:
-                return await self._stream_chat(client, url, payload, start)
-            else:
-                resp = await client.post(url, json=payload)
+        last_error: str | None = None
+        for attempt in range(max_retries + 1):
+            start = time.perf_counter()
+            try:
+                client = self._ensure_client()  # Re-fetch client each attempt (may be recreated on retry)
+                if stream:
+                    return await self._stream_chat(client, url, payload, start)
+                else:
+                    resp = await client.post(url, json=payload)
+                    elapsed = time.perf_counter() - start
+                    if resp.status_code != 200:
+                        return APIResponse(
+                            error=f"HTTP {resp.status_code}: {resp.text[:500]}",
+                            elapsed=elapsed,
+                            raw={"status_code": resp.status_code},
+                        )
+                    data = resp.json()
+                    return self._parse_response(data, elapsed)
+            except (httpx.ConnectError, httpx.ConnectTimeout, httpx.RemoteProtocolError,
+                   httpx.ReadTimeout, httpx.WriteTimeout, httpx.PoolTimeout,
+                   ConnectionError, OSError) as e:
+                last_error = str(e)[:500]
+                if attempt < max_retries:
+                    wait = 2 ** attempt  # 1s, 2s, 4s
+                    await asyncio.sleep(wait)
+                    # Close and recreate client for fresh connection
+                    if self._client:
+                        try:
+                            await self._client.aclose()
+                        except Exception:
+                            pass
+                    self._client = httpx.AsyncClient(timeout=self.timeout)
+                    continue
+            except Exception as e:
                 elapsed = time.perf_counter() - start
-                if resp.status_code != 200:
-                    return APIResponse(
-                        error=f"HTTP {resp.status_code}: {resp.text[:500]}",
-                        elapsed=elapsed,
-                        raw={"status_code": resp.status_code},
-                    )
-                data = resp.json()
-                return self._parse_response(data, elapsed)
-        except Exception as e:
-            elapsed = time.perf_counter() - start
-            return APIResponse(error=str(e)[:500], elapsed=elapsed)
+                return APIResponse(error=str(e)[:500], elapsed=elapsed)
+
+        return APIResponse(error=f"Failed after {max_retries + 1} attempts: {last_error}", elapsed=0.0)
 
     async def _stream_chat(
         self,
@@ -157,10 +182,10 @@ class APIClient:
                     if first_token_time is None:
                         first_token_time = time.perf_counter()
                     content += delta["content"]
-                if "reasoning" in delta and delta["reasoning"]:
+                if ("reasoning" in delta and delta["reasoning"]) or ("reasoning_content" in delta and delta["reasoning_content"]):
                     if first_token_time is None:
                         first_token_time = time.perf_counter()
-                    reasoning += delta["reasoning"]
+                    reasoning += delta.get("reasoning", "") or delta.get("reasoning_content", "")
                 if "tool_calls" in delta and delta["tool_calls"]:
                     tool_calls.extend(delta["tool_calls"])
                 if choices[0].get("finish_reason"):
@@ -181,9 +206,11 @@ class APIClient:
         """Parse a non-streaming chat completion response."""
         choice = data.get("choices", [{}])[0]
         message = choice.get("message", {})
+        # vLLM may use 'reasoning' or 'reasoning_content' for reasoning models
+        reasoning = message.get("reasoning", "") or message.get("reasoning_content", "") or ""
         return APIResponse(
             text=message.get("content", "") or "",
-            reasoning=message.get("reasoning", "") or "",
+            reasoning=reasoning,
             tool_calls=message.get("tool_calls", []),
             usage=data.get("usage", {}),
             elapsed=elapsed,
@@ -196,6 +223,7 @@ class APIClient:
         prompt: str,
         max_tokens: int = 128,
         temperature: float = 0.6,
+        stop: list[str] | None = None,
     ) -> APIResponse:
         """Send a raw /v1/completions request for throughput testing."""
         client = self._ensure_client()
@@ -206,6 +234,8 @@ class APIClient:
             "max_tokens": max_tokens,
             "temperature": temperature,
         }
+        if stop:
+            payload["stop"] = stop
         start = time.perf_counter()
         try:
             resp = await client.post(url, json=payload)
@@ -307,6 +337,27 @@ class APIClient:
                 return resp.json()
         except Exception:
             pass
+        return None
+
+    async def get_max_model_len(self) -> int | None:
+        """Query the server's max model context length from /v1/models.
+
+        Returns the max_model_len (in tokens) if discoverable, else None.
+        Works with vLLM, Ollama, and other OpenAI-compatible servers.
+        """
+        info = await self.get_model_info()
+        if not info:
+            return None
+        # vLLM format: {"data": [{"id": "...", "max_model_len": 32768, ...}]}
+        for m in info.get("data", []):
+            # vLLM exposes max_model_len at the top level of the model object
+            if "max_model_len" in m:
+                return int(m["max_model_len"])
+            # Some servers nest it under a 'config' or 'parameters' dict
+            for container_key in ("config", "parameters", "model_config"):
+                container = m.get(container_key, {})
+                if isinstance(container, dict) and "max_model_len" in container:
+                    return int(container["max_model_len"])
         return None
 
 

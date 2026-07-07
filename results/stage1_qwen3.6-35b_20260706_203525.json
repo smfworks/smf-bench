@@ -1,0 +1,269 @@
+{
+  "tag": "qwen3.6-35b",
+  "endpoint": "http://spark-56bc:8888/v1",
+  "model": "nvidia/Qwen3.6-35B-A3B-NVFP4",
+  "timestamp": "20260706_203755",
+  "reasoning_model": true,
+  "wall_time_seconds": 149.7,
+  "summary": {
+    "total": 20,
+    "passed": 15,
+    "failed": 5,
+    "error": 0,
+    "pass_rate": 75.0
+  },
+  "by_category": {
+    "reasoning": {
+      "pass": 7,
+      "fail": 1,
+      "error": 0
+    },
+    "math": {
+      "pass": 8,
+      "fail": 4,
+      "error": 0
+    }
+  },
+  "tests": [
+    {
+      "test_id": "reasoning_math_basic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 391",
+      "elapsed": 45.01033674296923,
+      "tokens_used": 197,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_math_advanced",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 5",
+      "elapsed": 1.3652150189736858,
+      "tokens_used": 195,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_logic",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex 'cannot determine' did not match",
+      "elapsed": 1.4815982219297439,
+      "tokens_used": 177,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_coding",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: def reverse_linked_list(head):\n    prev = None\n    current = head\n    while current:\n        next_no",
+      "elapsed": 0.5143749479902908,
+      "tokens_used": 82,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: Canberra",
+      "elapsed": 0.6949066710658371,
+      "tokens_used": 82,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_speed",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 80",
+      "elapsed": 2.613868857966736,
+      "tokens_used": 348,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_instruction",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1. Apple\n2. Banana\n3",
+      "elapsed": 0.171984690008685,
+      "tokens_used": 40,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "reasoning_world_knowledge",
+      "category": "reasoning",
+      "suite": "reasoning",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1989",
+      "elapsed": 0.6679570620181039,
+      "tokens_used": 81,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.easy.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 15072",
+      "elapsed": 3.4200229530688375,
+      "tokens_used": 470,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.easy.02",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 7",
+      "elapsed": 1.1654643290676177,
+      "tokens_used": 175,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 105",
+      "elapsed": 4.791912897024304,
+      "tokens_used": 651,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.02",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b16.913\\b' did not match",
+      "elapsed": 4.197575357975438,
+      "tokens_used": 571,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.medium.03",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 10.312",
+      "elapsed": 5.442768682027236,
+      "tokens_used": 794,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 4.101",
+      "elapsed": 11.380200979067013,
+      "tokens_used": 1513,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.02",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 142.73",
+      "elapsed": 6.7434549879981205,
+      "tokens_used": 964,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.03",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b5.461\\b' did not match",
+      "elapsed": 0.23640812106896192,
+      "tokens_used": 182,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.04",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 1.2986",
+      "elapsed": 12.36530387995299,
+      "tokens_used": 1673,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.hard.05",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b8.750\\b' did not match",
+      "elapsed": 4.699857077095658,
+      "tokens_used": 683,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.01",
+      "category": "math",
+      "suite": "math",
+      "status": "pass",
+      "passed": true,
+      "score": 1.0,
+      "detail": "Regex matched: 14.595",
+      "elapsed": 9.733043634099886,
+      "tokens_used": 1347,
+      "evaluator": "regex_match"
+    },
+    {
+      "test_id": "v3.math.expert.02",
+      "category": "math",
+      "suite": "math",
+      "status": "fail",
+      "passed": false,
+      "score": 0.0,
+      "detail": "Regex '\\b7.683\\b' did not match",
+      "elapsed": 32.99236330005806,
+      "tokens_used": 4293,
+      "evaluator": "regex_match"
+    }
+  ]
+}
