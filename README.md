@@ -17,6 +17,39 @@ Most LLM benchmarks are either (a) tied to a specific evaluation harness that ev
 4. **Pluggable evaluators** — text matching, regex, keyword threshold, tool-call validation, programmatic checks, LLM judging
 5. **Reproducible** — every run tagged by model, engine version, config hash, and timestamp in SQLite
 
+
+## Canonical tool-calling score (SMF Eval Doctrine)
+
+**smf-bench is not the canonical tool-calling benchmark for SMF Works.**
+
+| Role | Suite |
+|------|--------|
+| **Tool-calling quality (canonical)** | [tool-eval-bench](https://github.com/MiaAI-Lab/tool-eval-bench) — **69** multi-turn scenarios (+ hard mode), safety gate, Pass@k |
+| **Pinned SHA** | `8eca976167dfe925c125edd5a289433e78ee54e0` |
+| **Doctrine** | `AionaVault/Research/evaluation/SMF-EVAL-DOCTRINE.md` (internal) |
+| **Research** | `AionaVault/Research/evaluation/2026-07-10-smf-bench-and-eval-frameworks-research.md` |
+
+The in-repo `suites/quality/tool_calling/` suite (**2** tests: weather + calculator) is a **smoke / capability probe only**. Do **not** use it to claim “strong tool use” in reports, blogs, or model cards.
+
+### Quick TEB recipe (OpenAI-compatible endpoint)
+
+```bash
+# Install pinned tool-eval-bench
+uv tool install git+https://github.com/MiaAI-Lab/tool-eval-bench.git@8eca976167dfe925c125edd5a289433e78ee54e0
+
+# Full tool quality (canonical)
+tool-eval-bench --base-url "$ENDPOINT" --model "$MODEL" --seed 42 --json-file teb-full.json
+
+# Accuracy plugins (optional same day)
+tool-eval-bench --base-url "$ENDPOINT" --model "$MODEL" --skip-tool-eval \
+  --gsm8k --ifeval --mmlu --gsm8k-limit 200 --mmlu-limit 500 --json-file teb-acc.json
+```
+
+**smf-bench owns:** capability-gated multimodal, performance grid (TTFT/concurrency/context), SMF custom quality suites, and Aeon-style agentic file/shell tasks.  
+**tool-eval-bench owns:** serious tool-call quality scoring for serving stacks (vLLM, SGLang, llama.cpp, LiteLLM).
+
+Phase 2 (optional): ingest TEB JSON into smf-bench SQLite via an external adapter so one leaderboard shows both.
+
 ## Architecture
 
 ```
@@ -51,7 +84,7 @@ smf-bench/
 | Instruction Following | SMF Works | 30 |
 | Prose Quality | SMF Works | 30 |
 | Writing | SMF Works | 5 |
-| Tool Calling | SMF Works | 2 |
+| Tool Calling | SMF Works | 2 (**smoke only** — use tool-eval-bench for canonical tool score) |
 | Agentic Tasks | Extracted from Aeon-Bench-Pod (MIT) | 16 |
 | Tier-0 Deterministic | Extracted from Aeon-Bench-Pod (MIT) | 150 |
 | Vision Understanding | SMF Works | 20 |
