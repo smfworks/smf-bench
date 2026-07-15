@@ -181,3 +181,10 @@ These components retain their MIT attribution in source headers.
 ## License
 
 MIT — SMF Works. See [LICENSE](LICENSE) for details.
+
+## SMF eval portfolio note (2026-07-15)
+
+- **smf-bench** is the primary multi-capability evaluation harness owned by SMF.
+- **smf-llm-test** holds complementary real-world writeups/harness history — prefer consolidating new suites here rather than forking another framework.
+- Tool-calling quality remains deferred to the external **tool-eval-bench** pin documented above when applicable.
+
