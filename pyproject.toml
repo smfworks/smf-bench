@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
-build-backend = "setuptools.backends._legacy"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "smf-bench"
@@ -28,3 +28,12 @@ smf-bench = "smf_bench.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["smf_bench*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
