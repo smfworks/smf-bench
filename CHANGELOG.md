@@ -1,5 +1,15 @@
 # smf-bench Changelog
 
+## [0.1.1] — 2026-08-13
+
+### Fixed
+- `build-backend` was `setuptools.backends._legacy` — `pip install -e .` failed
+- Pytest now collects offline registry tests
+
+### Added
+- GitHub Actions CI (Python 3.10 / 3.12)
+- SECURITY.md
+
 ## [Unreleased] — 2026-07-07
 
 ### Framework Fixes: Robustness Improvements
