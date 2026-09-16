@@ -2,8 +2,22 @@
 
 > A unified, capability-gated benchmark framework for evaluating LLMs and multimodal models across a consistent test suite.
 
+[![CI](https://github.com/smfworks/smf-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/smfworks/smf-bench/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+
+## SMF public eval pair
+
+This repo and [trajectory-arena](https://github.com/smfworks/trajectory-arena) are complementary SMF eval tools — a **pair**, not a single product.
+
+| Role | Repo |
+|------|------|
+| **Model / capability bench** | this repo (smf-bench) — run a consistent capability-gated suite against OpenAI-compatible endpoints; SQLite results |
+| **Agent trajectory arena** | [trajectory-arena](https://github.com/smfworks/trajectory-arena) — local-first Next.js app to import, replay, and compare agentic coding trajectories (does NOT execute agents) |
+
+**When to use which.** Run a model or serving stack through a fixed quality / multimodal / performance battery here. Open trajectory-arena when you already have agentic coding traces and need to import, replay, and compare them. Canonical tool-calling quality stays on external [tool-eval-bench](https://github.com/MiaAI-Lab/tool-eval-bench) (pinned SHA below) — not this repo’s 2-test smoke suite, and not trajectory-arena.
+
+There is no required runtime wiring between smf-bench and trajectory-arena today (no shared adapter, exporter, or API bridge in this tree). Use them side by side.
 
 ## Why smf-bench?
 
@@ -182,9 +196,16 @@ These components retain their MIT attribution in source headers.
 
 MIT — SMF Works. See [LICENSE](LICENSE) for details.
 
-## SMF eval portfolio note (2026-07-15)
+## SMF eval portfolio
 
-- **smf-bench** is the primary multi-capability evaluation harness owned by SMF.
-- **smf-llm-test** holds complementary real-world writeups/harness history — prefer consolidating new suites here rather than forking another framework.
-- Tool-calling quality remains deferred to the external **tool-eval-bench** pin documented above when applicable.
+Roles only — these are separate repos, not a unified runtime:
+
+- **smf-bench** (this repo) — capability-gated model / multimodal / performance harness; SQLite results.
+- **[trajectory-arena](https://github.com/smfworks/trajectory-arena)** — import, replay, and compare agentic coding trajectories; does not execute agents.
+- **[smf-llm-test](https://github.com/smfworks/smf-llm-test)** — complementary real-world writeups / harness history; prefer consolidating new suites here rather than forking another framework.
+- **[tool-eval-bench](https://github.com/MiaAI-Lab/tool-eval-bench)** — canonical tool-calling quality (pinned SHA in the doctrine section above). External project; SMF does not own it.
+
+---
+
+[SMF Works](https://github.com/smfworks) · notes at [SMF Clearinghouse](https://www.smfclearinghouse.com)
 
