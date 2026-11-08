@@ -1,0 +1,9 @@
+[qwen-coder-30b] context chars: 471311 (~117827 tokens)
+  [HIT] What is MAX_RETRY_BACKOFF_SECONDS set to, and who  -> 'MAX_RETRY_BACKOFF_SECONDS is set to 47, and it was chosen by the reliability tea'
+  [HIT] What is the queue heartbeat interval in seconds, a -> 'The queue heartbeat interval is 17 seconds, and RFC-114 must be read before chan'
+  [HIT] What is the legacy token prefix string, and how lo -> "The legacy token prefix string is 'fci-v1-'. Old tokens (fci-v1-) expire after 3"
+  [HIT] What is the name of the deploy lock, and how many  -> 'The deploy lock name is `forge-deploy-global-lock`, and only one may exist clust'
+  [OK-REFUSED] What is the default database connection pool size 
+  [OK-REFUSED] Which license does forge-ci use?
+[qwen-coder-30b] needle 4/4, refusals 2/2
+saved results_ctx_qwen-coder-30b.json

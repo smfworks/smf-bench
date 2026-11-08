@@ -19,6 +19,15 @@ This repo and [trajectory-arena](https://github.com/smfworks/trajectory-arena) a
 
 There is no required runtime wiring between smf-bench and trajectory-arena today (no shared adapter, exporter, or API bridge in this tree). Use them side by side.
 
+## Developer-usability benchmark (`benchmarks/local-dev-bench`)
+
+A small focused harness for local coding models — planted-bug fixes, a
+feature-from-spec task, tool-call fidelity, and a ~118k context needle —
+scored by pytest pass/fail. First run as the
+[Ripple-65B on an AMD box](https://www.smfclearinghouse.com/blog/ripple-65b-on-the-amd-box-honest-scoreboard/)
+experiment; raw results and server logs ship alongside the harness so the same
+ruler can be run on any hardware. See [benchmarks/local-dev-bench/README.md](benchmarks/local-dev-bench/README.md).
+
 ## Why smf-bench?
 
 Most LLM benchmarks are either (a) tied to a specific evaluation harness that evolves independently of your needs, or (b) single-purpose test suites that don't cover multimodal, agentic, or performance dimensions. **smf-bench** solves this by providing one framework you own, with one consistent test battery that every model runs — getting `N/A` on capabilities it lacks rather than a zero or a skip.

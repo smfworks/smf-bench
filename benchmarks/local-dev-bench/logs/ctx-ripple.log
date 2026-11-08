@@ -1,0 +1,9 @@
+[ripple] context chars: 471311 (~117827 tokens)
+  [HIT] What is MAX_RETRY_BACKOFF_SECONDS set to, and who  -> 'MAX_RETRY_BACKOFF_SECONDS is set to **47**. It was chosen by the **reliability t'
+  [HIT] What is the queue heartbeat interval in seconds, a -> '17 seconds; RFC-114.'
+  [HIT] What is the legacy token prefix string, and how lo -> 'Legacy token prefix: `fci-v1-`. Old tokens expire after 30 days.'
+  [HIT] What is the name of the deploy lock, and how many  -> 'The deploy lock name is `forge-deploy-global-lock`, and only one may exist clust'
+  [OK-REFUSED] What is the default database connection pool size 
+  [OK-REFUSED] Which license does forge-ci use?
+[ripple] needle 4/4, refusals 2/2
+saved results_ctx_ripple.json
