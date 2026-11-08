@@ -1,5 +1,15 @@
 # smf-bench Changelog
 
+## [Unreleased]
+
+### Added
+- `benchmarks/local-dev-bench/`: developer-usability harness for local coding
+  models (planted-bug fixes, feature-from-spec, tool-call fidelity, ~118k
+  context needle) with the published Ripple-65B vs Qwen3-Coder-30B-A3B results
+  and server logs from EXP-2026-11-04 (AMD Radeon 8060S, llama.cpp Vulkan).
+- `tests/test_local_dev_bench_ruler.py`: offline ruler validation — reference
+  solutions pass, planted bugs fail.
+
 ## [0.1.1] — 2026-08-13
 
 ### Fixed

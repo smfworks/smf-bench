@@ -1,0 +1,129 @@
+{
+ "tag": "qwen-coder-30b",
+ "endpoint": "http://localhost:8484",
+ "started": "2026-11-05 06:51:06",
+ "tasks": [
+  {
+   "id": "bug-stats",
+   "tag": "qwen-coder-30b",
+   "prefail": true,
+   "post_pass": true,
+   "ntok": 371,
+   "wall": 4.3,
+   "reasoning": false,
+   "code_found": true,
+   "test_tail": ".....                                                                    [100%]\n5 passed in 0.00s\n"
+  },
+  {
+   "id": "bug-lru",
+   "tag": "qwen-coder-30b",
+   "prefail": true,
+   "post_pass": true,
+   "ntok": 386,
+   "wall": 4.4,
+   "reasoning": false,
+   "code_found": true,
+   "test_tail": "...                                                                      [100%]\n3 passed in 0.00s\n"
+  },
+  {
+   "id": "bug-dedup",
+   "tag": "qwen-coder-30b",
+   "prefail": true,
+   "post_pass": true,
+   "ntok": 533,
+   "wall": 6.1,
+   "reasoning": false,
+   "code_found": true,
+   "test_tail": "....                                                                     [100%]\n4 passed in 0.00s\n"
+  },
+  {
+   "id": "feat-ringbuffer",
+   "tag": "qwen-coder-30b",
+   "prefail": true,
+   "post_pass": true,
+   "ntok": 248,
+   "wall": 3.0,
+   "reasoning": false,
+   "code_found": true,
+   "test_tail": "...                                                                      [100%]\n3 passed in 0.00s\n"
+  }
+ ],
+ "tools": {
+  "tag": "qwen-coder-30b",
+  "calls": [
+   {
+    "prompt": "The tests are failing and I cannot see why. Run the test suite for me.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({})",
+    "ntok": 13
+   },
+   {
+    "prompt": "Please execute the project tests, but only the ones matching 'test_login', with verbose output.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": true, \"pattern\": \"test_login\"})",
+    "ntok": 34
+   },
+   {
+    "prompt": "Run the full test suite quietly.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": false})",
+    "ntok": 23
+   },
+   {
+    "prompt": "Can you check if the tests pass? Use the test runner.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({})",
+    "ntok": 13
+   },
+   {
+    "prompt": "I just refactored auth.py. Run the tests to verify nothing broke, verbose please.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": true})",
+    "ntok": 23
+   },
+   {
+    "prompt": "Execute the test suite with pattern 'test_cache'.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"pattern\": \"test_cache\"})",
+    "ntok": 24
+   },
+   {
+    "prompt": "Verify the build by running all tests. Not verbose.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": false})",
+    "ntok": 23
+   },
+   {
+    "prompt": "Run only tests whose names contain 'integration', verbose mode on.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": true, \"pattern\": \"integration\"})",
+    "ntok": 33
+   },
+   {
+    "prompt": "The CI is red. Run our tests and tell me the result.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({})",
+    "ntok": 13
+   },
+   {
+    "prompt": "Quietly run every test in the project.",
+    "tool_called": true,
+    "valid": true,
+    "detail": "run_tests({\"verbose\": false})",
+    "ntok": 23
+   }
+  ],
+  "broken_json": 0,
+  "called": 10,
+  "valid": 10
+ }
+}

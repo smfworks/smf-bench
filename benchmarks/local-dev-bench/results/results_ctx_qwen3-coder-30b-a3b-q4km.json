@@ -1,0 +1,68 @@
+{
+ "tag": "qwen-coder-30b",
+ "ctx_chars": 471311,
+ "items": [
+  {
+   "q": "What is MAX_RETRY_BACKOFF_SECONDS set to, and who chose it?",
+   "ntok": 26,
+   "ptok": 126988,
+   "wall": 723.9,
+   "answer": "MAX_RETRY_BACKOFF_SECONDS is set to 47, and it was chosen by the reliability team after the March incident.",
+   "type": "needle",
+   "main": true,
+   "also": true
+  },
+  {
+   "q": "What is the queue heartbeat interval in seconds, and what do",
+   "ntok": 24,
+   "ptok": 126992,
+   "wall": 2.3,
+   "answer": "The queue heartbeat interval is 17 seconds, and RFC-114 must be read before changing it.",
+   "type": "needle",
+   "main": true,
+   "also": true
+  },
+  {
+   "q": "What is the legacy token prefix string, and how long do old ",
+   "ntok": 36,
+   "ptok": 126989,
+   "wall": 3.1,
+   "answer": "The legacy token prefix string is 'fci-v1-'. Old tokens (fci-v1-) expire after 30 days; new ones after 90.",
+   "type": "needle",
+   "main": true,
+   "also": true
+  },
+  {
+   "q": "What is the name of the deploy lock, and how many may exist ",
+   "ntok": 21,
+   "ptok": 126990,
+   "wall": 2.0,
+   "answer": "The deploy lock name is `forge-deploy-global-lock`, and only one may exist cluster-wide.",
+   "type": "needle",
+   "main": true,
+   "also": true
+  },
+  {
+   "q": "What is the default database connection pool size in this pr",
+   "ntok": 7,
+   "ptok": 126985,
+   "wall": 1.1,
+   "answer": "NOT IN EXCERPT",
+   "type": "noanswer",
+   "correctly_refused": true
+  },
+  {
+   "q": "Which license does forge-ci use?",
+   "ntok": 7,
+   "ptok": 126980,
+   "wall": 1.1,
+   "answer": "NOT IN EXCERPT",
+   "type": "noanswer",
+   "correctly_refused": true
+  }
+ ],
+ "needle_hits": 4,
+ "needle_total": 4,
+ "refusals": 2,
+ "noanswer_total": 2
+}
